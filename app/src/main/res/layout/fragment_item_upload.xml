@@ -266,9 +266,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="100dp"
+                            android:checked="false"
                             android:text="@string/item_upload__is_feature"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
+                            android:visibility="gone"
                             app:font='@{"normal"}'
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/itemDescriptionTextView" />
@@ -281,12 +283,12 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="16dp"
                             android:text="@string/item_upload__is_promotion"
-                            android:textColor="@color/text__primary"
+                            android:textColor="@color/text__clickable_blue"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/isFeature" />
+                            app:layout_constraintTop_toBottomOf="@+id/itemDescriptionTextView" />
 
                         <EditText
                             android:id="@+id/itemNameEditText"
@@ -488,10 +490,11 @@
                             android:paddingBottom="@dimen/space_8"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
+                            android:visibility="gone"
                             app:font='@{"normal"}'
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                            app:layout_constraintTop_toBottomOf="@id/isPromotion" />
 
                         <TextView
                             android:id="@+id/businessNameTextView"
@@ -598,6 +601,7 @@
                             android:text="@string/item_upload__status"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
+                            android:visibility="gone"
                             app:font='@{"bold"}'
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -643,7 +647,8 @@
                             android:src="@drawable/down"
                             app:layout_constraintBottom_toBottomOf="@+id/statusTextView"
                             app:layout_constraintEnd_toEndOf="@+id/statusTextView"
-                            app:layout_constraintTop_toTopOf="@+id/statusTextView" />
+                            app:layout_constraintTop_toTopOf="@+id/statusTextView"
+                            tools:visibility="gone" />
 
                         <ImageView
                             android:id="@+id/catImageView"
