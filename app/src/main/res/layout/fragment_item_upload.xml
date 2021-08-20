@@ -281,7 +281,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="16dp"
                             android:text="@string/item_upload__is_promotion"
                             android:textColor="@color/text__clickable_blue"
                             android:textSize="@dimen/font_body_size"
