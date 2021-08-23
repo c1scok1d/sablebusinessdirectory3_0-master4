@@ -43,6 +43,7 @@ public class ImageUploadFragment extends PSFragment {
     protected String imagePath = "";
     protected String img_desc;
     protected String selectedId = "";
+    protected String isPromotion = "";
     protected boolean selected = false;
     Uri selectedImage;
     private PSDialogMsg psDialogMsg;
@@ -149,6 +150,7 @@ public class ImageUploadFragment extends PSFragment {
             img_desc = intent.getStringExtra(Constants.IMGDESC);
             flag = intent.getIntExtra(Constants.FLAG, 0);
             selectedId = intent.getStringExtra(Constants.SELECTEDID);
+            isPromotion = intent.getStringExtra(Constants.CHECKED_PROMOTION);
 
             if (!img.equals("") && !img.isEmpty()) {
                 binding.get().setImage(img);
