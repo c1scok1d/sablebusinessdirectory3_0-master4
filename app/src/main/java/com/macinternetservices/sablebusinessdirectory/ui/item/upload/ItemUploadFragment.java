@@ -775,13 +775,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         }
     }
 
-
+    String checkedPromotion;
     private void saveItem() {
 
         locationAddress.getAddressFromLocation(binding.get().txtAutocomplete.getText().toString(), getApplicationContext(), new
                 GeoCoderHandler());
 
-        String checkedPromotion;
+
         if (binding.get().isPromotion.isChecked()) {
             checkedPromotion = Constants.CHECKED_PROMOTION;
         } else {
