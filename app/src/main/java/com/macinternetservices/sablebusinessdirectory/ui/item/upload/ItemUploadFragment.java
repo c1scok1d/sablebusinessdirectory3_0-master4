@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
+import android.provider.SyncStateContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -229,10 +230,10 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().attributeHeaderButton.setOnClickListener(v -> navigationController.navigateToSpecificationListActivity(getActivity(), itemViewModel.itemSelectId, itemName));
 
         binding.get().uploadImageButton.setOnClickListener(v -> navigationController.navigateToImageUploadActivity(getActivity(), itemViewModel.img_id, itemViewModel.img_path,
-                itemViewModel.img_desc, Constants.IMAGE_UPLOAD_ITEM, itemViewModel.img_id));
+                itemViewModel.img_desc, Constants.IMAGE_UPLOAD_ITEM, itemViewModel.img_id, itemViewModel.savedIsPromotion));
 
         binding.get().uploadImageButton.setOnClickListener(v -> navigationController.navigateToImageUploadActivity(getActivity(), "", "",
-                "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId));
+                "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion));
 
         binding.get().viewAllTextView.setOnClickListener(v -> navigationController.navigateToImageList(getActivity(), itemViewModel.itemSelectId));
 
@@ -322,7 +323,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             @Override
             public void onClick(Image image) {
 //                Toast.makeText(getContext(),"On click",Toast.LENGTH_SHORT).show();
-                navigationController.navigateToImageUploadActivity(getActivity(), image.imgId, image.imgPath, image.imgDesc, Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId);
+                navigationController.navigateToImageUploadActivity(getActivity(), image.imgId, image.imgPath, image.imgDesc, Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
 
             }
 
@@ -728,7 +729,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (!itemViewModel.edit_mode) {
 
                                     itemViewModel.itemSelectId = itemResource.data.id;
-                                    navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId);
+                                    navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
                                 }
                             });
                         }
