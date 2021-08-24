@@ -537,12 +537,12 @@
     <string name="item_upload__item_highlight_infomation">Business Specialty Information</string>
     <string name="item_upload__item_description">Business Description</string>
     <string name="item_upload__is_feature">is Featured</string>
-    <string name="item_upload__is_promotion">is Promotion</string>
+    <string name="item_upload__is_promotion">Check the box to alert users when they are near the location for $25/year</string>
     <string name="item_upload__open_time">Open time:</string>
     <string name="item_upload__close_time">Close time:</string>
     <string name="item_upload__search_tag">Search Tag</string>
     <string name="item_upload__time_remark">Time Remark</string>
-    <string name="item_upload__phone_one">Phone 1</string>
+    <string name="item_upload__phone_one">Phone</string>
     <string name="item_upload__phone_two">Phone 2</string>
     <string name="item_upload__phone_three">Phone 3</string>
     <string name="item_upload__email">Email</string>
@@ -586,7 +586,9 @@
     <string name="message__image_desc">Business description</string>
     <string name="image_upload__title_item">Business Image Upload</string>
     <string name="error_message__img_not_selected">No Image Selected</string>
-    <string name="message__image_upload_complete">Image Uploaded Successfully</string>
+    <string name="message__image_upload_complete">Would you like to add additional photos?</string>
+
+    <!-- string name="message__image_upload_complete">Image Uploaded Successfully</string -->
 
 
     <!-- Specification -->
