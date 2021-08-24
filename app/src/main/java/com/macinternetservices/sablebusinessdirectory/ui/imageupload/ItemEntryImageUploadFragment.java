@@ -64,10 +64,10 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
                                         navigationController.navigateToImageUploadActivity(getActivity(), img_id, imagePath,
-                                                img_desc, Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId);
+                                                img_desc, Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
 
                                         navigationController.navigateToImageUploadActivity(getActivity(), "", "",
-                                                "", Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId);
+                                                "", Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
                                         break;
 
                                     case DialogInterface.BUTTON_NEGATIVE:
@@ -117,7 +117,7 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                 if (getActivity().getIntent() != null) {
                     if (getActivity().getIntent().getExtras() != null) {
                         itemListViewModel.itemId = getActivity().getIntent().getExtras().getString(Constants.SELECTEDID);
-                        itemListViewModel.savedIsPromotion = getActivity().getIntent().getExtras().getBoolean(Constants.CHECKED_PROMOTION);
+                        itemListViewModel.savedIsPromotion = getActivity().getIntent().getExtras().getBoolean(String.valueOf(Constants.isPromotion));
                         Timber.e(itemListViewModel.savedIsPromotion.toString());
                     }
                 }
