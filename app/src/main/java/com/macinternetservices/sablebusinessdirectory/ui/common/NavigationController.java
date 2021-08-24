@@ -1031,7 +1031,7 @@ public class NavigationController {
         activity.startActivity(intent);
     }
 
-    public void navigateToImageUploadActivity(Activity activity, String img_id, String img_path, String img_desc, int flag, String selectId) {
+    public void navigateToImageUploadActivity(Activity activity, String img_id, String img_path, String img_desc, int flag, String selectId, Boolean isPromotion) {
         Intent intent = new Intent(activity, ImageUploadActivity.class);
 
         intent.putExtra(Constants.IMG_ID, img_id);
@@ -1039,6 +1039,7 @@ public class NavigationController {
         intent.putExtra(Constants.IMGDESC, img_desc);
         intent.putExtra(Constants.FLAG, flag);
         intent.putExtra(Constants.SELECTEDID, selectId);
+        intent.putExtra(String.valueOf(Constants.isPromotion), isPromotion);
 
         activity.startActivityForResult(intent, Constants.RESULT_GO_TO_IMAGE_UPLOAD);
     }
