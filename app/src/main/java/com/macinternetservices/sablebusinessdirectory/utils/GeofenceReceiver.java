@@ -48,7 +48,7 @@ public class GeofenceReceiver extends IntentService {
                     switch (transitionType) {
                         case Geofence.GEOFENCE_TRANSITION_DWELL:
                             if ( distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
                                     && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if item is_Promoteion alert
                                 transitionName = "dwell";
                                 break loop;
