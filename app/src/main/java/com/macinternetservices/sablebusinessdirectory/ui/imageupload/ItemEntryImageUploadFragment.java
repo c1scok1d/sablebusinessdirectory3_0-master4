@@ -72,7 +72,7 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
 
                                     case DialogInterface.BUTTON_NEGATIVE:
                                         if(itemListViewModel.savedIsPromotion){
-                                            navigationController.navigateToItemPromoteActivity(getActivity(),selectedId);
+                                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
                                         } else {
                                             navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
                                         }
