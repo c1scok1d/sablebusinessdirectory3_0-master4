@@ -65,7 +65,7 @@ public class ItemImageListFragment extends PSFragment implements DataBoundListAd
         if (item.getItemId() == R.id.clearButton) {
             Utils.psLog("I am here for ok Button");
 
-            navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, imageViewModel.item_id);
+            navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, imageViewModel.item_id, Constants.isPromotion);
             imageViewModel.loadingDirection = Utils.LoadingDirection.top;
         }
         return super.onOptionsItemSelected(item);
@@ -132,7 +132,7 @@ public class ItemImageListFragment extends PSFragment implements DataBoundListAd
             @Override
             public void onClick(Image item) {
 //                Toast.makeText(getContext(),"On click",Toast.LENGTH_SHORT).show();
-                navigationController.navigateToImageUploadActivity(getActivity(),item.imgId, item.imgPath, item.imgDesc, Constants.IMAGE_UPLOAD_ITEM, imageViewModel.item_id);
+                navigationController.navigateToImageUploadActivity(getActivity(),item.imgId, item.imgPath, item.imgDesc, Constants.IMAGE_UPLOAD_ITEM, imageViewModel.item_id, Constants.isPromotion);
             }
 
             @Override
