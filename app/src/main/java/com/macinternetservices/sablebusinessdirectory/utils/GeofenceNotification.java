@@ -48,7 +48,7 @@ public class GeofenceNotification {
     }
 
     protected void buildNotificaction(SimpleGeofence simpleGeofence,
-                                      int transitionType, int near) throws IOException {
+                                      int transitionType, int near) {
 
         String firstName = "", lastName = "";
         if (!pref.getString(Constants.USER_NAME, Constants.EMPTY_STRING).isEmpty()) {
