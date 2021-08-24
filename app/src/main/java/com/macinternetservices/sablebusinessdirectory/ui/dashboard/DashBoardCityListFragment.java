@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
@@ -162,6 +163,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     @Override
     protected void initUIAndActions() {
 
+        binding.get().noListingsLayout.setVisibility(View.GONE);
         if (!Config.ENABLE_ITEM_UPLOAD) {
             binding.get().floatingActionButton.setVisibility(View.GONE);
         } else {
@@ -557,7 +559,6 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                         if (result.data != null) {
                             replaceFeaturedItem(result.data);
                         }
-
                         break;
 
                     case SUCCESS:
@@ -568,6 +569,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                         break;
 
                     case ERROR:
+                        binding.get().noListingsLayout.setVisibility(View.VISIBLE);
                         featuredItemViewModel.setLoadingState(false);
                         break;
                 }
@@ -734,21 +736,6 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
         });
     }
-
-    private double distance(double lat1, double lng1, double lat2, double lng2) {
-
-        double earthRadius = 3958.75; // in miles, change to 6371 for kilometer output
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLng = Math.toRadians(lng2 - lng1);
-        double sindLat = Math.sin(dLat / 2);
-        double sindLng = Math.sin(dLng / 2);
-        double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
-                * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2));
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double dist = earthRadius * c;
-        return dist; // output distance, in MILES
-    }
-
     @SuppressLint("NewApi")
     private void replaceFeaturedItem(List<Item> itemList) {
         if(itemList.size() > 0) {
