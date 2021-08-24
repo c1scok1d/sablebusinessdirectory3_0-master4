@@ -75,6 +75,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_progress_bar_horizontal"
@@ -86,7 +87,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardView18" />
 
                 <TextView
                     android:id="@+id/imageTextView"
@@ -190,7 +192,7 @@
                     app:font='@{"bold"}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView15" />
+                    app:layout_constraintTop_toBottomOf="@id/cardView20" />
 
                 <TextView
                     android:id="@+id/textView18"
@@ -222,7 +224,7 @@
                     app:font='@{"bold"}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/attributeHeaderButton" />
+                    app:layout_constraintTop_toBottomOf="@id/cardView15" />
 
                 <TextView
                     android:id="@+id/rejectOrPendingTextView"
@@ -258,7 +260,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp">
 
                         <CheckBox
                             android:id="@+id/isFeature"
@@ -279,13 +282,14 @@
                             android:id="@+id/isPromotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__is_promotion"
                             android:textColor="@color/text__clickable_blue"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/itemDescriptionTextView" />
 
@@ -664,7 +668,6 @@
                             app:layout_constraintTop_toTopOf="@+id/categoryTextView" />
 
 
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -851,13 +854,14 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/searchTextView6" />
+                            app:layout_constraintTop_toBottomOf="@+id/searchTextView6"
+                            tools:visibility="gone" />
 
                         <EditText
                             android:id="@+id/phoneThreeTextView"
@@ -873,13 +877,14 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/searchTextView7" />
+                            app:layout_constraintTop_toBottomOf="@+id/searchTextView7"
+                            tools:visibility="gone" />
 
                         <EditText
                             android:id="@+id/emailTextView"
@@ -906,7 +911,7 @@
                         <AutoCompleteTextView
                             android:id="@+id/txt_autocomplete"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
@@ -954,13 +959,14 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__phone_three"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/phoneTwoTextView" />
+                            app:layout_constraintTop_toBottomOf="@+id/phoneTwoTextView"
+                            tools:visibility="gone" />
 
                         <TextView
                             android:id="@+id/searchTextView6"
@@ -970,13 +976,14 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__phone_two"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/phoneOneTextView" />
+                            app:layout_constraintTop_toBottomOf="@+id/phoneOneTextView"
+                            tools:visibility="gone" />
 
                         <TextView
                             android:id="@+id/searchTextView10"
@@ -1522,7 +1529,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     app:cardCornerRadius="5dp"
-                    app:layout_constraintBottom_toTopOf="@+id/saveButton"
+                    app:layout_constraintBottom_toTopOf="@id/textView15"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView21">
