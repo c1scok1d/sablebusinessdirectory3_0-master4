@@ -320,6 +320,7 @@ Location Current_Location=new Location("");
     String CHECKED_PROMOTION = "1";
     String NOT_CHECKED_FEATURED = "0";
     String NOT_CHECKED_PROMOTION = "0";
+    Boolean isPromotion = null;
     //endregion
 
     //region image upload
