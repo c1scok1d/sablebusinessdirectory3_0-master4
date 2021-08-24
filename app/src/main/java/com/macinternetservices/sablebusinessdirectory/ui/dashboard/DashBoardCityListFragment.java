@@ -751,14 +751,16 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
     @SuppressLint("NewApi")
     private void replaceFeaturedItem(List<Item> itemList) {
-        startGeofences(itemList);
+        if(itemList.size() > 0) {
+            startGeofences(itemList);
+        }
         this.featuredItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
 
     @SuppressLint("NewApi")
     private void replaceDiscountItem(List<Item> itemList) {
-        itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating), Double.parseDouble(o1.overallRating)));
+        //itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating), Double.parseDouble(o1.overallRating)));
         this.discountItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
@@ -772,7 +774,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
     @SuppressLint("NewApi")
     private void replaceRecentItemList(List<Item> itemList) throws ParseException {
-        itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating), Double.parseDouble(o1.overallRating)));
+        //itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating), Double.parseDouble(o1.overallRating)));
         this.recentItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
