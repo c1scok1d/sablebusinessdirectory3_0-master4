@@ -42,22 +42,34 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="alert users when near your business"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/startDateSelectionCardView" />
+
+            <TextView
                 android:id="@+id/startDateTextView2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:fitsSystemWindows="false"
                 android:paddingTop="@dimen/space_4"
                 android:paddingBottom="@dimen/space_4"
-                android:text="@string/item_promote__how_many_days"
+                android:text="@string/item_promote"
                 android:textColor="@color/text__primary"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/startDateSelectionCardView" />
+                app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/startDateSelectionCardView"
@@ -252,9 +264,11 @@
                     android:id="@+id/secondChoiceConstraintLayout"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/firstChoiceConstraintLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/firstChoiceConstraintLayout"
+                    tools:visibility="gone">
 
                     <TextView
                         android:id="@+id/secondChoiceTitleTextView"
@@ -313,9 +327,11 @@
                     android:id="@+id/thirdChoiceConstraintLayout"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/secondChoiceConstraintLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/secondChoiceConstraintLayout"
+                    tools:visibility="gone">
 
                     <TextView
                         android:id="@+id/thirdChoiceTitleTextView"
@@ -401,10 +417,12 @@
                     android:id="@+id/fourthChoiceConstraintLayout"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/thirdChoiceConstraintLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/thirdChoiceConstraintLayout"
+                    tools:visibility="gone">
 
                     <TextView
                         android:id="@+id/fourthChoiceTitleTextView"
@@ -463,11 +481,13 @@
                     android:id="@+id/customPromoteConstraintLayout"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view37">
+                    app:layout_constraintTop_toBottomOf="@+id/view37"
+                    tools:visibility="gone">
 
                     <TextView
                         android:id="@+id/customeTitleTextView"
