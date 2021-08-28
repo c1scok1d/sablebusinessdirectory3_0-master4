@@ -727,9 +727,10 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 psDialogMsg.cancel();
 
                                 if (!itemViewModel.edit_mode) {
-
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
+                                } else if (itemViewModel.edit_mode && itemViewModel.savedIsPromotion) {
+                                    navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemId);
                                 }
                             });
                         }
