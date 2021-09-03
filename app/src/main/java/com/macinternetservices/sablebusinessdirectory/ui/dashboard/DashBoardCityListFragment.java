@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -563,12 +566,19 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
 
                     case SUCCESS:
                         if (result.data != null) {
+                            if(binding.get().noListingsLayout.isShown()){
+                                Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
+                                binding.get().noListingsLayout.setAnimation(fadeOut);
+                                binding.get().noListingsLayout.setVisibility(View.GONE);
+                            }
                             replaceFeaturedItem(result.data);
                         }
                         featuredItemViewModel.setLoadingState(false);
                         break;
 
                     case ERROR:
+                        Animation fadeIn = AnimationUtils.loadAnimation(getContext(),R.anim.fade_in);
+                        binding.get().noListingsLayout.startAnimation(fadeIn);
                         binding.get().noListingsLayout.setVisibility(View.VISIBLE);
                         featuredItemViewModel.setLoadingState(false);
                         break;
