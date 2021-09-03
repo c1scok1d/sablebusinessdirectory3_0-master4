@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -95,6 +96,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     private Marker marker;
     //private AutoCompleteTextView search_tx_loc;
     private Double latitude, longitude;
+    private Boolean promoChange = false;
 
     @VisibleForTesting
     private AutoClearedValue<FragmentItemUploadBinding> binding;
@@ -195,7 +197,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
             }
         });
-
 
         // region for sub_category
         binding.get().subCatTextView.setOnClickListener(v -> {
@@ -494,9 +495,20 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             if (result.data.isPromotion.equals("1")) {
                                 binding.get().isPromotion.setChecked(true);
                                 itemViewModel.savedIsPromotion = true;
+                                binding.get().isPromotion.setVisibility(View.GONE);
                             } else if (result.data.isPromotion.equals("0")) {
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
+                                binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+                                {
+                                    @Override
+                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                                    {
+                                        if ( isChecked ) {
+                                            promoChange = true;
+                                        }
+                                    }
+                                });
                             }
 
                             switch (result.data.itemStatusId) {
@@ -723,13 +735,39 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 psDialogMsg.show();
                             }
 
+                            /*
+
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        navigationController.navigateToImageUploadActivity(getActivity(), img_id, imagePath,
+                                                img_desc, Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
+
+                                        navigationController.navigateToImageUploadActivity(getActivity(), "", "",
+                                                "", Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        if(itemListViewModel.savedIsPromotion){
+                                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
+                                        } else {
+                                            navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
+                                        }
+                                        break;
+                                }
+                            }
+                        };
+                             */
+
                             psDialogMsg.okButton.setOnClickListener(v -> {
                                 psDialogMsg.cancel();
 
                                 if (!itemViewModel.edit_mode) {
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                                } else if (itemViewModel.edit_mode && itemViewModel.savedIsPromotion) {
+                                } else if ( itemViewModel.edit_mode && promoChange) {
                                     navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemId);
                                 }
                             });
