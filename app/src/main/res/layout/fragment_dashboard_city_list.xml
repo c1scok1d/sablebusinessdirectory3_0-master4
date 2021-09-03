@@ -718,7 +718,7 @@
             android:id="@+id/noListingsLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#90FFFFFF">
+            android:background="#FFFFFF">
 
             <ImageView
                 android:id="@+id/imageView18"
@@ -730,13 +730,17 @@
 
             <TextView
                 android:id="@+id/textView23"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="There are no black owned businesses registed with Sable near you.  Click the '+' below to add black owned businesses near you to the Sable Business Directory."
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/no_businesses_near_msg"
+                android:textColor="@color/quantum_black_text"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constrainedHeight="false"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView18" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
