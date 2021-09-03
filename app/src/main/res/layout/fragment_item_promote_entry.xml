@@ -133,17 +133,15 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
                 android:background="@drawable/rounded_corner_shape_button"
                 android:text="@string/item_promote__stripe"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
                 app:font='@{"normal"}'
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/paypelButton" />
+                app:layout_constraintTop_toBottomOf="@id/paypelButton" />
 
             <Button
                 android:id="@+id/paypelButton"
@@ -176,10 +174,28 @@
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
                 app:font='@{"normal"}'
-                app:layout_constraintBottom_toTopOf="@+id/paypelButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/rounded_corner_shape_button"
+                android:text="Cancel"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                app:font='@{"normal"}'
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paypelButton" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout14"
@@ -226,7 +242,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firstChoiceTitleTextView"
-                        tools:text="$10.00" />
+                        tools:text="$25.00" />
 
                     <TextView
                         android:id="@+id/firstChoiceCountTextView"
