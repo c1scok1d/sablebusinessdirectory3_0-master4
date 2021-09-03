@@ -58,7 +58,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
     private String currencySymbol;
     private String oneDayPrice = Config.PROMOTE_DEFAULT_ONE_DAY_PRICE;
     private String dayEditTextString;
-    private int firstChoicePrice;
+    private int firstChoicePrice = Config.PROMOTE_ONE_YEAR_PRICE;
     private int secondChoicePrice;
     private int thirdChoicePrice;
     private int fourthChoicePrice;
@@ -105,29 +105,29 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
 
         psDialogMsg = new PSDialogMsg(this.getActivity(), false);
 
-        binding.get().firstChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_FIRST_CHOICE_DAY_OR_DEFAULT_DAY, getString(R.string.item_promote__days)));
+        //binding.get().firstChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_ONE_YEAR_PRICE, getString(R.string.item_promote__year)));
 
-        binding.get().secondChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_SECOND_CHOICE_DAY, getString(R.string.item_promote__days)));
+       /* binding.get().secondChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_SECOND_CHOICE_DAY, getString(R.string.item_promote__days)));
 
         binding.get().thirdChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_THIRD_CHOICE_DAY, getString(R.string.item_promote__days)));
 
-        binding.get().fourthChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_FOURTH_CHOICE_DAY, getString(R.string.item_promote__days)));
+        binding.get().fourthChoiceCountTextView.setText(String.format("%s%s", Config.PROMOTE_FOURTH_CHOICE_DAY, getString(R.string.item_promote__days))); */
 
-        binding.get().firstChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_FIRST_CHOICE_DAY_OR_DEFAULT_DAY, " ", getString(R.string.item_promote__c_days)));
+        binding.get().firstChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", "$",Config.PROMOTE_ONE_YEAR_PRICE, " for 1 year ", getString(R.string.item_promote__year)));
 
-        binding.get().secondChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_SECOND_CHOICE_DAY, " ", getString(R.string.item_promote__c_days)));
+        /*binding.get().secondChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_SECOND_CHOICE_DAY, " ", getString(R.string.item_promote__c_days)));
 
         binding.get().thirdChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_THIRD_CHOICE_DAY, " ", getString(R.string.item_promote__c_days)));
 
-        binding.get().fourthChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_FOURTH_CHOICE_DAY, " ", getString(R.string.item_promote__c_days)));
+        binding.get().fourthChoiceTitleTextView.setText(String.format("%s%s%s%s%s", getString(R.string.item_promote__promote_for), " ", Config.PROMOTE_FOURTH_CHOICE_DAY, " ", getString(R.string.item_promote__c_days))); */
 
         binding.get().firstChoicePriceTextView.setText(String.valueOf(firstChoicePrice));
 
-        binding.get().thirdChoicePriceTextView.setText(String.valueOf(thirdChoicePrice));
+       /* binding.get().thirdChoicePriceTextView.setText(String.valueOf(thirdChoicePrice));
 
         binding.get().secondChoicePriceTextView.setText(String.valueOf(secondChoicePrice));
 
-        binding.get().fourthChoicePriceTextView.setText(String.valueOf(fourthChoicePrice));
+        binding.get().fourthChoicePriceTextView.setText(String.valueOf(fourthChoicePrice)); */
 
         binding.get().startDateDataTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +136,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
             }
         });
 
-        binding.get().dayDataEditText.setOnClickListener(new View.OnClickListener() {
+       /* binding.get().dayDataEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.get().customSelectView.setVisibility(View.VISIBLE);
@@ -254,7 +254,16 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                 chooseDay = true;
                 customDay = false;
             }
-        });
+        }); */
+
+
+       /*binding.get().cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //go to dashboard fragment
+                navigationController.navigateToHome(MainActivity.this);
+            }
+        }); */
 
         binding.get().paypelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,19 +272,19 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                 if (startingDate == null || startingDate.equals("")) {
                     psDialogMsg.showWarningDialog(ItemPromoteFragment.this.getString(R.string.item_promote__warning_for_start_date), ItemPromoteFragment.this.getString(R.string.app__ok));
                     psDialogMsg.show();
-                }
+               /* }
                 else if(customDay){
                     if( binding.get().dayDataEditText.getText().toString().equals("")){
                         psDialogMsg.showWarningDialog(ItemPromoteFragment.this.getString(R.string.item_promote__enter_day), ItemPromoteFragment.this.getString(R.string.app__ok));
                         psDialogMsg.show();
                     }else{
-                        amount = Integer.parseInt(oneDayPrice) * Integer.parseInt(binding.get().dayDataEditText.getText().toString());
+                        amount = Config.PROMOTE_ONE_YEAR_PRICE; /* * Integer.parseInt(binding.get().dayDataEditText.getText().toString()*);
                         paypalViewModel.setPaypalTokenObj();
                     }
                 }
                 else if (!chooseDay) {
                     amount = firstChoicePrice;
-                    paypalViewModel.setPaypalTokenObj();
+                    paypalViewModel.setPaypalTokenObj(); */
                 } else {
                     paypalViewModel.setPaypalTokenObj();
                 }
@@ -283,7 +292,8 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
             }
         });
 
-        binding.get().stripeButton.setOnClickListener(new View.OnClickListener() {
+
+       /* binding.get().stripeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 paymentMethod = Constants.STRIPE;
@@ -307,7 +317,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                     navigationController.navigateToStripeActivity(ItemPromoteFragment.this.getActivity(), appLoadingViewModel.stripePublishableKey);
                 }
             }
-        });
+        }); */
 
         binding.get().razorButton.setOnClickListener(v -> {
             paymentMethod = Constants.RAZOR;
@@ -436,16 +446,16 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                             }
 
                             appLoadingViewModel.psAppInfo = result.data;
-                            oneDayPrice = result.data.oneDay;
+                            //oneDayPrice = result.data.oneDay;
                             currencySymbol = result.data.currencySymbol;
                             appLoadingViewModel.stripePublishableKey = result.data.stripePublishableKey;
                             appLoadingViewModel.currencyShortForm = result.data.currencyShortForm;
-                            CalculateOneDayPrice(oneDayPrice);
+                           // CalculateOneDayPrice(oneDayPrice);
                             binding.get().firstChoicePriceTextView.setText(String.format("%s%s", result.data.currencySymbol, String.valueOf(firstChoicePrice)));
-                            binding.get().secondChoicePriceTextView.setText(String.format("%s%s", result.data.currencySymbol, String.valueOf(secondChoicePrice)));
+                            /*binding.get().secondChoicePriceTextView.setText(String.format("%s%s", result.data.currencySymbol, String.valueOf(secondChoicePrice)));
                             binding.get().thirdChoicePriceTextView.setText(String.format("%s%s", result.data.currencySymbol, String.valueOf(thirdChoicePrice)));
                             binding.get().fourthChoicePriceTextView.setText(String.format("%s%s", result.data.currencySymbol, String.valueOf(fourthChoicePrice)));
-                            binding.get().customPriceTextView.setText(String.format("%s%s", result.data.currencySymbol, getString(R.string.item_promote__default_custom_price)));
+                            binding.get().customPriceTextView.setText(String.format("%s%s", result.data.currencySymbol, getString(R.string.item_promote__default_custom_price))); */
                         }
                         break;
 
@@ -664,10 +674,10 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
 
     private void CalculateOneDayPrice(String price) {
         int oneDayAmount = Integer.parseInt(price);
-        firstChoicePrice = oneDayAmount * Config.PROMOTE_FIRST_CHOICE_DAY_OR_DEFAULT_DAY;
-        secondChoicePrice = oneDayAmount * Config.PROMOTE_SECOND_CHOICE_DAY;
+        //firstChoicePrice = Config.PROMOTE_DEFAULT_ONE_DAY_PRICE;
+        /*secondChoicePrice = oneDayAmount * Config.PROMOTE_SECOND_CHOICE_DAY;
         thirdChoicePrice = oneDayAmount * Config.PROMOTE_THIRD_CHOICE_DAY;
-        fourthChoicePrice = oneDayAmount * Config.PROMOTE_FOURTH_CHOICE_DAY;
+        fourthChoicePrice = oneDayAmount * Config.PROMOTE_FOURTH_CHOICE_DAY; */
 
     }
 
