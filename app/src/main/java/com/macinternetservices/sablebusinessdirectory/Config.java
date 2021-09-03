@@ -203,11 +203,12 @@ public class Config {
     /**
      * Promote Item
      */
-    public static int PROMOTE_FIRST_CHOICE_DAY_OR_DEFAULT_DAY = 7;
+    public static int PROMOTE_FIRST_CHOICE_DAY_OR_DEFAULT_DAY = 365;
     public static int PROMOTE_SECOND_CHOICE_DAY = 14;
     public static int PROMOTE_THIRD_CHOICE_DAY = 30;
     public static int PROMOTE_FOURTH_CHOICE_DAY = 60;
-    public static String PROMOTE_DEFAULT_ONE_DAY_PRICE = "10";
+    public static int PROMOTE_ONE_YEAR_PRICE = 25;
+    public static String PROMOTE_DEFAULT_ONE_DAY_PRICE = "25";
 
     /**
      * Price Format
