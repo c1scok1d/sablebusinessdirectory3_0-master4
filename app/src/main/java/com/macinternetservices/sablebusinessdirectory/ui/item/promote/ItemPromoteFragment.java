@@ -257,15 +257,30 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
         }); */
 
 
-       /*binding.get().cancel_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //go to dashboard fragment
-                navigationController.navigateToHome(MainActivity.this);
-            }
-        }); */
+       binding.get().cancelButton.setOnClickListener(new View.OnClickListener() {
+            ///psDialogMsg.okButton.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   psDialogMsg.cancel();
 
-        binding.get().paypelButton.setOnClickListener(new View.OnClickListener() {
+//                            if (Config.CLOSE_ENTRY_AFTER_SUBMIT) {
+//                                if (getActivity() != null) {
+//                                    getActivity().finish();
+//                                }
+//                            }
+
+                   if (getActivity() != null) {
+                       Intent intent = new Intent(getActivity(), MainActivity.class);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                       startActivity(intent);
+                       getActivity().finish();
+                   }
+               }
+           //});
+        });
+
+        binding.get().paypalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 paymentMethod = Constants.PAYPAL;
@@ -428,9 +443,9 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                         if (result.data != null) {
 
                             if (result.data.paypalEnabled.equals(Constants.CHECKPAYPALENABLE)) {
-                                binding.get().paypelButton.setVisibility(View.VISIBLE);
+                                binding.get().paypalButton.setVisibility(View.VISIBLE);
                             } else {
-                                binding.get().paypelButton.setVisibility(View.GONE);
+                                binding.get().paypalButton.setVisibility(View.GONE);
                             }
 
                             if(result.data.stripeEnabled.equals(Constants.CHECKSTRIPEENABLE)){
