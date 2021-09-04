@@ -269,8 +269,11 @@ public class ItemFragment extends PSFragment {
         //For website
         binding.get().WebsiteTextView.setOnClickListener(view -> {
 
-            if (binding.get().WebsiteTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().WebsiteTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().WebsiteTextView.getText().toString();
+            String url = "";
+            if (!binding.get().WebsiteTextView.getText().toString().isEmpty()) {
+                if (!binding.get().WebsiteTextView.getText().toString().startsWith("http://") || !binding.get().WebsiteTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().WebsiteTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -283,8 +286,11 @@ public class ItemFragment extends PSFragment {
         //For facebook
         binding.get().facebookTextView.setOnClickListener(view -> {
 
-            if (binding.get().facebookTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().facebookTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().facebookTextView.getText().toString();
+            String url = "";
+            if (!binding.get().facebookTextView.getText().toString().isEmpty()) {
+                if (!binding.get().facebookTextView.getText().toString().startsWith("http://") || !binding.get().facebookTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().facebookTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -296,8 +302,11 @@ public class ItemFragment extends PSFragment {
         //For google plus
         binding.get().gplusTextView.setOnClickListener(view -> {
 
-            if (binding.get().gplusTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().gplusTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().gplusTextView.getText().toString();
+            String url = "";
+            if (!binding.get().gplusTextView.getText().toString().isEmpty()) {
+                if (!binding.get().gplusTextView.getText().toString().startsWith("http://") || !binding.get().gplusTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().gplusTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -309,8 +318,11 @@ public class ItemFragment extends PSFragment {
         //For twitter
         binding.get().twitterTextView.setOnClickListener(view -> {
 
-            if (binding.get().twitterTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().twitterTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().twitterTextView.getText().toString();
+            String url = "";
+            if (!binding.get().twitterTextView.getText().toString().isEmpty()) {
+                if (!binding.get().twitterTextView.getText().toString().startsWith("http://") || !binding.get().twitterTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().twitterTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -323,8 +335,11 @@ public class ItemFragment extends PSFragment {
         //For instagram
         binding.get().instaTextView.setOnClickListener(view -> {
 
-            if (binding.get().instaTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().instaTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().instaTextView.getText().toString();
+            String url = "";
+            if (!binding.get().instaTextView.getText().toString().isEmpty()) {
+                if (!binding.get().instaTextView.getText().toString().startsWith("http://") || !binding.get().instaTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().instaTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -336,8 +351,11 @@ public class ItemFragment extends PSFragment {
         //For youtube
         binding.get().youtubeTextView.setOnClickListener(view -> {
 
-            if (binding.get().youtubeTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().youtubeTextView.getText().toString().startsWith(Constants.HTTPS)) {
-                String url = binding.get().youtubeTextView.getText().toString();
+            String url = "";
+            if (!binding.get().youtubeTextView.getText().toString().isEmpty()) {
+                if (!binding.get().youtubeTextView.getText().toString().startsWith("http://") || !binding.get().youtubeTextView.getText().toString().startsWith("https://")) {
+                    url = "http://" + binding.get().youtubeTextView.getText();
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
@@ -350,7 +368,7 @@ public class ItemFragment extends PSFragment {
         //For pinterest
         binding.get().pinterestTextView.setOnClickListener(view -> {
 
-            if (binding.get().pinterestTextView.getText().toString().startsWith(Constants.HTTP) || binding.get().pinterestTextView.getText().toString().startsWith(Constants.HTTPS)) {
+            if (binding.get().pinterestTextView.getText().toString().isEmpty()) {
                 String url = binding.get().pinterestTextView.getText().toString();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
