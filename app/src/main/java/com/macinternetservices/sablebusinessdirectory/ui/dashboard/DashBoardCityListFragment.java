@@ -186,7 +186,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                     }
                 }));
 
-        binding.get().skip.setOnClickListener(new View.OnClickListener() {
+        binding.get().ivSkip.setOnClickListener(new View.OnClickListener() {
             ///psDialogMsg.okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,7 +194,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                     Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
                     binding.get().noListingsLayout.setAnimation(fadeOut);
                     binding.get().noListingsLayout.setVisibility(View.GONE);
-                    binding.get().skip.setVisibility(View.GONE);
+                    binding.get().ivSkip.setVisibility(View.GONE);
                 }
             }
             //});
@@ -584,7 +584,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                                 Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
                                 binding.get().noListingsLayout.setAnimation(fadeOut);
                                 binding.get().noListingsLayout.setVisibility(View.GONE);
-                                binding.get().skip.setVisibility(View.GONE);
+                                binding.get().ivSkip.setVisibility(View.GONE);
                             }
                             replaceFeaturedItem(result.data);
                         }
@@ -596,7 +596,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                         binding.get().noListingsLayout.startAnimation(fadeIn);
                         binding.get().noListingsLayout.setVisibility(View.VISIBLE);
                         featuredItemViewModel.setLoadingState(false);
-                        binding.get().skip.setVisibility(View.VISIBLE);
+                        binding.get().ivSkip.setVisibility(View.VISIBLE);
                         break;
                 }
             }
