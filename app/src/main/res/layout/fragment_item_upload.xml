@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:visibility="visible">
 
 
@@ -34,7 +34,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_progress_bar_horizontal"
@@ -47,7 +46,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView18" />
+                    app:layout_constraintTop_toBottomOf="@id/saveButton" />
 
                 <Button
                     android:id="@+id/attributeHeaderButton"
@@ -97,7 +96,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_progress_bar_horizontal"
                     android:backgroundTint="@color/global__primary"
                     android:text="@string/item_upload__btn_save"
@@ -302,9 +300,12 @@
                             android:id="@+id/isPromotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
                             android:text="@string/item_upload__is_promotion"
+                            android:textAlignment="center"
                             android:textColor="@color/text__clickable_blue"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
@@ -852,10 +853,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView5" />
@@ -920,10 +921,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView10" />
@@ -963,10 +964,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__phone_one"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -1013,10 +1014,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__email"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/phoneThreeTextView" />
@@ -1029,10 +1030,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__address"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
@@ -1135,10 +1136,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView13" />
@@ -1201,10 +1202,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView16" />
@@ -1223,10 +1224,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView17" />
@@ -1246,10 +1247,10 @@
                             android:paddingStart="@dimen/space_8"
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1263,10 +1264,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__facebook"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -1279,10 +1280,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__twitter"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/facebookTextView" />
@@ -1295,10 +1296,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__youtube"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/twitterTextView" />
@@ -1311,10 +1312,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__google_plus"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/youtubeTextView" />
@@ -1327,10 +1328,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__instagram"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/googlePlusTextView" />
@@ -1343,10 +1344,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__website"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/instagrmTextView" />
@@ -1359,10 +1360,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__pinterest"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/websiteTextView" />
@@ -1375,10 +1376,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__whatsapp"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/pinterestTextView" />
@@ -1391,10 +1392,10 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:text="@string/item_upload__messenger"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"bold"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/whatappsTextView" />
@@ -1433,10 +1434,10 @@
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
                             android:scrollbars="vertical"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView19" />
@@ -1457,10 +1458,10 @@
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
                             android:scrollbars="vertical"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView20"
@@ -1483,10 +1484,10 @@
                             android:paddingTop="@dimen/space_8"
                             android:paddingBottom="@dimen/space_8"
                             android:scrollbars="vertical"
+                            android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
-                            android:textAlignment="viewStart"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
