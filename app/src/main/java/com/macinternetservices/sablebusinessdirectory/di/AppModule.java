@@ -48,8 +48,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * Created by Panacea-Soft on 11/15/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/15/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Module(includes = ViewModelModule.class)

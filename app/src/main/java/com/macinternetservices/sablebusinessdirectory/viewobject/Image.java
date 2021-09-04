@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
 /**
- * Created by Panacea-Soft on 11/25/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/25/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Entity(primaryKeys = "imgId")

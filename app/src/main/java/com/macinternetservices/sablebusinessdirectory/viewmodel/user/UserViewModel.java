@@ -24,8 +24,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by Panacea-Soft on 12/12/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/12/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

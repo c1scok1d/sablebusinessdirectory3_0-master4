@@ -25,8 +25,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
 /**
- * Created by Panacea-Soft on 12/8/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/8/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Singleton

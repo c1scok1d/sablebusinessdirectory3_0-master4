@@ -3,8 +3,8 @@ package com.macinternetservices.sablebusinessdirectory.viewobject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Panacea-Soft on 11/17/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/17/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class ApiStatus {

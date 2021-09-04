@@ -11,8 +11,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 /**
- * Created by Panacea-Soft on 12/30/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/30/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Dao

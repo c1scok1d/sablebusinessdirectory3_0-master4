@@ -104,8 +104,8 @@ import javax.inject.Inject;
 //import com.panaceasoft.psmulticity.ui.city.selectedCity.SelectedCityFragment;
 
 /**
- * Created by Panacea-Soft on 11/17/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/17/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class NavigationController {

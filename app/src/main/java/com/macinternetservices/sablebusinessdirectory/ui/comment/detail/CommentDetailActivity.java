@@ -15,9 +15,9 @@ import com.macinternetservices.sablebusinessdirectory.utils.MyContextWrapper;
 import androidx.databinding.DataBindingUtil;
 
 /**
- * Created by Panacea-Soft
- * Contact Email : teamps.is.cool@gmail.com
- * Website : http://www.panacea-soft.com
+ * Sable Business Directory
+ * Contact Email : admin@sablebusinessdirectory.com
+ * Website : http://www.sablebusinessdirectory.com
  */
 public class CommentDetailActivity extends PSAppCompactActivity {
 

@@ -55,9 +55,7 @@ public class GeofenceReceiver extends IntentService {
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
-                            if (transitionName != "enter" && /*distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
-                                    && */simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance > 3 miles alert
+                            if (transitionName != "enter" && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance > 3 miles alert
                                 transitionName = "enter";
                                 near++;
                             }

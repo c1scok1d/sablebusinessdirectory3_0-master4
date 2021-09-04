@@ -35,9 +35,9 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.common.Status;
 import java.util.List;
 
 /**
- * Created by Panacea-Soft
- * Contact Email : teamps.is.cool@gmail.com
- * Website : http://www.panacea-soft.com
+ * Sable Business Directory
+ * Contact Email : admin@sablebusinessdirectory.com
+ * Website : http://www.sablebusinessdirectory.com
  */
 public class CommentDetailFragment extends PSFragment implements DataBoundListAdapter.DiffUtilDispatchedInterface {
 

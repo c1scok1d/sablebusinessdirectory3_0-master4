@@ -33,8 +33,8 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.UserLogin;
 
 
 /**
- * Created by Panacea-Soft on 11/20/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/20/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Database(entities = {

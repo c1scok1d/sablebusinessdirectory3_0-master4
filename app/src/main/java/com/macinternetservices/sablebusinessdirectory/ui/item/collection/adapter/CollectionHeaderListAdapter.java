@@ -15,8 +15,8 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCollectionH
 import androidx.databinding.DataBindingUtil;
 
 /**
- * Created by Panacea-Soft on 10/27/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 10/27/18.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

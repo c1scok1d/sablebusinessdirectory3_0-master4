@@ -9,8 +9,8 @@ import androidx.room.Entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Panacea-Soft on 12/6/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/6/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Entity(primaryKeys = "userId")

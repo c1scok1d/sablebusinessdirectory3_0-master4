@@ -18,8 +18,8 @@ import com.macinternetservices.sablebusinessdirectory.R;
 
 
 /**
- * Created by Panacea-Soft on 8/11/16.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 8/11/16.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 

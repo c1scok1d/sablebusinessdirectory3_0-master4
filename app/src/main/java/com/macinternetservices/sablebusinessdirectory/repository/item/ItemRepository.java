@@ -47,9 +47,9 @@ public class ItemRepository extends PSRepository {
     /**
      * Constructor of PSRepository
      *
-     * @param psApiService Panacea-Soft API Service Instance
+     * @param psApiService Sable Business Directory API Service Instance
      * @param appExecutors Executors Instance
-     * @param db           Panacea-Soft DB
+     * @param db           Sable Business Directory DB
      */
     private String isSelected;
     private final ItemDao itemDao;

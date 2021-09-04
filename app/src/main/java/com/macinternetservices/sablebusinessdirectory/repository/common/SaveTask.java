@@ -10,8 +10,8 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.common.Resource
 
 /**
  * General Save Task Sample
- * Created by Panacea-Soft on 12/6/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/6/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class SaveTask implements Runnable {
@@ -32,8 +32,8 @@ public class SaveTask implements Runnable {
 
     /**
      * Constructor of SaveTask.
-     * @param service Panacea-Soft API Service Instance
-     * @param db Panacea-Soft DB Instance
+     * @param service Sable Business Directory API Service Instance
+     * @param db Sable Business Directory DB Instance
      * @param obj Object to Save
      *
      */

@@ -13,8 +13,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 /**
- * Created by Panacea-Soft on 12/6/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/6/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Dao

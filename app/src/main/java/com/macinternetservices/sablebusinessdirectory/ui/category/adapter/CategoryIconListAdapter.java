@@ -17,8 +17,8 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory;
 
 
 /**
- * Created by Panacea-Soft on 9/18/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 9/18/18.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

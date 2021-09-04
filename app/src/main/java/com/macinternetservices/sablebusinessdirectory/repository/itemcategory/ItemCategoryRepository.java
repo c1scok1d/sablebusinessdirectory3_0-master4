@@ -23,8 +23,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * Created by Panacea-Soft on 11/25/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/25/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 @Singleton

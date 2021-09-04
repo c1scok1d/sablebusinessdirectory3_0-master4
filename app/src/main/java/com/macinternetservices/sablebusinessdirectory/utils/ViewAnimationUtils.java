@@ -7,8 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 /**
- * Created by Panacea-Soft on 6/13/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 6/13/18.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

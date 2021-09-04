@@ -8,8 +8,8 @@ import com.macinternetservices.sablebusinessdirectory.repository.common.PSReposi
 import com.macinternetservices.sablebusinessdirectory.viewobject.common.Resource;
 
 /**
- * Created by Panacea-Soft on 12/5/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/5/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class BackgroundTaskHandler implements Observer<Resource<Boolean>> {

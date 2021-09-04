@@ -6,8 +6,8 @@ import com.macinternetservices.sablebusinessdirectory.repository.aboutus.AboutUs
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 
 /**
- * Created by Panacea-Soft on 12/5/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/5/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

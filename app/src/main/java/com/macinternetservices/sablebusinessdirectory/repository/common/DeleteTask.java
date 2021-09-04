@@ -12,8 +12,8 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.common.Resource
 
 /**
  * General Delete Task Sample
- * Created by Panacea-Soft on 12/14/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/14/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 public class DeleteTask implements Runnable {
 

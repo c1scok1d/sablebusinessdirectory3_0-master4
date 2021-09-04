@@ -76,10 +76,10 @@ import java.net.URL;
 import javax.inject.Inject;
 
 /**
- * MainActivity of Panacea-Soft
- * Contact Email : teamps.is.cool@gmail.com
+ * MainActivity of Sable Business Directory
+ * Contact Email : admin@sablebusinessdirectory.com
  *
- * @author Panacea-soft
+ * @author Sable Business Directory
  * @version 1.0
  * @since 11/15/17.
  */

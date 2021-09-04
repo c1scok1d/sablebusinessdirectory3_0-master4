@@ -16,9 +16,9 @@ import androidx.lifecycle.MutableLiveData;
 import retrofit2.Response;
 
 /**
- * Created by Panacea-Soft on 7/2/18.
- * Contact Email : teamps.is.cool@gmail.com
- * Website : http://www.panacea-soft.com
+ * Sable Business Directory on 7/2/18.
+ * Contact Email : admin@sablebusinessdirectory.com
+ * Website : http://www.sablebusinessdirectory.com
  */
 
 public class ContactUsRepository extends PSRepository {

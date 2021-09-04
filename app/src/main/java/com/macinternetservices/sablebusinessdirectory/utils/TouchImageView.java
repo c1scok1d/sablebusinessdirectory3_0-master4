@@ -26,8 +26,8 @@ import android.widget.OverScroller;
 import android.widget.Scroller;
 
 /**
- * Created by Panacea-Soft on 7/15/15.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 7/15/15.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class TouchImageView extends AppCompatImageView {

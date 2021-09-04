@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import com.macinternetservices.sablebusinessdirectory.R;
 
 /**
- * Created by Panacea-Soft on 11/19/18.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/19/18.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

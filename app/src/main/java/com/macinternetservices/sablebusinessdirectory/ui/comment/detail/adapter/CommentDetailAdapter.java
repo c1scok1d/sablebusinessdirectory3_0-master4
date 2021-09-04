@@ -13,9 +13,9 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.CommentDetail;
 import androidx.databinding.DataBindingUtil;
 
 /**
- * Created by Panacea-Soft
- * Contact Email : teamps.is.cool@gmail.com
- * Website : http://www.panacea-soft.com
+ * Sable Business Directory
+ * Contact Email : admin@sablebusinessdirectory.com
+ * Website : http://www.sablebusinessdirectory.com
  */
 public class CommentDetailAdapter extends DataBoundListAdapter<CommentDetail, ItemCommentDetailAdapterBinding> {
     private final androidx.databinding.DataBindingComponent dataBindingComponent;

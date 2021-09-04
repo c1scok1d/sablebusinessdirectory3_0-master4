@@ -13,8 +13,8 @@ import dagger.android.HasAndroidInjector;
 import dagger.android.support.AndroidSupportInjection;
 
 /**
- * Created by Panacea-Soft on 11/15/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 11/15/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 

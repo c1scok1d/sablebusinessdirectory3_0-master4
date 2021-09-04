@@ -16,8 +16,8 @@ import javax.inject.Inject;
 
 /**
  * Parent Class of All Repository Class in this project
- * Created by Panacea-Soft on 12/5/17.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 12/5/17.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public abstract class PSRepository {
@@ -39,9 +39,9 @@ public abstract class PSRepository {
 
     /**
      * Constructor of PSRepository
-     * @param psApiService Panacea-Soft API Service Instance
+     * @param psApiService Sable Business Directory API Service Instance
      * @param appExecutors Executors Instance
-     * @param db Panacea-Soft DB
+     * @param db Sable Business Directory DB
      */
     protected PSRepository(PSApiService psApiService, AppExecutors appExecutors, PSCoreDb db) {
         Utils.psLog("Inside NewsRepository");

@@ -3,15 +3,15 @@ package com.macinternetservices.sablebusinessdirectory;
 import android.location.Location;
 
 /**
- * Created by Panacea-Soft on 7/15/15.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 7/15/15.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 public class Config {
 
     public static Location CurrentLocation = null;
-    public static double defaultCurrentLat = 1.354200;
-    public static double defaultCurrentLng = 103.819839;
+    public static double defaultCurrentLat = 41.878113;
+    public static double defaultCurrentLng = -87.629799;
 
 
     /**
@@ -30,7 +30,7 @@ public class Config {
      * Set false, your app is production
      * It will turn off the logging Process
      */
-    public static boolean IS_DEVELOPMENT = true; // set false, your app is production
+    public static boolean IS_DEVELOPMENT = false; // set false, your app is production
 
     /**
      * API URL
@@ -149,7 +149,7 @@ public class Config {
     /**
      * Policy Url
      */
-    public static String POLICY_URL = "http://www.panacea-soft.com/policy/policy.html";
+    public static String POLICY_URL = "https://sablebusinessdirectory.com/privacy-policy/";
 
     /**
      * Error Codes
