@@ -148,6 +148,9 @@ dependencies {
 
     //razor
     implementation 'com.razorpay:checkout:1.6.7'
+    //mailchimp
+    implementation 'com.github.mailchimp:Mailchimp-SDK-Android:1.0.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
