@@ -96,7 +96,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     private Marker marker;
     //private AutoCompleteTextView search_tx_loc;
     private Double latitude, longitude;
-    private Boolean promoChange = false;
+    private Boolean promoChanged = false;
 
     @VisibleForTesting
     private AutoClearedValue<FragmentItemUploadBinding> binding;
@@ -165,6 +165,30 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showErrorDialog(getString(R.string.item_upload__already_saved), getString(R.string.app__ok));
                 psDialogMsg.show();
             }
+
+        });
+
+        // click save button
+        binding.get().cancelButtonUpload.setOnClickListener(v -> {
+
+           // @Override
+            //public void onClick(View view) {
+                psDialogMsg.cancel();
+
+//                            if (Config.CLOSE_ENTRY_AFTER_SUBMIT) {
+//                                if (getActivity() != null) {
+//                                    getActivity().finish();
+//                                }
+//                            }
+
+                if (getActivity() != null) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            //}
 
         });
 
@@ -499,13 +523,16 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             } else if (result.data.isPromotion.equals("0")) {
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
+                                //promoChange = false;
                                 binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                                 {
                                     @Override
                                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
                                     {
                                         if ( isChecked ) {
-                                            promoChange = true;
+                                            binding.get().isPromotion.setChecked(true);
+                                            itemViewModel.savedIsPromotion = true;
+                                            promoChanged = true;
                                         }
                                     }
                                 });
@@ -629,9 +656,22 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             if (result.data.isPromotion.equals("1")) {
                                 binding.get().isPromotion.setChecked(true);
                                 itemViewModel.savedIsPromotion = true;
+                                binding.get().isPromotion.setVisibility(View.GONE);
                             } else if (result.data.isPromotion.equals("0")) {
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
+                                binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+                                {
+                                    @Override
+                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                                    {
+                                        if ( isChecked ) {
+                                            binding.get().isPromotion.setChecked(true);
+                                            itemViewModel.savedIsPromotion = true;
+                                            promoChanged = true;
+                                        }
+                                    }
+                                });
                             }
 
                             switch (result.data.itemStatusId) {
@@ -767,7 +807,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (!itemViewModel.edit_mode) {
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                                } else if ( itemViewModel.edit_mode && promoChange) {
+                                } else if ( itemViewModel.edit_mode && promoChanged) {
                                     navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemId);
                                 }
                             });
@@ -1045,13 +1085,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     private void replaceImages(List<Image> imageList) {
         if (imageList.size() == 0) {
             binding.get().noImagesTextView.setVisibility(View.VISIBLE);
-            itemEntryImageAdapter.get().replace(imageList);
-            binding.get().executePendingBindings();
         } else {
             binding.get().noImagesTextView.setVisibility(View.GONE);
-            itemEntryImageAdapter.get().replace(imageList);
-            binding.get().executePendingBindings();
         }
+        itemEntryImageAdapter.get().replace(imageList);
+        binding.get().executePendingBindings();
     }
 
     @Override
