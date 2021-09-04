@@ -720,14 +720,15 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF">
 
-            <TextView
-                android:id="@+id/skip"
+            <ImageView
+                android:id="@+id/ivSkip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/skip"
-                android:textColor="@color/com_facebook_blue"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
             <ImageView
                 android:id="@+id/imageView18"
