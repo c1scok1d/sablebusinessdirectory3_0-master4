@@ -3,8 +3,8 @@ package com.macinternetservices.sablebusinessdirectory.utils;
 import android.location.Location;
 
 /**
- * Created by Panacea-Soft on 3/19/19.
- * Contact Email : teamps.is.cool@gmail.com
+ * Sable Business Directory on 3/19/19.
+ * Contact Email : admin@sablebusinessdirectory.com
  */
 
 
