@@ -36,14 +36,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_progress_bar_horizontal"
                     android:backgroundTint="@color/global__primary"
-                    android:text="cancel"
+                    android:text="EXIT"
                     android:textColor="@color/md_white_1000"
                     android:textStyle="bold"
                     app:font='@{"medium"}'
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -55,13 +53,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/md_grey_400"
                     android:text="@string/item_upload__btn_attributes"
                     android:textAllCaps="false"
                     android:textColor="@color/md_white_1000"
                     android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:font='@{"medium"}'
                     app:layout_constraintEnd_toStartOf="@+id/uploadImageButton"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -80,7 +77,7 @@
                     android:text="@string/item_upload__btn_upload_image"
                     android:textColor="@color/md_white_1000"
                     android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:font='@{"medium"}'
                     app:layout_constraintBottom_toTopOf="@+id/saveButton"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +104,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView18" />
+                    app:layout_constraintTop_toBottomOf="@id/attributeHeaderButton" />
 
                 <TextView
                     android:id="@+id/imageTextView"
@@ -1669,7 +1666,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
