@@ -526,7 +526,7 @@
     <string name="item_upload__is_published">is Published</string>
     <string name="item_upload__item_images">Business Images</string>
     <string name="item_upload__view_all">View All ></string>
-    <string name="item_upload__btn_attributes">SPECIFICATIONS</string>
+    <string name="item_upload__btn_attributes">SPECIALTIES</string>
     <string name="item_upload__btn_upload_image">UPLOAD IMAGE</string>
     <string name="item_upload__btn_save">SAVE</string>
     <string name="item_upload__btn_filter">SEARCH</string>
@@ -647,7 +647,7 @@
     <string name="item_promote__warning_for_start_date">Please select your starting date.</string>
     <string name="item_promote__warning_for_day">Please select at least one day</string>
     <string name="item_promote__amount">Amount</string>
-    <string name="item_promote__paypal">Pay with Paypal</string>
+    <string name="item_promote__paypal">Pay</string>
     <string name="item_promote__razor">Pay with Razor</string>
     <string name="item_promote__stripe">Pay with Card</string>
     <string name="item_promote__success_message">Successfully paid AD.</string>
@@ -665,6 +665,7 @@
     <string name="paid__sponsored">Sponsored</string>
     <string name="no_businesses_near_msg">There are no black owned businesses registed with Sable near you. Click the \'+\' below to add black owned businesses near you to the Sable Business Directory.</string>
     <string name="skip"><u>Skip</u></string>
+    <string name="tap_to_edit">Tap to Edit</string>
 
 
 </resources>
