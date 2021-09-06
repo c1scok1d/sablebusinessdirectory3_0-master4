@@ -138,10 +138,12 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
+                android:visibility="gone"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/paypalButton" />
+                app:layout_constraintTop_toBottomOf="@id/paypalButton"
+                tools:visibility="gone" />
 
             <Button
                 android:id="@+id/paypalButton"
@@ -173,10 +175,12 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
+                android:visibility="gone"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout14"
+                tools:visibility="gone" />
 
             <Button
                 android:id="@+id/cancel_button"
@@ -185,14 +189,12 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
                 android:background="@drawable/rounded_corner_shape_button"
                 android:text="Cancel"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
                 app:font='@{"normal"}'
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/paypalButton" />
