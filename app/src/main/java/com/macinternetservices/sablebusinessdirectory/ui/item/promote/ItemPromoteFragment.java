@@ -301,6 +301,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                     amount = firstChoicePrice;
                     paypalViewModel.setPaypalTokenObj(); */
                 } else {
+                    amount = Config.PROMOTE_ONE_YEAR_PRICE;
                     paypalViewModel.setPaypalTokenObj();
                 }
 
@@ -308,7 +309,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
         });
 
 
-       /* binding.get().stripeButton.setOnClickListener(new View.OnClickListener() {
+        binding.get().stripeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 paymentMethod = Constants.STRIPE;
@@ -332,7 +333,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                     navigationController.navigateToStripeActivity(ItemPromoteFragment.this.getActivity(), appLoadingViewModel.stripePublishableKey);
                 }
             }
-        }); */
+        });
 
         binding.get().razorButton.setOnClickListener(v -> {
             paymentMethod = Constants.RAZOR;
@@ -656,7 +657,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
     }
 
     private String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CANADA);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         Date date = new Date();
         return dateFormat.format(date);
     }
