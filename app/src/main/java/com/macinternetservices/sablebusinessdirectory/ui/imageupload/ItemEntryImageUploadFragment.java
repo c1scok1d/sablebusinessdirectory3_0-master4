@@ -71,10 +71,13 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                                         break;
 
                                     case DialogInterface.BUTTON_NEGATIVE:
-                                        if(itemListViewModel.savedIsPromotion){
-                                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
-                                        } else {
-                                            navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
+                                        dialog.dismiss();
+                                        if (getActivity() != null) {
+                                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                            startActivity(intent);
+                                            getActivity().finish();
                                         }
                                         break;
                                 }
@@ -85,14 +88,6 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setMessage("Would you like to add additional photos?").setPositiveButton("Yes", dialogClickListener)
                                 .setNegativeButton("No", dialogClickListener).show();
-
-                      /*  psDialogMsg.okButton.setOnClickListener(v -> {
-                            psDialogMsg.cancel();
-
-                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
-//                            closeActivity();
-
-                        }); */
 
                         break;
 
