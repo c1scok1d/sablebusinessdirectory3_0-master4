@@ -1087,21 +1087,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (binding.get().txtAutocomplete.getText().toString().isEmpty()
-                && binding.get().facebookTextView.getText().toString().isEmpty()
-                || binding.get().twitterTextView.getText().toString().isEmpty()
-                || binding.get().instagrmTextView.toString().isEmpty()
-                || binding.get().websiteTextView.toString().isEmpty()) {
-            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
-            psDialogMsg.showErrorDialog(getString(R.string.item_upload__item_address_required), getString(R.string.app__ok));
-
-            if (!psDialogMsg.isShowing()) {
-                psDialogMsg.show();
-            }
-
-            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
-
-            result = false;
         }
 
         return result;
