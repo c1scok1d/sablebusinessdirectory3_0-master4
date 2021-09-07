@@ -30,7 +30,7 @@ public class Config {
      * Set false, your app is production
      * It will turn off the logging Process
      */
-    public static boolean IS_DEVELOPMENT = false; // set false, your app is production
+    public static boolean IS_DEVELOPMENT = true; // set false, your app is production
 
     /**
      * API URL
