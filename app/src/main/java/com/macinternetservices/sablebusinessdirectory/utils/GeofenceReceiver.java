@@ -49,19 +49,23 @@ public class GeofenceReceiver extends IntentService {
                         case Geofence.GEOFENCE_TRANSITION_DWELL:
                             if ( distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
                                     simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
-                                    && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if item is_Promoteion alert
+                                    && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if item is_Promotion alert
                                 transitionName = "dwell";
                                 break loop;
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
-                            if (transitionName != "enter" && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if distance > 3 miles alert
+                            if (transitionName != "enter" && distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
+                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
                                 transitionName = "enter";
                                 near++;
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_EXIT:
-                            if (simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if item is_Promotion
+                            if ( distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
+                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if item is_Promotion
                                 transitionName = "exit";
                                 near++;
                             }
