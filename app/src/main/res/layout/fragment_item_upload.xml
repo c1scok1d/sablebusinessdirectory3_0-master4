@@ -58,7 +58,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/md_white_1000"
                     android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:font='@{"medium"}'
                     app:layout_constraintEnd_toStartOf="@+id/uploadImageButton"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -77,7 +77,7 @@
                     android:text="@string/item_upload__btn_upload_image"
                     android:textColor="@color/md_white_1000"
                     android:textStyle="bold"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:font='@{"medium"}'
                     app:layout_constraintBottom_toTopOf="@+id/saveButton"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -291,24 +291,6 @@
                             android:textSize="@dimen/font_body_size"
                             android:visibility="gone"
                             app:font='@{"normal"}'
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/itemDescriptionTextView" />
-
-                        <CheckBox
-                            android:id="@+id/isPromotion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="@string/item_upload__is_promotion"
-                            android:textAlignment="center"
-                            android:textColor="@color/text__clickable_blue"
-                            android:textSize="@dimen/font_body_size"
-                            app:font='@{"normal"}'
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/itemDescriptionTextView" />
 
@@ -932,9 +914,9 @@
                         <AutoCompleteTextView
                             android:id="@+id/txt_autocomplete"
                             android:layout_width="0dp"
-                            android:layout_height="70dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="16dp"
                             android:background="@drawable/rounded_corner_shape_for_item_upload"
@@ -1039,6 +1021,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -1650,10 +1633,27 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:background="#00AABBCC"
-                            app:layout_constraintBottom_toBottomOf="@+id/mapView"
                             app:layout_constraintEnd_toEndOf="@+id/mapView"
                             app:layout_constraintStart_toStartOf="@+id/mapView"
                             app:layout_constraintTop_toTopOf="@+id/mapView" />
+
+                        <CheckBox
+                            android:id="@+id/isPromotion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/item_upload__is_promotion"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/text__clickable_blue"
+                            android:textSize="@dimen/font_body_size"
+                            app:font='@{"normal"}'
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/mapView" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1666,7 +1666,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
