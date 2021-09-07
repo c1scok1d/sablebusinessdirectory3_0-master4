@@ -571,6 +571,7 @@
     <string name="item_upload__item_name_required">Business Name is required.</string>
     <string name="item_upload__item_category_required">Business Category is required.</string>
     <string name="item_upload__item_city_required">Business City is required.</string>
+    <string name="item_upload__item_address_required">"Please enter a location address or Facebook, Twitter, Instagram or Website address."</string>
     <string name="item_upload__already_saved">Business Already Saved.</string>
     <string name="item_upload__status">Status</string>
     <string name="item_upload__pending">Pending</string>
