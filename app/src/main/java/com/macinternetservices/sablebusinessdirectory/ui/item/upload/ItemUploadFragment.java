@@ -277,9 +277,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                     if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
                         LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
                         if (latLng != null) {
-                            latitude = latLng.latitude;
-                            longitude = latLng.longitude;
-                            changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                            changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
                             Address address = getAddressFromLatLng(latLng);
                             if(!binding.get().isPromotion.isChecked()) {
                                 binding.get().isPromotion.setVisibility(View.VISIBLE);
