@@ -150,6 +150,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         progressDialog = new AutoClearedValue<>(this, new ProgressDialog(getActivity()));
         progressDialog.get().setMessage(getString(R.string.message__please_wait));
         progressDialog.get().setCancelable(false);
+        binding.get().isPromotion.setVisibility(View.GONE);
 
 
         // click save button
@@ -171,9 +172,9 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         // click save button
         binding.get().cancelButtonUpload.setOnClickListener(v -> {
 
-           // @Override
+            // @Override
             //public void onClick(View view) {
-                psDialogMsg.cancel();
+            psDialogMsg.cancel();
 
 //                            if (Config.CLOSE_ENTRY_AFTER_SUBMIT) {
 //                                if (getActivity() != null) {
@@ -181,13 +182,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 //                                }
 //                            }
 
-                if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    getActivity().finish();
-                }
+            if (getActivity() != null) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+                getActivity().finish();
+            }
             //}
 
         });
@@ -239,7 +240,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().statusTextView.setOnClickListener(v -> navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_STATUS, itemViewModel.statusSelectId, ""));
 
 
-
         // for openTime
         binding.get().openTimeTextView.setOnClickListener(v -> openTimePicker(binding.get().openTimeTextView));
 
@@ -269,32 +269,42 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().txtAutocomplete.setThreshold(3);//start searching from 1 character
         binding.get().txtAutocomplete.setAdapter(mAutoCompleteAdapter);
 
-        binding.get().txtAutocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.get().txtAutocomplete.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Log.d("Address : ", binding.get().txtAutocomplete.getText().toString());
-                LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
-                if (latLng != null) {
-                    // for latitude
-                    //binding.get().latitudeTextView.setText(String.valueOf(latLng.latitude));
-                    latitude = latLng.latitude;
-                    longitude = latLng.longitude;
-                    // for longitude
-                    //binding.get().longitudeTextView.setText(String.valueOf(latLng.longitude));
-                    changeCamera();
-                    Address address = getAddressFromLatLng(latLng);
-                    if (address != null) {
-                        // do stuff with address
-                    } else {
-                        Log.d("Adddress", "Address Not Found");
-                    }
+            public void onFocusChange(View v, boolean hasFocus) {
+                // When textview lost focus check the textview data valid or not
+                if (!hasFocus) {
+                    if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
+                        LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
+                        if (latLng != null) {
+                            latitude = latLng.latitude;
+                            longitude = latLng.longitude;
+                            changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                            Address address = getAddressFromLatLng(latLng);
+                            if(!binding.get().isPromotion.isChecked()) {
+                                binding.get().isPromotion.setVisibility(View.VISIBLE);
+                            }
+                            if (address != null) {
+                                Log.d("Adddress", address.toString());
 
-                } else {
-                    Log.d("Lat Lng", "Lat Lng Not Found");
+                            } else {
+                                Log.d("Adddress", "Address Not Found");
+                            }
+                        } else {
+                            Log.d("Lat Lng", "Lat Lng Not Found");
+                        }
+                    } else {
+                        binding.get().isPromotion.setVisibility(View.GONE);
+                    }
                 }
             }
         });
-
+        /*LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
+        if (latLng != null) {
+            latitude = latLng.latitude;
+            longitude = latLng.longitude;
+            changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+        } */
     }
 
     private Address getAddressFromLatLng(LatLng latLng) {
@@ -523,7 +533,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             } else if (result.data.isPromotion.equals("0")) {
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
-                                //promoChange = false;
                                 binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                                 {
                                     @Override
@@ -554,7 +563,24 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 //                                    itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
                                     break;
                             }
-                            changeCamera();
+                            if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
+                                LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
+                                if (latLng != null) {
+                                    latitude = latLng.latitude;
+                                    longitude = latLng.longitude;
+                                    changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                                    Address address = getAddressFromLatLng(latLng);
+                                    if (address != null) {
+                                        Log.d("Adddress", address.toString());
+
+                                    } else {
+                                        Log.d("Adddress", "Address Not Found");
+                                    }
+                                } else {
+                                    Log.d("Lat Lng", "Lat Lng Not Found");
+                                }
+                            }
+
                         }
                         break;
 
@@ -689,10 +715,26 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 //                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
                                     break;
                             }
-                            changeCamera();
-
                             itemViewModel.setLoadingState(false);
                         }
+                        if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
+                            LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
+                            if (latLng != null) {
+                                latitude = latLng.latitude;
+                                longitude = latLng.longitude;
+                                changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                                Address address = getAddressFromLatLng(latLng);
+                                if (address != null) {
+                                    Log.d("Adddress", address.toString());
+
+                                } else {
+                                    Log.d("Adddress", "Address Not Found");
+                                }
+                            } else {
+                                Log.d("Lat Lng", "Lat Lng Not Found");
+                            }
+                        }
+
                         break;
 
                     case ERROR:
@@ -807,8 +849,9 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (!itemViewModel.edit_mode) {
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                                } else if ( itemViewModel.edit_mode && promoChanged) {
-                                    navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemId);
+                                }  else if ( promoChanged) {
+                                    navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
+                                   // Log.e("foo", "foo");
                                 }
                             });
                         }
@@ -816,7 +859,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 }
             }
         });
-
         //Save Item
     }
 
@@ -848,7 +890,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             //itemViewModel.lat = data.getStringExtra(Constants.LAT);
             //itemViewModel.lng = data.getStringExtra(Constants.LNG);
 
-            changeCamera();
+            changeCamera(data.getStringExtra(Constants.LAT), data.getStringExtra(Constants.LNG));
 
             //binding.get().latitudeTextView.setText(itemViewModel.lat);
             //binding.get().longitudeTextView.setText(itemViewModel.lng);
@@ -1095,7 +1137,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        changeCamera();
+        //changeCamera();
 
     }
 
@@ -1173,13 +1215,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         if (locationGPS != null) {
-            changeCamera();
+            changeCamera(String.valueOf(locationGPS.getLatitude()), String.valueOf(locationGPS.getLongitude()));
         } else {
             Toast.makeText(getContext(), "Unable to find location.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void changeCamera() {
+    private void changeCamera(String latitude, String longitude) {
 
         if (marker != null) {
             marker.remove();
@@ -1195,7 +1237,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
             marker = map.addMarker(new MarkerOptions()
-                    .position(new LatLng(latitude, longitude))
+                    .position(new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude))))
                     .title(binding.get().itemNameEditText.getText().toString()));
 
         } catch (Exception e) {
