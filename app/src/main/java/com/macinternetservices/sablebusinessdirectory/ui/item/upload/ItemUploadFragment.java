@@ -579,6 +579,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 } else {
                                     Log.d("Lat Lng", "Lat Lng Not Found");
                                 }
+                            } else {
+                                binding.get().isPromotion.setVisibility(View.GONE);
                             }
 
                         }
@@ -733,6 +735,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             } else {
                                 Log.d("Lat Lng", "Lat Lng Not Found");
                             }
+                        } else{
+                            binding.get().isPromotion.setVisibility(View.GONE);
                         }
 
                         break;
