@@ -321,18 +321,6 @@
                 tools:text="@string/menu__home_category_view_All_un" />
 
             <ImageView
-                android:id="@+id/wavingImageView"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_margin="5dp"
-                android:scaleType="fitCenter"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/waving_foreground"
-                tools:visibility="gone" />
-
-            <ImageView
                 android:id="@+id/logo"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
@@ -718,7 +706,8 @@
             android:id="@+id/noListingsLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            tools:visibility="gone">
 
             <ImageView
                 android:id="@+id/ivSkip"
@@ -739,7 +728,7 @@
                 app:srcCompat="@mipmap/holding_phone_foreground" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/tvNoBusinesses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -752,6 +741,41 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView18" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#90ffffff"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvLoading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="Welcome,\nThank you for your patience while we search for black owned businesses near you."
+                android:textColor="@color/quantum_black_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constrainedHeight="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wavingImageView" />
+
+            <ImageView
+                android:id="@+id/wavingImageView"
+                android:layout_width="410dp"
+                android:layout_height="458dp"
+                android:layout_margin="5dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/waving_foreground" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
