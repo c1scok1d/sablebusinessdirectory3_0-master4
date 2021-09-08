@@ -72,13 +72,18 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
 
                                     case DialogInterface.BUTTON_NEGATIVE:
                                         dialog.dismiss();
-                                        if (getActivity() != null) {
+                                        if(itemListViewModel.savedIsPromotion){
+                                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
+                                        } else {
+                                            navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
+                                        }
+                                        /*if (getActivity() != null) {
                                             Intent intent = new Intent(getActivity(), MainActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                             startActivity(intent);
                                             getActivity().finish();
-                                        }
+                                        } */
                                         break;
                                 }
                             }
