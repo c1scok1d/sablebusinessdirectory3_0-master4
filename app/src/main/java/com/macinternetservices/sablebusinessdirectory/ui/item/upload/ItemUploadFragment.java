@@ -166,6 +166,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.showErrorDialog(getString(R.string.item_upload__already_saved), getString(R.string.app__ok));
                 psDialogMsg.show();
             }
+            if (!itemViewModel.edit_mode) {
+                //itemViewModel.itemSelectId = itemViewModel.data.id;
+                navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
+            }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
+                navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
+                // Log.e("foo", "foo");
+            }
 
         });
 
@@ -851,7 +858,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (!itemViewModel.edit_mode) {
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                                }  else if ( promoChanged) {
+                                }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
                                     navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
                                    // Log.e("foo", "foo");
                                 }
@@ -912,8 +919,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             checkedPromotion = Constants.NOT_CHECKED_PROMOTION;
         }
 
-        String checkedFeatured;
-        if (binding.get().isFeature.isChecked()) {
+        String checkedFeatured; //set all added items to featured
+        if (!binding.get().isFeature.isChecked()) {
             checkedFeatured = Constants.CHECKED_FEATURED;
         } else {
             checkedFeatured = Constants.NOT_CHECKED_FEATURED;
