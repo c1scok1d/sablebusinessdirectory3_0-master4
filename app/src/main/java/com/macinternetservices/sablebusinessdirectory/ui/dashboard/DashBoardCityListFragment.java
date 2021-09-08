@@ -174,7 +174,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         }
 
         binding.get().headerText.setVisibility(View.GONE);
-        binding.get().wavingImageView.setVisibility(View.GONE);
+        binding.get().loadingLayout.setVisibility(View.GONE);
         psDialogMsg = new PSDialogMsg(getActivity(), false);
 
         binding.get().floatingActionButton.setOnClickListener(view ->
@@ -569,19 +569,23 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         featuredItemViewModel.getFeaturedItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
-
+                Animation fadeIn = AnimationUtils.loadAnimation(getContext(),R.anim.fade_in);
+                Animation fadeOut = AnimationUtils.loadAnimation(getContext(),R.anim.fade_out);
                 switch (result.status) {
-
                     case LOADING:
+                        binding.get().loadingLayout.startAnimation(fadeIn);
+                        binding.get().loadingLayout.setVisibility(View.VISIBLE);
                         if (result.data != null) {
+                            //add loading listings message
                             replaceFeaturedItem(result.data);
                         }
                         break;
 
                     case SUCCESS:
+                        binding.get().loadingLayout.setAnimation(fadeOut);
+                        binding.get().loadingLayout.setVisibility(View.GONE);
                         if (result.data != null) {
                             if(binding.get().noListingsLayout.isShown()){
-                                Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
                                 binding.get().noListingsLayout.setAnimation(fadeOut);
                                 binding.get().noListingsLayout.setVisibility(View.GONE);
                                 binding.get().ivSkip.setVisibility(View.GONE);
@@ -592,7 +596,10 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                         break;
 
                     case ERROR:
-                        Animation fadeIn = AnimationUtils.loadAnimation(getContext(),R.anim.fade_in);
+                        if(binding.get().loadingLayout.isShown()){
+                            binding.get().loadingLayout.setAnimation(fadeOut);
+                            binding.get().loadingLayout.setVisibility(View.GONE);
+                        }
                         binding.get().noListingsLayout.startAnimation(fadeIn);
                         binding.get().noListingsLayout.setVisibility(View.VISIBLE);
                         featuredItemViewModel.setLoadingState(false);
