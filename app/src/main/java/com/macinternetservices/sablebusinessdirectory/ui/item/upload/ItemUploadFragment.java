@@ -23,6 +23,7 @@ import android.provider.SyncStateContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import static android.content.Context.LOCATION_SERVICE;
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -161,20 +163,19 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 if (checkCondition()) {
                     saveItem();
                     progressDialog.get().show();
+                    if (!itemViewModel.edit_mode) {
+                        //itemViewModel.itemSelectId = itemViewModel.data.id;
+                        navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
+                    }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
+                        navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
+                        // Log.e("foo", "foo");
+                    }
                 }
             } else {
 //                    Toast.makeText(getContext(),R.string.item_upload__already_saved,Toast.LENGTH_LONG).show();
                 psDialogMsg.showErrorDialog(getString(R.string.item_upload__already_saved), getString(R.string.app__ok));
                 psDialogMsg.show();
             }
-            if (!itemViewModel.edit_mode) {
-                //itemViewModel.itemSelectId = itemViewModel.data.id;
-                navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-            }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
-                navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
-                // Log.e("foo", "foo");
-            }
-
         });
 
         // click save button
@@ -1068,7 +1069,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().cityTextView1.getText().toString().isEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(binding.get().emailTextView.toString()).matches()) {
+        } else if (!binding.get().emailTextView.getText().toString().isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(binding.get().emailTextView.toString()).matches()) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Email Address is invalid", getString(R.string.app__ok));
 
@@ -1079,18 +1080,18 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().facebookTextView.getText().toString().isEmpty() && !(binding.get().facebookTextView.toString()).contains("facebook.com") || !URLUtil.isValidUrl(binding.get().facebookTextView.getText().toString())){
-            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
-            psDialogMsg.showErrorDialog("Facebook address is invalid", getString(R.string.app__ok));
+        } else if (!binding.get().facebookTextView.getText().toString().isEmpty() && !binding.get().facebookTextView.toString().contains("facebook.com")) {
+                PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+                psDialogMsg.showErrorDialog("Facebook address is invalid", getString(R.string.app__ok));
 
-            if (!psDialogMsg.isShowing()) {
-                psDialogMsg.show();
-            }
+                if (!psDialogMsg.isShowing()) {
+                    psDialogMsg.show();
+                }
 
-            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+                psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
-            result = false;
-        } else if (!binding.get().twitterTextView.getText().toString().isEmpty() && !(binding.get().twitterTextView.toString()).contains("twitter.com") || !URLUtil.isValidUrl(binding.get().twitterTextView.getText().toString())){
+                result = false;
+        } else if (!binding.get().twitterTextView.getText().toString().isEmpty() && !binding.get().twitterTextView.toString().contains("twitter.com")){
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Twitter address is invalid", getString(R.string.app__ok));
 
@@ -1101,7 +1102,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().youtubeTextView.getText().toString().isEmpty() && !(binding.get().youtubeTextView.toString()).contains("youtube.com") || !URLUtil.isValidUrl(binding.get().youtubeTextView.getText().toString())){
+        } else if (!binding.get().youtubeTextView.getText().toString().isEmpty() && !(binding.get().youtubeTextView.toString()).contains("youtube.com")){
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("YouTube address is invalid", getString(R.string.app__ok));
 
@@ -1112,7 +1113,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().instagrmTextView.getText().toString().isEmpty() && !(binding.get().instagrmTextView.toString()).contains("instagram.com") || !URLUtil.isValidUrl(binding.get().instagrmTextView.getText().toString())) {
+        } else if (!binding.get().instagrmTextView.getText().toString().isEmpty() && !(binding.get().instagrmTextView.toString()).contains("instagram.com")) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Instagram address is invalid", getString(R.string.app__ok));
 
@@ -1123,7 +1124,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().googlePlusTextView.getText().toString().isEmpty() && !(binding.get().googlePlusTextView.toString()).contains("google.com") || !URLUtil.isValidUrl(binding.get().googlePlusTextView.getText().toString())) {
+        } else if (!binding.get().googlePlusTextView.getText().toString().isEmpty() && !(binding.get().googlePlusTextView.toString()).contains("google.com")) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Google+ address is invalid", getString(R.string.app__ok));
 
@@ -1134,7 +1135,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().websiteTextView.getText().toString().isEmpty() && !URLUtil.isValidUrl(binding.get().websiteTextView.getText().toString())) {
+        } else if (!binding.get().websiteTextView.getText().toString().isEmpty() || Patterns.WEB_URL.matcher(binding.get().websiteTextView.getText().toString()).matches()) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Website address is invalid", getString(R.string.app__ok));
 
