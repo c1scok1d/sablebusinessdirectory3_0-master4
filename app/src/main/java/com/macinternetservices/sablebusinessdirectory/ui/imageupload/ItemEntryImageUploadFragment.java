@@ -50,9 +50,6 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                     case SUCCESS:
 
                         progressDialog.get().cancel();
-                        //PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
-                        /*psDialogMsg.showSuccessDialog(getString(R.string.message__image_upload_complete), getString(R.string.message__ok_close)); //would you like to add another image
-                        psDialogMsg.show(); //show yes/no button */
 
                         if (listResource.data != null) {
                             img_id = listResource.data.imgId;
@@ -77,13 +74,6 @@ public class ItemEntryImageUploadFragment extends ImageUploadFragment {
                                         } else {
                                             navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
                                         }
-                                        /*if (getActivity() != null) {
-                                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                            startActivity(intent);
-                                            getActivity().finish();
-                                        } */
                                         break;
                                 }
                             }
