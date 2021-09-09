@@ -15,6 +15,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -275,7 +276,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         Places.initialize(getContext(), getResources().getString(R.string.google_map_api_key));
         mAutoCompleteAdapter = new PlaceArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item);
         binding.get().txtAutocomplete.setAdapter(mAutoCompleteAdapter);
-        binding.get().txtAutocomplete.setThreshold(3);//start searching from 1 character
+        binding.get().txtAutocomplete.setThreshold(3);//start searching from 3 characters
         binding.get().txtAutocomplete.setAdapter(mAutoCompleteAdapter);
 
         binding.get().txtAutocomplete.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -306,12 +307,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 }
             }
         });
-        /*LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
-        if (latLng != null) {
-            latitude = latLng.latitude;
-            longitude = latLng.longitude;
-            changeCamera(String.valueOf(latitude),String.valueOf(longitude));
-        } */
     }
 
     private Address getAddressFromLatLng(LatLng latLng) {
