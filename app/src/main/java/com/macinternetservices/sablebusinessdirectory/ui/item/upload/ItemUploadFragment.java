@@ -803,14 +803,18 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedPhoneThree = binding.get().phoneThreeTextView.getText().toString();
                             itemViewModel.savedEmail = binding.get().emailTextView.getText().toString();
                             itemViewModel.savedAddress = binding.get().txtAutocomplete.getText().toString();
-                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString();
-                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString();
-                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString();
-                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString();
-                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString();
-                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString();
-                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString();
-                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString();
+                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            if(itemViewModel.savedInstagram.contains("?")){
+                                String foo = itemViewModel.savedInstagram.split("[?]")[0];
+                                itemViewModel.savedInstagram = foo;
+                            }
+                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
                             itemViewModel.savedMessenger = binding.get().messangerTextView2.getText().toString();
                             itemViewModel.savedTimeRemark = binding.get().timeRemarkTextView.getText().toString();
                             itemViewModel.savedTerms = binding.get().termsAndConditionTextView.getText().toString();
@@ -825,33 +829,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             if (!psDialogMsg.isShowing()) {
                                 psDialogMsg.show();
                             }
-
-                            /*
-
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        navigationController.navigateToImageUploadActivity(getActivity(), img_id, imagePath,
-                                                img_desc, Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
-
-                                        navigationController.navigateToImageUploadActivity(getActivity(), "", "",
-                                                "", Constants.IMAGE_UPLOAD_ITEM, itemListViewModel.itemId, itemListViewModel.savedIsPromotion);
-                                        break;
-
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        if(itemListViewModel.savedIsPromotion){
-                                            navigationController.navigateToItemPromoteActivity(getActivity(),itemListViewModel.itemId);
-                                        } else {
-                                            navigationController.navigateToMainActivity(ItemEntryImageUploadFragment.this.getActivity());
-                                        }
-                                        break;
-                                }
-                            }
-                        };
-                             */
-
                             psDialogMsg.okButton.setOnClickListener(v -> {
                                 psDialogMsg.cancel();
 
@@ -1037,6 +1014,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         int itemNameLength = binding.get().itemNameEditText.getText().toString().length();
 
+        // Check if email id is valid or not
+
         if (binding.get().itemNameEditText.getText().toString().isEmpty()) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog(getString(R.string.item_upload__item_name_required), getString(R.string.app__ok));
@@ -1084,6 +1063,17 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         } else if (binding.get().cityTextView1.getText().toString().isEmpty() && selectedCityId.isEmpty()) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog(getString(R.string.item_upload__item_city_required), getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.get().emailTextView.toString()).matches()){
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Email Address is invalid", getString(R.string.app__ok));
 
             if (!psDialogMsg.isShowing()) {
                 psDialogMsg.show();
