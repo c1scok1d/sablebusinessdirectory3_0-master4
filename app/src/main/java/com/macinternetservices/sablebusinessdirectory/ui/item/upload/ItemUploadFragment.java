@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
@@ -791,10 +792,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedSearchTag = binding.get().searchTagEditText.getText().toString();
                             itemViewModel.savedHighLightInformation = binding.get().itemHighlightInformationTextView.getText().toString();
                             itemViewModel.savedIsFeatured = binding.get().isFeature.isChecked();
-                            //itemViewModel.savedLatitude = String.valueOf(lat);
-                            //itemViewModel.savedLatitude = binding.get().latitudeTextView.getText().toString();
-                            //itemViewModel.savedLongitude = String.valueOf(lng);
-                            //itemViewModel.savedLongitude = binding.get().longitudeTextView.getText().toString();
                             itemViewModel.savedOpeningHour = binding.get().openTimeTextView.getText().toString();
                             itemViewModel.savedClosingHour = binding.get().closeTimeTextView.getText().toString();
                             itemViewModel.savedIsPromotion = binding.get().isPromotion.isChecked();
@@ -1071,9 +1068,75 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.get().emailTextView.toString()).matches()){
+        } else if (!binding.get().cityTextView1.getText().toString().isEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(binding.get().emailTextView.toString()).matches()) {
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Email Address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().facebookTextView.getText().toString().isEmpty() && !(binding.get().facebookTextView.toString()).contains("facebook.com") || !URLUtil.isValidUrl(binding.get().facebookTextView.getText().toString())){
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Facebook address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().twitterTextView.getText().toString().isEmpty() && !(binding.get().twitterTextView.toString()).contains("twitter.com") || !URLUtil.isValidUrl(binding.get().twitterTextView.getText().toString())){
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Twitter address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().youtubeTextView.getText().toString().isEmpty() && !(binding.get().youtubeTextView.toString()).contains("youtube.com") || !URLUtil.isValidUrl(binding.get().youtubeTextView.getText().toString())){
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("YouTube address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().instagrmTextView.getText().toString().isEmpty() && !(binding.get().instagrmTextView.toString()).contains("instagram.com") || !URLUtil.isValidUrl(binding.get().instagrmTextView.getText().toString())) {
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Instagram address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().googlePlusTextView.getText().toString().isEmpty() && !(binding.get().googlePlusTextView.toString()).contains("google.com") || !URLUtil.isValidUrl(binding.get().googlePlusTextView.getText().toString())) {
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Google+ address is invalid", getString(R.string.app__ok));
+
+            if (!psDialogMsg.isShowing()) {
+                psDialogMsg.show();
+            }
+
+            psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
+
+            result = false;
+        } else if (!binding.get().websiteTextView.getText().toString().isEmpty() && !URLUtil.isValidUrl(binding.get().websiteTextView.getText().toString())) {
+            PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
+            psDialogMsg.showErrorDialog("Website address is invalid", getString(R.string.app__ok));
 
             if (!psDialogMsg.isShowing()) {
                 psDialogMsg.show();
