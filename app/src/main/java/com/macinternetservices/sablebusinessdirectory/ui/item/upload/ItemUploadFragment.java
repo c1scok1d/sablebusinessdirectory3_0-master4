@@ -796,14 +796,14 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedPhoneThree = binding.get().phoneThreeTextView.getText().toString();
                             itemViewModel.savedEmail = binding.get().emailTextView.getText().toString();
                             itemViewModel.savedAddress = binding.get().txtAutocomplete.getText().toString();
-                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString();
+                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString();
+                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString();
+                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString();
+                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString();
+                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString();
+                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString();
+                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString();
                             itemViewModel.savedMessenger = binding.get().messangerTextView2.getText().toString();
                             itemViewModel.savedTimeRemark = binding.get().timeRemarkTextView.getText().toString();
                             itemViewModel.savedTerms = binding.get().termsAndConditionTextView.getText().toString();
@@ -881,7 +881,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             String foo = itemViewModel.savedInstagram.split("[?]")[0];
             itemViewModel.savedInstagram = foo;
         }
-        
+
         if (binding.get().isPromotion.isChecked()) {
             checkedPromotion = Constants.CHECKED_PROMOTION;
         } else {
