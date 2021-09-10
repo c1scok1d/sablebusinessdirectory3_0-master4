@@ -796,18 +796,14 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedPhoneThree = binding.get().phoneThreeTextView.getText().toString();
                             itemViewModel.savedEmail = binding.get().emailTextView.getText().toString();
                             itemViewModel.savedAddress = binding.get().txtAutocomplete.getText().toString();
-                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            if(itemViewModel.savedInstagram.contains("?")){
-                                String foo = itemViewModel.savedInstagram.split("[?]")[0];
-                                itemViewModel.savedInstagram = foo;
-                            }
-                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
-                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedFacebook = binding.get().facebookTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedGooglePlus = binding.get().googlePlusTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedTwitter = binding.get().twitterTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedYoutube = binding.get().youtubeTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedInstagram = binding.get().instagrmTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedPinterest = binding.get().pinterestTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedWebsite = binding.get().websiteTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
+                            itemViewModel.savedWhatsapp = binding.get().whatappsTextView.getText().toString();//.replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)","");
                             itemViewModel.savedMessenger = binding.get().messangerTextView2.getText().toString();
                             itemViewModel.savedTimeRemark = binding.get().timeRemarkTextView.getText().toString();
                             itemViewModel.savedTerms = binding.get().termsAndConditionTextView.getText().toString();
@@ -828,7 +824,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (!itemViewModel.edit_mode) {
                                     itemViewModel.itemSelectId = itemResource.data.id;
                                     navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                                }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
+                                }  else if (promoChanged) {
                                     navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
                                    // Log.e("foo", "foo");
                                 }
@@ -881,8 +877,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         locationAddress.getAddressFromLocation(binding.get().txtAutocomplete.getText().toString(), getApplicationContext(), new
                 GeoCoderHandler());
-
-
+        if(itemViewModel.savedInstagram.contains("?")){
+            String foo = itemViewModel.savedInstagram.split("[?]")[0];
+            itemViewModel.savedInstagram = foo;
+        }
+        
         if (binding.get().isPromotion.isChecked()) {
             checkedPromotion = Constants.CHECKED_PROMOTION;
         } else {
@@ -925,14 +924,14 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 binding.get().phoneThreeTextView.getText().toString(),
                 binding.get().emailTextView.getText().toString(),
                 binding.get().txtAutocomplete.getText().toString(),
-                binding.get().facebookTextView.getText().toString(),
-                binding.get().googlePlusTextView.getText().toString(),
-                binding.get().twitterTextView.getText().toString(),
-                binding.get().youtubeTextView.getText().toString(),
-                binding.get().instagrmTextView.getText().toString(),
-                binding.get().pinterestTextView.getText().toString(),
-                binding.get().websiteTextView.getText().toString(),
-                binding.get().whatappsTextView.getText().toString(),
+                binding.get().facebookTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().googlePlusTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().twitterTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().youtubeTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().instagrmTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().pinterestTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().websiteTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
+                binding.get().whatappsTextView.getText().toString().replaceFirst("^(http://www\\.|http://|www\\.|https://www\\.|https://|http//www\\.|http//|https//www\\.)",""),
                 binding.get().messangerTextView2.getText().toString(),
                 binding.get().timeRemarkTextView.getText().toString(),
                 binding.get().termsAndConditionTextView.getText().toString(),
