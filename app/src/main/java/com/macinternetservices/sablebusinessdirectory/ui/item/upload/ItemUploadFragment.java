@@ -1130,7 +1130,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             psDialogMsg.okButton.setOnClickListener(v -> psDialogMsg.cancel());
 
             result = false;
-        } else if (!binding.get().websiteTextView.getText().toString().isEmpty() && !Patterns.WEB_URL.matcher(binding.get().websiteTextView.getText().toString()).matches()) {
+        } else if (!binding.get().websiteTextView.getText().toString().isEmpty() && !Patterns.WEB_URL.matcher(binding.get().websiteTextView.getText().toString()).matches()) { //not working allows anything
             PSDialogMsg psDialogMsg = new PSDialogMsg(getActivity(), false);
             psDialogMsg.showErrorDialog("Website address is invalid", getString(R.string.app__ok));
 
