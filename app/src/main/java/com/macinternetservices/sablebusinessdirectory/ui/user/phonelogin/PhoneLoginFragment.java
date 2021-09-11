@@ -137,7 +137,7 @@ public class PhoneLoginFragment extends PSFragment {
             }
             else {
                 psDialogMsg.show();
-                number = binding.get().phoneEditText.getText().toString();
+                number = "+1"+binding.get().phoneEditText.getText().toString();
                 userName = binding.get().nameEditText.getText().toString();
                 PhoneLoginFragment.this.validNo(number);
 
