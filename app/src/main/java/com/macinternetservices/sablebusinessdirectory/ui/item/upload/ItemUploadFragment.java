@@ -534,8 +534,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             if (result.data.isPromotion.equals("1")) {
                                 binding.get().isPromotion.setChecked(true);
                                 itemViewModel.savedIsPromotion = true;
+                                binding.get().searchTextView22.setVisibility(View.GONE);
                                 binding.get().isPromotion.setVisibility(View.GONE);
                             } else if (result.data.isPromotion.equals("0")) {
+                                binding.get().isPromotion.setVisibility(View.VISIBLE);
+                                binding.get().searchTextView22.setVisibility(View.VISIBLE);
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
                                 binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
@@ -585,6 +588,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                     Log.d("Lat Lng", "Lat Lng Not Found");
                                 }
                             } else {
+                                binding.get().searchTextView22.setVisibility(View.GONE);
                                 binding.get().isPromotion.setVisibility(View.GONE);
                             }
 
@@ -690,7 +694,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 binding.get().isPromotion.setChecked(true);
                                 itemViewModel.savedIsPromotion = true;
                                 binding.get().isPromotion.setVisibility(View.GONE);
+                                binding.get().searchTextView22.setVisibility(View.GONE);
+
                             } else if (result.data.isPromotion.equals("0")) {
+                                binding.get().isPromotion.setVisibility(View.VISIBLE);
+                                binding.get().searchTextView22.setVisibility(View.VISIBLE);
                                 binding.get().isPromotion.setChecked(false);
                                 itemViewModel.savedIsPromotion = false;
                                 binding.get().isPromotion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
@@ -741,6 +749,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 Log.d("Lat Lng", "Lat Lng Not Found");
                             }
                         } else{
+                            binding.get().searchTextView22.setVisibility(View.GONE);
                             binding.get().isPromotion.setVisibility(View.GONE);
                         }
 
