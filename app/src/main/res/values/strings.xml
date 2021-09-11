@@ -631,7 +631,7 @@
     <string name="error_message__blank_phone_no">Please input the phone number.</string>
 
     <!--Phone Login Text Hint-->
-    <string name="phone_login_phone_hint" translatable="false">+959121212121</string>
+    <string name="phone_login_phone_hint" translatable="false">800-588-2300</string>
 
     <!-- Promote Business -->
     <string name="item_promote__promote_entry">Promote Business Entry</string>
