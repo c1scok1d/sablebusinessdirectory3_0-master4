@@ -1395,7 +1395,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toTopOf="@id/saveButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView18">
@@ -1460,6 +1459,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="16dp"
                             android:background="@drawable/rounded_corner_shape_for_item_upload"
                             android:ems="10"
                             android:gravity="top|left"
@@ -1473,6 +1473,7 @@
                             android:textColor="@color/text__primary"
                             android:textSize="@dimen/font_body_size"
                             app:font='@{"normal"}'
+                            app:layout_constraintBottom_toTopOf="@id/searchTextView22"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/searchTextView21"
@@ -1552,7 +1553,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="16dp"
                             android:background="@drawable/rounded_corner_shape_for_item_upload"
                             android:gravity="center|center_horizontal|center_vertical"
                             android:text="@string/item_upload__is_promotion"
