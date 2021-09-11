@@ -155,6 +155,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         progressDialog.get().setMessage(getString(R.string.message__please_wait));
         progressDialog.get().setCancelable(false);
         binding.get().isPromotion.setVisibility(View.GONE);
+        binding.get().searchTextView22.setVisibility(View.GONE);
 
 
         // click save button
@@ -290,6 +291,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
                             Address address = getAddressFromLatLng(latLng);
                             if(!binding.get().isPromotion.isChecked()) {
+                                binding.get().searchTextView22.setVisibility(View.VISIBLE);
                                 binding.get().isPromotion.setVisibility(View.VISIBLE);
                             }
                             if (address != null) {
@@ -302,6 +304,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             Log.d("Lat Lng", "Lat Lng Not Found");
                         }
                     } else {
+                        binding.get().searchTextView22.setVisibility(View.GONE);
                         binding.get().isPromotion.setVisibility(View.GONE);
                     }
                 }
