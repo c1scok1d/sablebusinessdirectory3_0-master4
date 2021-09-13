@@ -47,25 +47,25 @@ public class GeofenceReceiver extends IntentService {
                     String transitionName = "";
                     switch (transitionType) {
                         case Geofence.GEOFENCE_TRANSITION_DWELL:
-                            if ( distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
-                                    && simpleGeofenceHashMap.getIsPromoted().equals("1")) { // if item is_Promotion alert
+                            if ( distance(gpsTracker.getLocation().getLatitude(), gpsTracker.getLocation().getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.THREE)
+                                    && simpleGeofenceHashMap.getIsPromoted().equals(Constants.ONE)) { // if item is_Promotion alert
                                 transitionName = "dwell";
                                 break loop;
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
-                            if (transitionName != "enter" && distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
-                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if distance > 3 miles alert
+                            if (transitionName != "enter" && distance(gpsTracker.getLocation().getLatitude(), gpsTracker.getLocation().getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
+                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE)) { // if distance > 3 miles alert
                                 transitionName = "enter";
                                 near++;
                             }
                             break;
                         case Geofence.GEOFENCE_TRANSITION_EXIT:
-                            if ( distance(gpsTracker.getLatitude(), gpsTracker.getLongitude(),
-                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble("3")
-                                    && simpleGeofenceHashMap.getIsfeatured().equals("1")) { // if item is_Promotion
+                            if ( distance(gpsTracker.getLocation().getLatitude(), gpsTracker.getLocation().getLongitude(),
+                                    simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.THREE)
+                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE)) { // if item is_Promotion
                                 transitionName = "exit";
                                 near++;
                             }
