@@ -579,7 +579,6 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                         binding.get().loadingLayout.startAnimation(fadeIn);
                         binding.get().loadingLayout.setVisibility(View.VISIBLE);
                         if (result.data != null) {
-                            //add loading listings message
                             replaceFeaturedItem(result.data);
                         }
                         break;
@@ -593,6 +592,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                                 binding.get().noListingsLayout.setVisibility(View.GONE);
                                 binding.get().ivSkip.setVisibility(View.GONE);
                             }
+                            startGeofences(result.data);
                             replaceFeaturedItem(result.data);
                         }
                         featuredItemViewModel.setLoadingState(false);
@@ -774,16 +774,12 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     }
     @SuppressLint("NewApi")
     private void replaceFeaturedItem(List<Item> itemList) {
-        if(itemList.size() > 0) {
-            startGeofences(itemList);
-        }
         this.featuredItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
 
     @SuppressLint("NewApi")
     private void replaceDiscountItem(List<Item> itemList) {
-        //itemList.sort((o1, o2) -> Double.compare(Double.parseDouble(o2.overallRating), Double.parseDouble(o1.overallRating)));
         this.discountItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
