@@ -57,7 +57,7 @@ public class GeofenceReceiver extends IntentService {
                         case Geofence.GEOFENCE_TRANSITION_ENTER:
                             if (transitionName != "enter" && distance(gpsTracker.getLocation().getLatitude(), gpsTracker.getLocation().getLongitude(),
                                     simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.CONST_RADIUS)
-                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE)) { // if distance > 3 miles alert
+                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE) || simpleGeofenceHashMap.getIsPromoted().equals(Constants.ONE)) { // if distance > 3 miles alert
                                 transitionName = "enter";
                                 near++;
                             }
@@ -65,7 +65,7 @@ public class GeofenceReceiver extends IntentService {
                         case Geofence.GEOFENCE_TRANSITION_EXIT:
                             if ( distance(gpsTracker.getLocation().getLatitude(), gpsTracker.getLocation().getLongitude(),
                                     simpleGeofenceHashMap.getLatitude(), simpleGeofenceHashMap.getLongitude()) <= Double.parseDouble(Constants.THREE)
-                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE)) { // if item is_Promotion
+                                    && simpleGeofenceHashMap.getIsfeatured().equals(Constants.ONE) || simpleGeofenceHashMap.getIsPromoted().equals(Constants.ONE)) { // if item is_Promotion
                                 transitionName = "exit";
                                 near++;
                             }
