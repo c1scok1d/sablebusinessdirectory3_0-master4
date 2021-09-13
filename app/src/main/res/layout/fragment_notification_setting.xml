@@ -29,15 +29,17 @@
             android:id="@+id/notiSwitch_service"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            app:font='@{"Roboto-Light.ttf"}'
+            android:layout_marginEnd="16dp"
             android:text="GeoLocation Service(On/Off)"
             android:textColor="@color/text__primary"
+            android:visibility="gone"
+            app:font='@{"Roboto-Light.ttf"}'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
         <View
             android:id="@+id/view2"
