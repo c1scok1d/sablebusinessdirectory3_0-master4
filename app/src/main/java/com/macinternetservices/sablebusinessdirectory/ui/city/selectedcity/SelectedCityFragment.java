@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -135,6 +137,23 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
     @Override
     protected void initUIAndActions() {
+
+        binding.get().loadingLayout.setVisibility(View.GONE);
+        binding.get().noListingsLayout.setVisibility(View.GONE);
+
+        binding.get().ivSkip.setOnClickListener(new View.OnClickListener() {
+            ///psDialogMsg.okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.get().noListingsLayout.isShown()){
+                    Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
+                    binding.get().noListingsLayout.setAnimation(fadeOut);
+                    binding.get().noListingsLayout.setVisibility(View.GONE);
+                    binding.get().ivSkip.setVisibility(View.GONE);
+                }
+            }
+            //});
+        });
 
         if (!Config.ENABLE_ITEM_UPLOAD) {
             binding.get().floatingActionButton.setVisibility(View.GONE);
@@ -563,21 +582,15 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                 switch (listResource.status) {
                     case SUCCESS:
-
                         if (listResource.data != null) {
-
                             if (listResource.data.size() > 0) {
                                 replaceCityCategory(listResource.data);
                             }
-
                         }
-
                         break;
 
                     case LOADING:
-
                         if (listResource.data != null) {
-
                             if (listResource.data.size() > 0) {
                                 replaceCityCategory(listResource.data);
                             }
@@ -601,14 +614,21 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
         featuredItemViewModel.getFeaturedItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
+                Animation fadeIn = AnimationUtils.loadAnimation(getContext(),R.anim.fade_in);
+                Animation fadeOut = AnimationUtils.loadAnimation(getContext(),R.anim.fade_out);
                 switch (result.status) {
-
                     case ERROR:
-
+                        if(binding.get().loadingLayout.isShown()){
+                            binding.get().loadingLayout.setAnimation(fadeOut);
+                            binding.get().loadingLayout.setVisibility(View.GONE);
+                        }
+                        binding.get().noListingsLayout.startAnimation(fadeIn);
+                        binding.get().noListingsLayout.setVisibility(View.VISIBLE);
+                        featuredItemViewModel.setLoadingState(false);
+                        binding.get().ivSkip.setVisibility(View.VISIBLE);
                         break;
 
                     case LOADING:
-
                         if (result.data != null) {
                             if (result.data.size() > 0) {
                                 replaceFeaturedItemList(result.data);
@@ -617,11 +637,19 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                         break;
                     case SUCCESS:
-
                         if (result.data != null) {
                             if (result.data.size() > 0) {
+                                binding.get().loadingLayout.setAnimation(fadeOut);
+                                binding.get().loadingLayout.setVisibility(View.GONE);
+
+                                if(binding.get().noListingsLayout.isShown()){
+                                    binding.get().noListingsLayout.setAnimation(fadeOut);
+                                    binding.get().noListingsLayout.setVisibility(View.GONE);
+                                    binding.get().ivSkip.setVisibility(View.GONE);
+                                }
                                 replaceFeaturedItemList(result.data);
                             }
+
                         }
                         featuredItemViewModel.setLoadingState(false);
                         break;
