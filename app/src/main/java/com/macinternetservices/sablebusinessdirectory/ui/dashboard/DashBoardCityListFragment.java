@@ -576,8 +576,6 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 Animation fadeOut = AnimationUtils.loadAnimation(getContext(),R.anim.fade_out);
                 switch (result.status) {
                     case LOADING:
-                        binding.get().loadingLayout.startAnimation(fadeIn);
-                        binding.get().loadingLayout.setVisibility(View.VISIBLE);
                         if (result.data != null) {
                             replaceFeaturedItem(result.data);
                         }
