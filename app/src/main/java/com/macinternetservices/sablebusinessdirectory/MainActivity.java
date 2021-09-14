@@ -313,6 +313,9 @@ public class MainActivity extends PSAppCompactActivity {
         }
 
         Menu navViewMenu = binding.navView.getMenu();
+        //hide language settings
+        navViewMenu.findItem(R.id.nav_language).setVisible(false);
+        navViewMenu.findItem(R.id.nav_language_login).setVisible(false);
         if(!Config.ENABLE_ITEM_UPLOAD){
             navViewMenu.findItem(R.id.nav_upload_item_login).setVisible(false);
         }else{
