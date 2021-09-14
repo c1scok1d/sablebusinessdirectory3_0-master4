@@ -12,7 +12,7 @@
 
     <string name="razor_key" translatable="false">rzp_0000_00000000000000</string>
 
-    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-6732007157855667~5895978563</string>
 
     <string name="google_map_api_key" translatable="false">AIzaSyCMBDE0LLae_aFf2trtik89eYhtPM3rt30</string>
 
@@ -635,7 +635,7 @@
 
     <!-- Promote Business -->
     <string name="item_promote__promote_entry">Promote Business Entry</string>
-    <string name="item_promote__start_date">Ads Start Date</string>
+    <string name="item_promote__start_date">Promotion Start Date</string>
     <string name="item_promote__start_date_hint">Please Select Start Date</string>
     <string name="item_promote__promote_custom">Custom</string>
     <string name="item_promote__default_custom_price">0.00</string>
@@ -660,9 +660,9 @@
     <string name="paid__start_date">Start Date:</string>
     <string name="paid__end_date">End Date:</string>
     <string name="paid__amount">Amount Spend:</string>
-    <string name="paid__ads_in_progress">Ads In Progress</string>
-    <string name="paid__ads_in_completed">Ads Completed</string>
-    <string name="paid__ads_is_not_yet_start">Ads is Not Yet Start</string>
+    <string name="paid__ads_in_progress">Your Ad Promotion Is Live</string>
+    <string name="paid__ads_in_completed">Promotion Completed</string>
+    <string name="paid__ads_is_not_yet_start">Your Ad Promotion Is Not Live</string>
     <string name="paid__sponsored">Sponsored</string>
     <string name="no_businesses_near_msg">There are no black owned businesses registered with Sable near you. Click the \'+\' below to add black owned businesses near you to the Sable Business Directory.</string>
     <string name="skip"><u>Skip</u></string>
