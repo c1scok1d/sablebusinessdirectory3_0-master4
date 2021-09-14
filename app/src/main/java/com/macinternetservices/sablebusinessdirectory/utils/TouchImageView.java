@@ -26,7 +26,7 @@ import android.widget.OverScroller;
 import android.widget.Scroller;
 
 /**
- * Sable Business Directory on 7/15/15.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

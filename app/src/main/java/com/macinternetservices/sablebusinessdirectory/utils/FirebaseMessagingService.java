@@ -18,7 +18,7 @@ import com.macinternetservices.sablebusinessdirectory.R;
 
 
 /**
- * Sable Business Directory on 8/11/16.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {

@@ -9,8 +9,7 @@ import androidx.room.Entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Sable Business Directory on 12/6/17.
- * Contact Email : admin@sablebusinessdirectory.com
+ * Sable Business Directory on 09/01/2021
  */
 
 @Entity(primaryKeys = "userId")

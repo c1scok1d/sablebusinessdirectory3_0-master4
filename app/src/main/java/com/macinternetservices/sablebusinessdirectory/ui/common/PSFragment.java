@@ -20,7 +20,7 @@ import javax.inject.Inject;
 
 /**
  * Parent class for all fragment in this project.
- * Sable Business Directory on 12/2/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

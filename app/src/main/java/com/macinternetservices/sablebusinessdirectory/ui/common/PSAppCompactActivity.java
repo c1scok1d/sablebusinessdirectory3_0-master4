@@ -16,7 +16,7 @@ import dagger.android.HasAndroidInjector;
 
 /**
  * Parent Activity class of all activity in this project.
- * Sable Business Directory on 12/2/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

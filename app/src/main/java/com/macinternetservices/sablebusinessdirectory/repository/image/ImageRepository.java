@@ -28,8 +28,7 @@ import androidx.lifecycle.MediatorLiveData;
 import retrofit2.Response;
 
 /**
- * Sable Business Directory on 12/8/17.
- * Contact Email : admin@sablebusinessdirectory.com
+ * Sable Business Directory on 09/01/2021
  */
 
 @Singleton

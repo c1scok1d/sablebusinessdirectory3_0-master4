@@ -3,7 +3,7 @@ package com.macinternetservices.sablebusinessdirectory.utils;
 import android.location.Location;
 
 /**
- * Sable Business Directory on 3/19/19.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

@@ -12,7 +12,7 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.common.Resource
 
 /**
  * General Delete Task Sample
- * Sable Business Directory on 12/14/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 public class DeleteTask implements Runnable {

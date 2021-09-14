@@ -14,8 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 /**
- * Sable Business Directory on 12/30/17.
- * Contact Email : admin@sablebusinessdirectory.com
+ * Sable Business Directory on 09/01/2021
  */
 
 public class AboutUsViewModel extends PSViewModel {

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
 /**
- * Sable Business Directory on 11/25/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

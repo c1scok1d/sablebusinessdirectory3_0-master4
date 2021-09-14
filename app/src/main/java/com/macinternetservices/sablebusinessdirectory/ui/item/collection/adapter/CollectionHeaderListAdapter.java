@@ -15,7 +15,7 @@ import com.macinternetservices.sablebusinessdirectory.viewobject.ItemCollectionH
 import androidx.databinding.DataBindingUtil;
 
 /**
- * Sable Business Directory on 10/27/18.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

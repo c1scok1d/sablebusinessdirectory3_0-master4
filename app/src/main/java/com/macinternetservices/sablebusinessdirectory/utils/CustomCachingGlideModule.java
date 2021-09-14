@@ -19,7 +19,7 @@ import com.macinternetservices.sablebusinessdirectory.R;
 import static com.bumptech.glide.load.DecodeFormat.PREFER_ARGB_8888;
 
 /**
- * Sable Business Directory on 4/2/19.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

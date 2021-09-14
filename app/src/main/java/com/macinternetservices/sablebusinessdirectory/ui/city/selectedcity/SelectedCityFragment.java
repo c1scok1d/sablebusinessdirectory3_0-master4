@@ -649,7 +649,6 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
                                 }
                                 replaceFeaturedItemList(result.data);
                             }
-
                         }
                         featuredItemViewModel.setLoadingState(false);
                         break;

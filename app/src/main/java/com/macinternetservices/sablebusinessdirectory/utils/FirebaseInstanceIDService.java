@@ -3,7 +3,7 @@ package com.macinternetservices.sablebusinessdirectory.utils;
 import android.content.Intent;
 
 /**
- * Sable Business Directory on 8/11/16.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 public class FirebaseInstanceIDService extends FirebaseMessagingService {

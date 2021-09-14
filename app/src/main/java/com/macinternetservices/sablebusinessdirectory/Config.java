@@ -3,7 +3,7 @@ package com.macinternetservices.sablebusinessdirectory;
 import android.location.Location;
 
 /**
- * Sable Business Directory on 7/15/15.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 
@@ -30,7 +30,7 @@ public class Config {
      * Set false, your app is production
      * It will turn off the logging Process
      */
-    public static boolean IS_DEVELOPMENT = true; // set false, your app is production
+    public static boolean IS_DEVELOPMENT = false; // set false, your app is production
 
     /**
      * API URL

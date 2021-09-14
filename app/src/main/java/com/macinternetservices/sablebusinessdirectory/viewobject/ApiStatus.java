@@ -3,7 +3,7 @@ package com.macinternetservices.sablebusinessdirectory.viewobject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Sable Business Directory on 11/17/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

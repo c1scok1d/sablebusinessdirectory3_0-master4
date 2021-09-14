@@ -1,7 +1,7 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
 /**
- * Sable Business Directory on 3/4/18.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  * Website : http://www.sablebusinessdirectory.com
  */
@@ -38,11 +38,11 @@ import java.math.BigDecimal;
  * @param <T>
  * The Number type of the range values. One of Long, Double, Integer, Float, Short, Byte or BigDecimal.
  * <p>
- * Sable Business Directory on 10/17/15.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 /**
- * Sable Business Directory on 10/17/15.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 

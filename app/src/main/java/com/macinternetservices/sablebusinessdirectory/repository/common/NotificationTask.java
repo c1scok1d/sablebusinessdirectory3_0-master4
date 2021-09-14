@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 /**
  * For register/un-register token to server to able to send notification
- * Sable Business Directory on 12/12/17.
+ * Sable Business Directory on 09/01/2021
  * Contact Email : admin@sablebusinessdirectory.com
  */
 public class NotificationTask implements Runnable {
