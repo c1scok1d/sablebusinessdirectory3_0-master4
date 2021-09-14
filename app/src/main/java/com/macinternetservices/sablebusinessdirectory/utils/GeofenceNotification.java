@@ -121,12 +121,12 @@ public class GeofenceNotification {
         buildNotificaction(simpleGeofence, transitionType, near);
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
-    public static final String CHANNEL_ID = "Transition Channel";
+    public static final String CHANNEL_ID = "Location Alerts";
     private void createNotificationChannel(final Context mContext) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
-                    "Transition Channel",
+                    "Location Alerts",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
             NotificationManager manager = mContext.getSystemService(NotificationManager.class);
