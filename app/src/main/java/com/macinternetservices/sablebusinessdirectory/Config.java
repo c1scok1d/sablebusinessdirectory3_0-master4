@@ -103,7 +103,7 @@ public class Config {
 
     public static int HISTORY_COUNT = 30;
 
-    public static final int LIMIT_FROM_DB_COUNT = 6;
+    public static final int LIMIT_FROM_DB_COUNT = 18;
 
     public static int SPECIFICATION_COUNT = 10;
 
