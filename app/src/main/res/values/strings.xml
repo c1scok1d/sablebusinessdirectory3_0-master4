@@ -12,7 +12,7 @@
 
     <string name="razor_key" translatable="false">rzp_0000_00000000000000</string>
 
-    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-6732007157855667~5895978563</string>
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-6732007157855667/5918145391</string>
 
     <string name="google_map_api_key" translatable="false">AIzaSyCMBDE0LLae_aFf2trtik89eYhtPM3rt30</string>
 
@@ -462,7 +462,7 @@
     <string name="dashboard_popular_cities">Listings By City</string>
     <string name="dashboard_best_cities">Featured City </string>
     <string name="dashboard_new_cities">Planning A Trip?</string>
-    <string name="dashboard_blog">Promotions &amp; Events</string>
+    <string name="dashboard_blog">About Sable</string>
     <string name="dashboard_popular_places">Sables\'s Best</string>
     <string name="dashboard_new_places">Explore New Business Listings</string>
     <string name="dashboard_promo_list">Ongoing Promos</string>
@@ -475,8 +475,8 @@
     <string name="dashboard_best_cities_desc">Check out our featured black business city!</string>
     <string name="dashboard_new_cities_desc">Explore listings by city.</string>
     <string name="dashboard_popular_places_desc">Some of our favorite listings</string>
-    <string name="dashboard_new_places_desc">Explore our newest black business listings.</string>
-    <string name="dashboard_promo_list_desc">Enjoy our promos and save money while you shop.</string>
+    <string name="dashboard_new_places_desc">Explore newest black business listings.</string>
+    <string name="dashboard_promo_list_desc">Enjoy promos and save money while you shop.</string>
     <!--Dashboard-->
 
     <!--Selected City-->
@@ -517,7 +517,7 @@
     <string name="setting__version_no">Version No : </string>
 
     <!-- Business Upload -->
-    <string name="item_upload__item_upload">Business Upload</string>
+    <string name="item_upload__item_upload">Add Business</string>
     <string name="item_upload__item_name">Business Name</string>
     <string name="item_upload__subcategory_name">SubCategory</string>
     <string name="item_upload__discount_name">Discount Type</string>
