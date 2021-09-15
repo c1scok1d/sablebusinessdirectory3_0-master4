@@ -110,7 +110,7 @@
     <string name="notification_setting__on_off">Notification Setting ( On/Off )</string>
     <string name="notification_setting__latest_message_from_system">Latest Message From Sable</string>
     <string name="notification__notification">Notification!</string>
-    <string name="notification__title">Notification</string>
+    <string name="notification__title">Updates</string>
     <string name="notification_setting__title">Notification Setting</string>
     <string name="notification_detail__title">Notification Detail</string>
     <string name="notification_alert">Alert</string>
@@ -517,7 +517,7 @@
     <string name="setting__version_no">Version No : </string>
 
     <!-- Business Upload -->
-    <string name="item_upload__item_upload">Add Business</string>
+    <string name="item_upload__item_upload">Add A Business</string>
     <string name="item_upload__item_name">Business Name</string>
     <string name="item_upload__subcategory_name">SubCategory</string>
     <string name="item_upload__discount_name">Discount Type</string>
