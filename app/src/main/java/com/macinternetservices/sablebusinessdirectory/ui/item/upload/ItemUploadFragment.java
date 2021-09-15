@@ -280,33 +280,29 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         binding.get().txtAutocomplete.setThreshold(3);//start searching from 3 characters
         binding.get().txtAutocomplete.setAdapter(mAutoCompleteAdapter);
 
-        binding.get().txtAutocomplete.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        binding.get().txtAutocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                // When textview lost focus check the textview data valid or not
-                if (!hasFocus) {
-                    if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
-                        LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
-                        if (latLng != null) {
-                            changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
-                            Address address = getAddressFromLatLng(latLng);
-                            if(!binding.get().isPromotion.isChecked()) {
-                                binding.get().searchTextView22.setVisibility(View.VISIBLE);
-                                binding.get().isPromotion.setVisibility(View.VISIBLE);
-                            }
-                            if (address != null) {
-                                Log.d("Adddress", address.toString());
-
-                            } else {
-                                Log.d("Adddress", "Address Not Found");
-                            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (!binding.get().txtAutocomplete.getText().toString().isEmpty()) {
+                    LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
+                    if (latLng != null) {
+                        changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
+                        Address address = getAddressFromLatLng(latLng);
+                        if(!binding.get().isPromotion.isChecked()) {
+                            binding.get().searchTextView22.setVisibility(View.VISIBLE);
+                            binding.get().isPromotion.setVisibility(View.VISIBLE);
+                        }
+                        if (address != null) {
+                            Log.d("Adddress", address.toString());
                         } else {
-                            Log.d("Lat Lng", "Lat Lng Not Found");
+                            Log.d("Adddress", "Address Not Found");
                         }
                     } else {
-                        binding.get().searchTextView22.setVisibility(View.GONE);
-                        binding.get().isPromotion.setVisibility(View.GONE);
+                        Log.d("Lat Lng", "Lat Lng Not Found");
                     }
+                } else {
+                    binding.get().searchTextView22.setVisibility(View.GONE);
+                    binding.get().isPromotion.setVisibility(View.GONE);
                 }
             }
         });
