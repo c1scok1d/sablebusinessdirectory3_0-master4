@@ -81,7 +81,7 @@ public class Config {
 
     public static int RATING_COUNT = 30;
 
-    public static int HOME_PRODUCT_COUNT = 15;
+    public static int HOME_PRODUCT_COUNT = 200;
 
     public static int ITEM_COUNT = 30;
 
