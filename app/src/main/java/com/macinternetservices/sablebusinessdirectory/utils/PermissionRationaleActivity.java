@@ -16,13 +16,16 @@
 package com.macinternetservices.sablebusinessdirectory.utils;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -47,6 +50,8 @@ import androidx.core.content.ContextCompat;
 
 import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
+
+import javax.inject.Inject;
 
 /**
  * Displays rationale for allowing the activity recognition permission and allows user to accept
@@ -74,7 +79,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
     private Handler imageSwitchHandler;
     ProgressBar progressBar;
-
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +87,15 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_permission_rationale);
         Animation imgAnimationIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         Animation imgAnimationOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        pref = getApplicationContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         /**
          * ABOUT US
          */
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
-       imageView = findViewById(R.id.imageView);
-       imageView.setVisibility(View.GONE);
+        imageView = findViewById(R.id.imageView);
+        imageView.setVisibility(View.GONE);
         ImageView imageView = new ImageView(getApplicationContext());
 
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -128,7 +134,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
     }
 
     public void onClickApprovePermissionRequest(View view) {
-        Log.e(TAG, "onClickApprovePermissionRequest()");
+        //Log.e(TAG, "onClickApprovePermissionRequest()");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             checkPermissionsQ();
         } else {
@@ -150,18 +156,15 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             //Ask se to geo to settings and manually allow permissions
             showDialog("", "You have denied some permissions.  Allow all permissions at [Settings] > [Permissions]",
                     "Go to Settings",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            //Go to app settings
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                    Uri.fromParts("package", getPackageName(), null));
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                            finish();
-                        }
+                    (dialogInterface, i) -> {
+                        dialogInterface.dismiss();
+                        //Go to app settings
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                Uri.fromParts("package", getPackageName(), null));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        finish();
                     },
                     "No, Exit app", new DialogInterface.OnClickListener() {
                         @Override
@@ -197,8 +200,30 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                     public void onClick(final DialogInterface dialog, int id) {
                         ActivityCompat.requestPermissions(PermissionRationaleActivity.this,
                                 new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},
-                                REQUEST_BACKGROUND_LOCATION);
-                    }
+                                REQUEST_BACKGROUND_LOCATION); }
+                });
+                alertBuilder.setNegativeButton("Deny", (dialog, id) -> {
+                    showDialog("", "You will not be alerted when you are near a registered black owned business.  To enable this feature allow all permissions at [Settings] > [Permissions]",
+                            "Go to Settings",
+                            (dialogInterface, i) -> {
+                                dialogInterface.dismiss();
+                                //Go to app settings
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                        Uri.fromParts("package", getPackageName(), null));
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                                //finish();
+                            },
+                            "Continue", (dialogInterface, i) -> {
+                                if (getApplicationContext() != null) {
+                                    SharedPreferences.Editor editor = pref.edit();
+                                    editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
+                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                                    //finish();
+                                }
+                            }, false);
                 });
                 AlertDialog alert = alertBuilder.create();
                 alert.show();
@@ -207,32 +232,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.FOREGROUND_SERVICE},
                     REQUEST_FOREGROUND_SERVICE);
-        } else {
-            //Ask se to geo to settings and manually allow permissions
-            progressBar.setVisibility(View.GONE);
-            showDialog("", "You have denied some permissions.  Allow all permissions at [Settings] > [Permissions]",
-                    "Go to Settings",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            //Go to app settings
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                    Uri.fromParts("package", getPackageName(), null));
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                            finish();
-                        }
-                    },
-                    "No, Exit app", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            ;
-                            fileList();
-                        }
-                    }, false);
         }
         return true;
     }
@@ -250,35 +249,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
         alert.show();
         return alert;
     }
-
-    public void onClickDenyPermissionRequest(View view) {
-        Log.e(TAG, "onClickDenyPermissionRequest()");
-        showDialog("", "You have denied some permissions.  Allow all permissions at [Settings] > [Permissions]",
-                "Go to Settings",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        //Go to app settings
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                Uri.fromParts("package", getPackageName(), null));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                        finish();
-                    }
-                },
-                "No, Exit app", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        ;
-                        fileList();
-                    }
-                }, false);
-        //finish();
-    }
-
     /*
      * Callback received when a permissions request has been completed.
      */
@@ -294,6 +264,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 progressBar.setVisibility(View.VISIBLE);
                 checkPermissionsQ();
             } else {
+                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 startActivity(new Intent(this, MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();            //h.postDelayed(r, 1500);
@@ -303,7 +274,11 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
                 checkPermissions();
+                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
+
             } else {
+                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
+
                 progressBar.setVisibility(View.GONE);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -325,28 +300,11 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             Animation imgAnimationIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
             String[] text = {
-                   /* "Hello and welcome to The Sable Business Directory mobile app.",
-
-                    "We make it easier to find, rate and review black owned businesses.",
-
-                    "Our geo-search technology alerts you when you're near a registered black owned business.",
-
-                    "It's FREE to register a business and get alerts.",
-
-                    "Rate and review black owned everytime you shop.",
-
-                    "We insure high quality feedback by requiring users to login before adding or reviewing a listing.",
-
-                    "We need your permission to alert you when you're near a black owned business.", */
-
                     "The app requires special permission to access your location when not running to alert you when you're near a registered black owned business.",
-
                     "Click begin and allow all of the following permissions when prompted."
-
             };
 
             int[] images = {R.mipmap.making_thumbs_up_foreground, R.mipmap.smiling_peace_foreground};
-
 
             switch (count) {
 
