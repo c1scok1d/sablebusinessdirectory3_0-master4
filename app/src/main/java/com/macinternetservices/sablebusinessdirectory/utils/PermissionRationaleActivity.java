@@ -110,6 +110,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
         imageSwitchHandler = new Handler();
         imageSwitchHandler.post(runnableCode);
+        //sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
         /**
          *  txt switchers for animations
@@ -134,7 +135,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
     }
 
     public void onClickApprovePermissionRequest(View view) {
-        //Log.e(TAG, "onClickApprovePermissionRequest()");
+        Log.e(TAG, "onClickApprovePermissionRequest()");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             checkPermissionsQ();
         } else {
@@ -156,15 +157,18 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             //Ask se to geo to settings and manually allow permissions
             showDialog("", "You have denied some permissions.  Allow all permissions at [Settings] > [Permissions]",
                     "Go to Settings",
-                    (dialogInterface, i) -> {
-                        dialogInterface.dismiss();
-                        //Go to app settings
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                Uri.fromParts("package", getPackageName(), null));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                        finish();
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                            //Go to app settings
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                    Uri.fromParts("package", getPackageName(), null));
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            finish();
+                        }
                     },
                     "No, Exit app", new DialogInterface.OnClickListener() {
                         @Override
@@ -207,6 +211,8 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                             "Go to Settings",
                             (dialogInterface, i) -> {
                                 dialogInterface.dismiss();
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                                 //Go to app settings
                                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                                         Uri.fromParts("package", getPackageName(), null));
@@ -262,9 +268,11 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 checkPermissionsQ();
             } else {
-                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
+                pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
                 startActivity(new Intent(this, MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();            //h.postDelayed(r, 1500);
@@ -273,12 +281,13 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 checkPermissions();
-                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
 
             } else {
-                pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
-
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 progressBar.setVisibility(View.GONE);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

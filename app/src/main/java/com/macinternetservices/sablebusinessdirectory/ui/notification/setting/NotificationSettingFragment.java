@@ -97,12 +97,13 @@ public class NotificationSettingFragment extends PSFragment {
 
         binding.get().pushNotSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked){
-                pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
+                //
                 if ((ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                         ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                        ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                                pref.getString(Constants.GEO_SERVICE_KEY,"false").equals("true"))) {
+                        ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
                     startActivity(new Intent(getApplicationContext(), PermissionRationaleActivity.class));
+                } else {
+                    pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
                 }
             } else {
                 if (isMyServiceRunning(GeolocationService.class)) {
