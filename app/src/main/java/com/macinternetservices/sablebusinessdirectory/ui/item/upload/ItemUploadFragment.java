@@ -229,7 +229,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 psDialogMsg.show();
             } else {
 
-                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, "");
+                navigationController.navigateToExpandActivity(getActivity(), Constants.SELECT_CATEGORY, itemViewModel.catSelectId, itemViewModel.cityId);
 
             }
         });
