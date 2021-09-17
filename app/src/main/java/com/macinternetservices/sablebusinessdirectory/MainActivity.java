@@ -112,7 +112,7 @@ public class MainActivity extends PSAppCompactActivity {
     private String token1;
     private ConsentForm form;
     public String notificationItemId, notificationMsg, notificationFlag, userId;
-
+    SharedPreferences sharedPref;
 
 
     //private Boolean alreadyNotiMsgShow = false;
@@ -136,6 +136,7 @@ public class MainActivity extends PSAppCompactActivity {
 
         super.onCreate(savedInstanceState);
 
+        sharedPref = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         FirebaseApp.initializeApp(this);
 
@@ -171,19 +172,13 @@ public class MainActivity extends PSAppCompactActivity {
 
     }
 
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
     @Override
     protected void onResume() {
         super.onResume();
     }
+
+
+
 
     private void checkPermissions() {
         if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
@@ -193,11 +188,11 @@ public class MainActivity extends PSAppCompactActivity {
             finish();
         }
     }
-
     private void checkPermissionsQ() {
         if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        sharedPref.getString(Constants.GEO_SERVICE_KEY,"false").equals("true"))) {
             startActivity(new Intent(this, PermissionRationaleActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
@@ -306,6 +301,9 @@ public class MainActivity extends PSAppCompactActivity {
     private void initUIAndActions() {
         psDialogMsg = new PSDialogMsg(this, false);
 
+        if(sharedPref.getString(Constants.GEO_SERVICE_KEY,"false").equals("true")){
+
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             checkPermissionsQ();
         } else {

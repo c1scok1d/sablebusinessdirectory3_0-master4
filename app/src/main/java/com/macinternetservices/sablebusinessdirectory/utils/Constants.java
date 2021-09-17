@@ -137,7 +137,7 @@ Location Current_Location=new Location("");
     //user//
     String CURRENT_USER_NAME="USER_NAME";
     String PUSH_NOT_KEY="PUSH_NO_KEY";
-    String GEO_SERVICE_KEY="GEO_SERVICE_KEY";
+    String GEO_SERVICE_KEY = "GEO_SERVICE_KEY";
 
 
     //radius key//

@@ -1,12 +1,14 @@
 package com.macinternetservices.sablebusinessdirectory.ui.dashboard;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.text.PrecomputedText;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,6 +80,9 @@ import java.util.TimerTask;
 
 import javax.inject.Inject;
 
+import static android.content.Context.MODE_PRIVATE;
+import static android.content.Context.MODE_WORLD_READABLE;
+
 public class DashBoardCityListFragment extends PSFragment implements DataBoundListAdapter.DiffUtilDispatchedInterface {
 
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
@@ -123,8 +128,12 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     private Handler imageSwitchHandler;
     public String selectedCityId;
     GPSTracker gpsTracker;
+    SharedPreferences sharedPref;
 
-    SharedPreferences preferences;
+
+    //SharedPreferences prefs;
+    //final String GEO_PREFS = "geo_prefs";
+    SharedPreferences geoprefs;
     //selectedCityId = null;
 
 
@@ -139,6 +148,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         gpsTracker = new GPSTracker(getContext());
         //preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Config.CurrentLocation = gpsTracker.getLocation();
+
 
         loadDates();
         if ((this.getActivity()) != null) {
@@ -165,6 +175,7 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initUIAndActions() {
+        geoprefs = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         binding.get().noListingsLayout.setVisibility(View.GONE);
         if (!Config.ENABLE_ITEM_UPLOAD) {
@@ -590,7 +601,11 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                                 binding.get().noListingsLayout.setVisibility(View.GONE);
                                 binding.get().ivSkip.setVisibility(View.GONE);
                             }
-                            startGeofences(result.data);
+
+                            //String GEC_SERVICE_KEY = pref.getString(Constants.GEO_SERVICE_KEY,"");
+                            if (geoprefs.getString(Constants.GEO_SERVICE_KEY, "false").equals("true")){
+                                startGeofences(result.data);
+                            }
                             replaceFeaturedItem(result.data);
                         }
                         featuredItemViewModel.setLoadingState(false);
