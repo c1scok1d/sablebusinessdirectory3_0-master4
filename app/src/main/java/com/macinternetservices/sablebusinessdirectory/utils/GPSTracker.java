@@ -86,10 +86,6 @@ public class GPSTracker extends Service implements LocationListener {
                         location = locationManager
                                 .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         if (location != null) {
-
-                            Config.CurrentLocation=location;
-                            pref.edit().putString(Constants.LAT, String.valueOf(location.getLatitude())).apply();
-                            pref.edit().putString(Constants.LNG, String.valueOf(location.getLongitude())).apply();
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
                         }
@@ -107,9 +103,6 @@ public class GPSTracker extends Service implements LocationListener {
                             location = locationManager
                                     .getLastKnownLocation(LocationManager.GPS_PROVIDER);
                             if (location != null) {
-                                Config.CurrentLocation=location;
-                                pref.edit().putString(Constants.LAT, String.valueOf(location.getLatitude())).apply();
-                                pref.edit().putString(Constants.LNG, String.valueOf(location.getLongitude())).apply();
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
                             }
