@@ -955,7 +955,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             updateTime(editText);
         };
 
-        new TimePickerDialog(getContext(), timePickerDialog, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), true).show();
+        new TimePickerDialog(getContext(), timePickerDialog, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
     }
 
     private void updateTime(EditText editText) {
