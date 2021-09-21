@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -228,12 +229,13 @@ public class CityListFragment extends PSFragment implements DataBoundListAdapter
 
     private void getIntentData()
     {
-        if (getActivity() != null)
+        if (getActivity().getIntent().getSerializableExtra(Constants.CITY_HOLDER) != null)
         {
             cityViewModel.cityParameterHolder = (CityParameterHolder) getActivity().getIntent().getSerializableExtra(Constants.CITY_HOLDER);
-        }
-        if (getArguments() != null){
+        } else if (getArguments() != null){
             cityViewModel.cityParameterHolder = (CityParameterHolder) getArguments().getSerializable(Constants.CITY_HOLDER);
+            Log.e("foo", cityViewModel.cityParameterHolder.toString());
+
         }
     }
 
