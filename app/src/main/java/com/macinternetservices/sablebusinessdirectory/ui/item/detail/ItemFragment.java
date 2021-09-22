@@ -66,6 +66,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -1375,7 +1376,7 @@ public class ItemFragment extends PSFragment {
         } else {
             binding.get().phone1TextView.setVisibility(View.VISIBLE);
             binding.get().phoneCall1TextView.setVisibility(View.VISIBLE);
-            binding.get().phone1TextView.setText(item.phone1);
+            binding.get().phone1TextView.setText(PhoneNumberUtils.formatNumber(item.phone1,Locale.getDefault().getCountry()));
         }
         if (item.phone2.equals("")) {
             binding.get().phone2TextView.setVisibility(View.GONE);
