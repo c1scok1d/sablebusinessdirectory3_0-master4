@@ -30,6 +30,7 @@ public class MapFragment extends PSFragment {
 
     private String latValue = "48.856452647178386";
     private String lngValue = "2.3523519560694695";
+    private String itemName;
 
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
     private GoogleMap map;
@@ -69,12 +70,12 @@ public class MapFragment extends PSFragment {
 //            map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder().target(new LatLng(Double.valueOf(latValue), Double.valueOf(lngValue))).zoom(1).bearing(10).tilt(10).build()));
 
             map.addMarker(new MarkerOptions()
-                    .position(new LatLng(Double.valueOf(latValue), Double.valueOf(lngValue)))
-                    .title("City Name"));
+                    .position(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)))
+                    .title(itemName));
 
             //zoom
             if (!latValue.isEmpty() && !lngValue.isEmpty()) {
-                int zoomlevel = 10;
+                int zoomlevel = 15;
                 // Animating to the touched position
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
             }
@@ -149,6 +150,7 @@ public class MapFragment extends PSFragment {
         if (getActivity() != null) {
             latValue = getActivity().getIntent().getStringExtra(Constants.LAT);
             lngValue = getActivity().getIntent().getStringExtra(Constants.LNG);
+            itemName = getActivity().getIntent().getStringExtra(Constants.ITEM_NAME);
         }
 
     }
