@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.provider.SyncStateContract;
+import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -463,7 +464,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
                             binding.get().openTimeTextView.setText(result.data.openingHour);
                             binding.get().closeTimeTextView.setText(result.data.closingHour);
-                            binding.get().phoneOneTextView.setText(result.data.phone1);
+                            binding.get().phoneOneTextView.setText((PhoneNumberUtils.formatNumber(result.data.phone1,Locale.getDefault().getCountry())));
                             binding.get().phoneTwoTextView.setText(result.data.phone2);
                             binding.get().phoneThreeTextView.setText(result.data.phone3);
                             binding.get().emailTextView.setText(result.data.email);
@@ -603,7 +604,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 //                            binding.get().longitudeTextView.setText(result.data.lng);
                             binding.get().openTimeTextView.setText(result.data.openingHour);
                             binding.get().closeTimeTextView.setText(result.data.closingHour);
-                            binding.get().phoneOneTextView.setText(result.data.phone1);
+                            binding.get().phoneOneTextView.setText(PhoneNumberUtils.formatNumber(result.data.phone1,Locale.getDefault().getCountry()));
                             binding.get().phoneTwoTextView.setText(result.data.phone2);
                             binding.get().phoneThreeTextView.setText(result.data.phone3);
                             binding.get().emailTextView.setText(result.data.email);
