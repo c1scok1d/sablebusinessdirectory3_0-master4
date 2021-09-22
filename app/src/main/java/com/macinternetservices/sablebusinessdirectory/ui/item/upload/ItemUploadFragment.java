@@ -572,7 +572,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 if (latLng != null) {
                                     latitude = latLng.latitude;
                                     longitude = latLng.longitude;
-                                    changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                                    changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
                                     Address address = getAddressFromLatLng(latLng);
                                     if (address != null) {
                                         Log.d("Adddress", address.toString());
@@ -733,7 +733,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             if (latLng != null) {
                                 latitude = latLng.latitude;
                                 longitude = latLng.longitude;
-                                changeCamera(String.valueOf(latitude),String.valueOf(longitude));
+                                changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
                                 Address address = getAddressFromLatLng(latLng);
                                 if (address != null) {
                                     Log.d("Adddress", address.toString());
@@ -1295,7 +1295,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
             //map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(binding.get().latitudeTextView.getText().toString()), Double.parseDouble(binding.get().latitudeTextView.getText().toString())), 13));
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude))))      // Sets the center of the map to location user
-                    .zoom(11.0f)                   // Sets the zoom
+                    .zoom(15)                   // Sets the zoom
                     .bearing(90)                // Sets the orientation of the camera to east
                     .tilt(30)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
