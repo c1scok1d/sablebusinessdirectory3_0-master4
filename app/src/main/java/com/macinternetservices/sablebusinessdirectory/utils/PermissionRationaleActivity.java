@@ -25,7 +25,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -51,8 +50,6 @@ import androidx.core.content.ContextCompat;
 import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
 
-import javax.inject.Inject;
-
 /**
  * Displays rationale for allowing the activity recognition permission and allows user to accept
  * the permission. After permission is accepted, finishes the activity so main activity can
@@ -75,7 +72,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
     TextSwitcher textSwitcher;
     ImageView imageView;
     Button deny_permission_request, approve_permission_request;
-    private static final int FRAME_TIME_MS = 3000;
+    private static final int FRAME_TIME_MS = 5000;
 
     private Handler imageSwitchHandler;
     ProgressBar progressBar;
@@ -110,7 +107,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
 
         imageSwitchHandler = new Handler();
         imageSwitchHandler.post(runnableCode);
-        //sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
         /**
          *  txt switchers for animations
@@ -155,7 +151,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                     REQUEST_ACCESS_COARSE_LOCATION);
          } else {
             //Ask se to geo to settings and manually allow permissions
-            showDialog("", "You have denied some permissions.  Allow all permissions at [Settings] > [Permissions]",
+            showDialog("", "You have denied some permissions.  Allow all permissions at [Go to Settings] > [Permissions]",
                     "Go to Settings",
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -199,15 +195,27 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                 alertBuilder.setCancelable(true);
                 alertBuilder.setTitle("Special Permissions Required");
-                alertBuilder.setMessage("This app requires special permission to access your current location when running in the background.  Tap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
+                alertBuilder.setMessage("This app requires special permission to monitor your location while working in the background to alert you when near a registered business.\n\nWe respect user privacy. No location data is collected.\n\nTap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
                 alertBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, int id) {
-                        ActivityCompat.requestPermissions(PermissionRationaleActivity.this,
-                                new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},
-                                REQUEST_BACKGROUND_LOCATION); }
+                        if (!shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
+                            //Go to app settings
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                    Uri.fromParts("package", getPackageName(), null));
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                        } else {
+                            ActivityCompat.requestPermissions(PermissionRationaleActivity.this,
+                                    new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},
+                                    REQUEST_BACKGROUND_LOCATION);
+                        }
+                    }
                 });
                 alertBuilder.setNegativeButton("Deny", (dialog, id) -> {
-                    showDialog("", "You will not be alerted when you are near a registered black owned business.  To enable this feature allow all permissions at [Settings] > [Permissions]",
+                    showDialog("", "You will not be alerted when you are near a registered black owned business.\n\nWe respect user privacy. No location data is collected.\n\nTo enable alerts when near a registered black owned business select 'allow all the time' at [Go to Settings] > [Permissions]",
                             "Go to Settings",
                             (dialogInterface, i) -> {
                                 dialogInterface.dismiss();
@@ -223,8 +231,8 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                             },
                             "Continue", (dialogInterface, i) -> {
                                 if (getApplicationContext() != null) {
-                                    SharedPreferences.Editor editor = pref.edit();
-                                    editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
+                                    //SharedPreferences.Editor editor = pref.edit();
+                                    //editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                                     //finish();
@@ -263,31 +271,66 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            switch (requestCode) {
+                case REQUEST_ACCESS_COARSE_LOCATION: {
+                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    }
+                }
+                case REQUEST_ACCESS_FINE_LOCATION: {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    }
+                }
+                case REQUEST_BACKGROUND_LOCATION: {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        //pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
+                    }
+                }
+                default:
+                    /*startActivity(new Intent(this, MainActivity.class));
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    finish(); */
+            }
+           if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 checkPermissionsQ();
             } else {
-                pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
                 startActivity(new Intent(this, MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();            //h.postDelayed(r, 1500);
             }
         } else {
+            /*switch (requestCode) {
+                case REQUEST_ACCESS_COARSE_LOCATION: {
+                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        //checkPermissionsAndCall();
+                    }
+                }
+                case REQUEST_ACCESS_FINE_LOCATION: {
+                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        //checkPermissionsAndCall();
+                    }
+                }
+               /* case REQUEST_BACKGROUND_LOCATION: {
+                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
+                    }
+                }
+                default:
+                    startActivity(new Intent(this, MainActivity.class));
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    finish();
+            } */
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 checkPermissions();
-
             } else {
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString(Constants.GEO_SERVICE_KEY, "false").apply();
                 progressBar.setVisibility(View.GONE);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -309,8 +352,8 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
             Animation imgAnimationIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
             String[] text = {
-                    "The app requires special permission to access your location when not running to alert you when you're near a registered black owned business.",
-                    "Click begin and allow all of the following permissions when prompted."
+                    "The app requires special permission to alert you when you are near a registered black owned business.",
+                    "Click begin and allow all of the following permissions when prompted to receive alerts."
             };
 
             int[] images = {R.mipmap.making_thumbs_up_foreground, R.mipmap.smiling_peace_foreground};
