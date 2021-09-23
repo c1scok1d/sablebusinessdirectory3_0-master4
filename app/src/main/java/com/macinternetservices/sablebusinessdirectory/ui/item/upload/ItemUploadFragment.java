@@ -1302,9 +1302,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                     .build();                   // Creates a CameraPosition from the builder
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+            String title = "You are here!";
+            if(!binding.get().itemNameEditText.getText().toString().isEmpty()){
+                title = binding.get().itemNameEditText.getText().toString();
+            }
             marker = map.addMarker(new MarkerOptions()
                     .position(new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude))))
-                    .title(binding.get().itemNameEditText.getText().toString()));
+                    .title(title));
 
         } catch (Exception e) {
             Utils.psErrorLog("", e);
