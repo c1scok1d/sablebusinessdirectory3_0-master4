@@ -43,8 +43,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/changeLanguageImageView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Change Language"
-                    tools:visibility="gone" />
+                    tools:text="Change Language" />
 
                 <View
                     android:id="@+id/view14"
@@ -66,8 +65,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/notificationSettingTextView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/notificationSettingTextView"
-                    app:srcCompat="@drawable/baselien_arrow_grey_24"
-                    tools:visibility="gone" />
+                    app:srcCompat="@drawable/baselien_arrow_grey_24" />
 
                 <TextView
                     android:id="@+id/editProfileTextView"
