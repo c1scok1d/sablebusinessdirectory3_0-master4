@@ -61,13 +61,13 @@
                             android:id="@+id/imageView5"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginStart="8dp"
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="4dp"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/baseline_show_sponsor" />
+                            app:srcCompat="@mipmap/logo_blk_foreground" />
 
                         <TextView
                             android:id="@+id/addedDateStrTextView"
