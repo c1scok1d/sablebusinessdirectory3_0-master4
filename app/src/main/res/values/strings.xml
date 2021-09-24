@@ -7,8 +7,9 @@
     <string name="facebook_app_id" translatable="false">2106220289466501</string>
 
     <string name="fb_login_protocol_scheme" translatable="false">fb2106220289466501</string>
-
-    <string name="stripe_publish_key" translatable="false">pk_test_51Ii9NaGF7TEBAdGNvpAsrbzxVyJl5XMKlqKCg6Zy0kTjMspYVf57cLGLm0w8y5KwbEJ71hbF1KaY2JlJB8hCQqC900D5GqWkvz</string>
+    <!-- live -->
+    <!-- string name="stripe_publish_key" translatable="false">pk_live_51Jd0QfIryIEv8wuGQDo2aQlf1gEDxA1miSBQ7FHgRerVq0bcbJ7xe2hRE1TaIKveVP3P9WQH6RpoKillj206D4kl00dmgGDp8k</string -->
+    <string name="stripe_publish_key" translatable="false">pk_test_51Jd0QfIryIEv8wuGnnjFJkoa2Ur39g3Dy95VYMUWbFj6uydfRMHzdJ9vvQxM1t4J4CMXV6oZqGIyfDBtRR1xrG0e00mHclq3e5</string>
 
     <string name="razor_key" translatable="false">rzp_0000_00000000000000</string>
 
@@ -644,7 +645,7 @@
     <string name="item_promote__year">year</string>
     <string name="item_promote__c_days">Days</string>
     <string name="item_promote__promote_for">Promote For</string>
-    <string name="item_promote">Promote your business and users will receive alerts when they are near your business. Businesses with higher ratings get preferred promotional status.</string>
+    <string name="item_promote">Attract new customers FOR ONLY $25/YEAR by alerting users when they are near your business\n\n…or share you favorite black owned business with other for ONLY $25/YEAR.</string>
     <string name="item_promote__how_many_days">How Many Days?</string>
     <string name="item_promote__warning_for_start_date">Please select your starting date.</string>
     <string name="item_promote__warning_for_day">Please select at least one day</string>
