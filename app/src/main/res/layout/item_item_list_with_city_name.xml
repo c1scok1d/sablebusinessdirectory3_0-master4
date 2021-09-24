@@ -67,7 +67,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_show_sponsor" />
+                        app:srcCompat="@mipmap/logo_blk_foreground" />
 
                     <TextView
                         android:id="@+id/addedDateStrTextView"
