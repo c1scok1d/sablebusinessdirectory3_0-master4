@@ -134,16 +134,14 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rounded_corner_shape_button"
-                android:text="@string/item_promote__stripe"
+                android:text="pay now"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
-                android:visibility="gone"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/paypalButton"
-                tools:visibility="gone" />
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout14" />
 
             <Button
                 android:id="@+id/paypalButton"
@@ -152,16 +150,17 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_corner_shape_button"
                 android:text="@string/item_promote__paypal"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
+                android:visibility="gone"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/razorButton" />
+                app:layout_constraintTop_toBottomOf="@+id/razorButton"
+                tools:visibility="gone" />
 
             <Button
                 android:id="@+id/razorButton"
@@ -190,14 +189,14 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rounded_corner_shape_button"
-                android:text="Cancel"
+                android:text="do not promote this listing"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/paypalButton" />
+                app:layout_constraintTop_toBottomOf="@id/stripeButton" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout14"
@@ -227,24 +226,26 @@
                         android:layout_marginTop="16dp"
                         android:textColor="@color/text__primary"
                         android:textSize="@dimen/font_title_size"
+                        android:visibility="gone"
                         app:font='@{"normal"}'
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/firstChoicePriceTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="16dp"
+                        android:textAllCaps="true"
                         android:textColor="@color/text__primary_dark"
-                        android:textSize="@dimen/font_h7_size"
+                        android:textSize="@dimen/font_h3_size"
                         app:font='@{"normal"}'
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firstChoiceTitleTextView"
-                        tools:text="$25.00" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="$25" />
 
                     <TextView
                         android:id="@+id/firstChoiceCountTextView"
@@ -253,10 +254,12 @@
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/text__primary_light"
                         android:textSize="@dimen/font_body_size"
+                        android:visibility="gone"
                         app:font='@{"normal"}'
                         app:layout_constraintBottom_toBottomOf="@+id/firstChoicePriceTextView"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/firstChoiceTitleTextView" />
+                        app:layout_constraintTop_toTopOf="@+id/firstChoiceTitleTextView"
+                        tools:visibility="gone" />
 
                     <View
                         android:id="@+id/firstChoiceSelectView"
@@ -265,7 +268,8 @@
                         android:background="@color/global__primary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="gone" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
