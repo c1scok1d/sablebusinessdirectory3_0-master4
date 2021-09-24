@@ -56,7 +56,7 @@ public class StripeFragment extends PSFragment {
     protected void initUIAndActions() {
 
         progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Getting Token");
+        progressDialog.setMessage("Processing Payment");
         progressDialog.setCancelable(false);
 
         binding.get().submitStripeButton.setOnClickListener(v -> {
