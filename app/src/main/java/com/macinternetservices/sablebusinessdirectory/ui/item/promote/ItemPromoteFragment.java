@@ -316,7 +316,7 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                 if (startingDate == null || startingDate.equals("")) {
                     psDialogMsg.showWarningDialog(ItemPromoteFragment.this.getString(R.string.item_promote__warning_for_start_date), ItemPromoteFragment.this.getString(R.string.app__ok));
                     psDialogMsg.show();
-                } else if(customDay){
+                } /*else if(customDay){
                     if( binding.get().dayDataEditText.getText().toString().equals("")){
                         psDialogMsg.showWarningDialog(ItemPromoteFragment.this.getString(R.string.item_promote__enter_day), ItemPromoteFragment.this.getString(R.string.app__ok));
                         psDialogMsg.show();
@@ -324,14 +324,14 @@ public class ItemPromoteFragment extends PSFragment implements DataBoundListAdap
                         amount = Integer.parseInt(oneDayPrice) * Integer.parseInt(binding.get().dayDataEditText.getText().toString());
                         navigationController.navigateToStripeActivity(ItemPromoteFragment.this.getActivity(), appLoadingViewModel.stripePublishableKey);
                     }
-                }
-                else if (!chooseDay) {
-                        amount = firstChoicePrice;
+                }*/
+                else{
+                        amount = Config.PROMOTE_ONE_YEAR_PRICE;
                         navigationController.navigateToStripeActivity(ItemPromoteFragment.this.getActivity(), appLoadingViewModel.stripePublishableKey);
                 }
-                else {
+                /*else {
                     navigationController.navigateToStripeActivity(ItemPromoteFragment.this.getActivity(), appLoadingViewModel.stripePublishableKey);
-                }
+                } */
             }
         });
 
