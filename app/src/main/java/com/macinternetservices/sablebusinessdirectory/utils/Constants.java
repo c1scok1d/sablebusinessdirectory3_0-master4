@@ -372,7 +372,7 @@ Location Current_Location=new Location("");
 
     //payment on/off
     String CHECKPAYPALENABLE = "1";
-    String CHECKSTRIPEENABLE = "0";
+    String CHECKSTRIPEENABLE = "1";
 
     //region FireBase Authentication
 
