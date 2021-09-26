@@ -30,6 +30,7 @@ public class RatingViewModel extends PSViewModel {
     private MutableLiveData<RatingViewModel.TmpDataHolder> ratingPostObj = new MutableLiveData<>();
 
     public float ratingValue = 0;
+    public float totalRatings;
     public float numStar;
     public boolean isData = false;
 
