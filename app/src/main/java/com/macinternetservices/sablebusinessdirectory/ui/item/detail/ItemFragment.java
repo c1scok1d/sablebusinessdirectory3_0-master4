@@ -84,6 +84,7 @@ public class ItemFragment extends PSFragment {
     private static final int REQUEST_CALL = 1;
     private PSDialogMsg psDialogMsg;
     private ImageView imageView;
+    private String image;
     private ItemParameterHolder itemParameterHolder = new ItemParameterHolder();
 
     private boolean twist = false;
@@ -168,7 +169,8 @@ public class ItemFragment extends PSFragment {
             }
         });
 
-        binding.get().viewOnMapTextView.setOnClickListener(v -> navigationController.navigateToMapActivity(getActivity(), itemViewModel.LNG, itemViewModel.LAT, binding.get().nameTextView.getText().toString()));
+        binding.get().viewOnMapTextView.setOnClickListener(v -> navigationController.navigateToMapActivity(getActivity(), itemViewModel.LNG, itemViewModel.LAT, binding.get().nameTextView.getText().toString(), image, ratingViewModel.numStar,
+                ratingViewModel.totalRatings ));
 
         binding.get().favoriteImageView.setOnLikeListener(new OnLikeListener() {
             @Override
@@ -850,6 +852,7 @@ public class ItemFragment extends PSFragment {
 
                                 specsViewModel.setSpecsListObj(itemViewModel.itemId);
 
+                                image  = listResource.data.defaultPhoto.imgPath;
                                 replaceItemData(listResource.data);
                                 pref.edit().putString(Constants.CITY_ID, listResource.data.cityId).apply();
                                 bindingRatingData(listResource.data);
@@ -883,7 +886,7 @@ public class ItemFragment extends PSFragment {
                                 pref.edit().putString(Constants.CITY_ID, listResource.data.cityId).apply();
 //
                                 setTagData(listResource.data);
-//
+                                image = listResource.data.defaultPhoto.imgPath;
                                 bindingRatingData(listResource.data);
                                 bindingCountData(listResource.data);
                                 bindingTimeData(listResource.data);
@@ -1061,6 +1064,7 @@ public class ItemFragment extends PSFragment {
 
         binding.get().catAndSubcatTextView.setText(getString(R.string.item_detail__category, item.category.name, item.subCategory.name));
         ratingViewModel.ratingValue = item.ratingDetails.totalRatingValue;
+        ratingViewModel.totalRatings = item.ratingDetails.totalRatingCount;
 
         if (!item.isFeatured.equals(Constants.ONE)) {
             binding.get().featureTextView.setVisibility(View.GONE);
