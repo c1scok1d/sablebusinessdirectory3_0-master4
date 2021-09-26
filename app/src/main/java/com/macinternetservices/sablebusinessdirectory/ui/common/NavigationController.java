@@ -583,11 +583,14 @@ public class NavigationController {
         activity.startActivity(intent);
     }
 
-    public void navigateToMapActivity(Activity activity, String LNG, String LAT, String itemName) {
+    public void navigateToMapActivity(Activity activity, String LNG, String LAT, String itemName, String imgURL, Float rating, Float totalRatings) {
         Intent intent = new Intent(activity, MapActivity.class);
         intent.putExtra(Constants.LNG, LNG);
         intent.putExtra(Constants.LAT, LAT);
         intent.putExtra(Constants.ITEM_NAME, itemName);
+        intent.putExtra(Constants.ITEM_IMAGE_URL, imgURL);
+        intent.putExtra(Constants.RATING_STARS, rating);
+        intent.putExtra(Constants.TOTAL_RATINGS, totalRatings);
         activity.startActivity(intent);
     }
 
