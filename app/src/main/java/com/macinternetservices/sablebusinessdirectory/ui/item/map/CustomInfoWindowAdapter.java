@@ -48,15 +48,14 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         ratingBar.setStepSize(0.5f);
         tvTitle.setText(marker.getTitle());
 
-       /* if (rating == 0.0) {
+        if (rating == 0.0) {
             ratingNo.setText(R.string.item_detail__rating);
-        } else { */
+        } else {
             ratingNo.setText(rating+ " " +"(" +totalRatings+ " ratings)");
             //ratingNo.setText(R.string.rating__total_count_n_value, rating + "", totalRatings + "");
-        //}
+        }
 
         ratingBar.setRating(rating);
-        //ratingNo.setText(String.valueOf(rating));
 
         Glide.with(context)
                 .asBitmap()
