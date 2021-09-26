@@ -60,6 +60,8 @@ Location Current_Location=new Location("");
     String RATING_THREE = "3";
     String RATING_FOUR = "4";
     String RATING_FIVE = "5";
+    String RATING_STARS = "0";
+    String TOTAL_RATINGS= "0";
 
     //endregion
 
