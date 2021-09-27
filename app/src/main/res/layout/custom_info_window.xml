@@ -5,7 +5,6 @@
     android:id="@+id/custom_info_window_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="25dp"
     android:background="@drawable/rounded_corner_shape_view_with_border"
     android:orientation="vertical">
 
@@ -15,9 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@drawable/rounded_corner_shape_view_with_border"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_blk"
         tools:layout_conversion_absoluteHeight="82dp"
         tools:layout_conversion_absoluteWidth="82dp" />
@@ -27,11 +27,12 @@
         style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:numStars="5"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView22"
+        app:layout_constraintTop_toBottomOf="@id/custom_window_description"
         tools:layout_conversion_absoluteHeight="36dp"
         tools:layout_conversion_absoluteWidth="181dp" />
 
@@ -50,15 +51,30 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:gravity="center_horizontal"
         android:text="ITEM_NAME"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView22"
         tools:layout_conversion_absoluteHeight="19dp"
         tools:layout_conversion_absoluteWidth="148dp"
         tools:text="ITEM_NAME" />
+
+    <TextView
+        android:id="@+id/custom_window_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@id/ratingBar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
