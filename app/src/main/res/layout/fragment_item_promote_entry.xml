@@ -189,7 +189,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rounded_corner_shape_button"
-                android:text="do not promote this listing"
+                android:text="CANCEL"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
