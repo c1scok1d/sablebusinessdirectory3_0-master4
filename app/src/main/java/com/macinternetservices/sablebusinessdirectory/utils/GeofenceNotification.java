@@ -37,7 +37,7 @@ public class GeofenceNotification {
     String notificationText = "";
     String notificationText2 = "";
     protected SharedPreferences pref;
-    protected boolean is_triggered = false;
+    protected String transition = "null";
 
     public GeofenceNotification(Context context) {
         this.context = context;
@@ -61,7 +61,7 @@ public class GeofenceNotification {
         }
         switch (transitionType) {
             case Geofence.GEOFENCE_TRANSITION_ENTER:
-                if(!is_triggered) {
+                if(!transition.equals("enter")) {
                     if (near > 0) {
                         if (!firstName.isEmpty()) {
                             notificationText = "Good news " + firstName + "!";
@@ -84,7 +84,7 @@ public class GeofenceNotification {
                         Toast.makeText(context, "There are " + near + " black owned businesses near you.", Toast.LENGTH_LONG).show();
                     }
                     transitionEnterNotification(context, notificationText, notificationText2);
-                    is_triggered = true;
+                    transition = "enter";
                 }
                 break;
             case Geofence.GEOFENCE_TRANSITION_DWELL:
@@ -94,9 +94,13 @@ public class GeofenceNotification {
                 break;
 
             case Geofence.GEOFENCE_TRANSITION_EXIT:
-                notificationText = "Don't miss an opportunity to buy black.";
-                notificationText2 = "You are near " + simpleGeofence.getItem_name();
-                transitionExitNotification(context, notificationText, notificationText2);
+                if(!transition.equals("exit")) {
+                    notificationText = "Don't miss an opportunity to buy black.";
+                    notificationText2 = "You are near " + simpleGeofence.getItem_name();
+                    transitionExitNotification(context, notificationText, notificationText2);
+                    transition = "exit";
+                }
+
                 break;
         }
 
