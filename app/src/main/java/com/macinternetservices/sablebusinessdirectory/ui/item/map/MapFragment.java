@@ -1,9 +1,15 @@
 package com.macinternetservices.sablebusinessdirectory.ui.item.map;
 
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +17,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -24,16 +32,20 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.macinternetservices.sablebusinessdirectory.MainActivity;
 import com.macinternetservices.sablebusinessdirectory.R;
 import com.macinternetservices.sablebusinessdirectory.binding.FragmentDataBindingComponent;
 import com.macinternetservices.sablebusinessdirectory.databinding.FragmentMapBinding;
 import com.macinternetservices.sablebusinessdirectory.ui.common.PSFragment;
 import com.macinternetservices.sablebusinessdirectory.utils.AutoClearedValue;
 import com.macinternetservices.sablebusinessdirectory.utils.Constants;
+import com.macinternetservices.sablebusinessdirectory.utils.PermissionRationaleActivity;
 
 import java.util.Map;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
 import static com.macinternetservices.sablebusinessdirectory.utils.GeofenceNotification.getBitmapFromURL;
 
 /**
@@ -41,8 +53,8 @@ import static com.macinternetservices.sablebusinessdirectory.utils.GeofenceNotif
  */
 public class MapFragment extends PSFragment {
 
-    private String latValue = "48.856452647178386";
-    private String lngValue = "2.3523519560694695";
+    private String latValue = "41.6100344";
+    private String lngValue = "-87.6467132";
     private String itemName, itemImage, description;
     private Float rating, totalRatings;
 
@@ -81,7 +93,8 @@ public class MapFragment extends PSFragment {
 
         binding.get().mapView.getMapAsync(googleMap -> {
             map = googleMap;
-            CustomInfoWindowAdapter adapter = new CustomInfoWindowAdapter(getActivity(), rating, itemImage, totalRatings);
+            MarkerOptions markerOpt = new MarkerOptions();
+            CustomInfoWindowAdapter adapter = new CustomInfoWindowAdapter(getActivity(), rating, itemImage, totalRatings, description);
 
             Glide.with(getActivity())
                     .asBitmap()
@@ -91,13 +104,18 @@ public class MapFragment extends PSFragment {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                             //marker
-                            MarkerOptions markerOpt = new MarkerOptions();
                             markerOpt.position(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)))
                                     .title(itemName)
                                     .snippet(description);
-                                    //.icon(BitmapDescriptorFactory.fromBitmap(resource));
+                            //.icon(BitmapDescriptorFactory.fromBitmap(resource));
                             //Set Custom InfoWindow Adapter
                             map.setInfoWindowAdapter(adapter);
+                            //zoom
+                            if (!latValue.isEmpty() && !lngValue.isEmpty()) {
+                                int zoomlevel = 15;
+                                // Animating to the touched position
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
+                            }
                             map.addMarker(markerOpt).showInfoWindow();
                         }
 
@@ -105,25 +123,69 @@ public class MapFragment extends PSFragment {
                         public void onLoadFailed(@Nullable Drawable errorDrawable) {
                             super.onLoadFailed(errorDrawable);
                             //marker
-                            MarkerOptions markerOpt = new MarkerOptions();
+                            //MarkerOptions markerOpt = new MarkerOptions();
                             markerOpt.position(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)))
                                     .title(itemName)
                                     .snippet(description);
-                                    //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.logo_blk));
+                            //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.logo_blk));
                             //Set Custom InfoWindow Adapter
                             map.setInfoWindowAdapter(adapter);
+                            //zoom
+                            if (!latValue.isEmpty() && !lngValue.isEmpty()) {
+                                int zoomlevel = 15;
+                                // Animating to the touched position
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
+                            }
                             map.addMarker(markerOpt).showInfoWindow();
                         }
                     });
 
-            //zoom
-            if (!latValue.isEmpty() && !lngValue.isEmpty()) {
-                int zoomlevel = 15;
-                // Animating to the touched position
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
-            }
+            map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    if(!map.addMarker(markerOpt).isInfoWindowShown()){
+                        map.addMarker(markerOpt).showInfoWindow();
+                    }
+                    return false;
+                }
+            });
+
+           // AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
+            /*map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    // do stuff on click
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
+                    alertBuilder.setCancelable(true);
+                    //alertBuilder.setTitle("Visit " +itemName);
+                    alertBuilder.setMessage("Would you like directions to "+itemName);
+                    alertBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, int id) {
+                            //do stuff
+                        }
+                    });
+                    alertBuilder.setNegativeButton("No", (dialog, id) -> {
+                        dialog.dismiss();
+                    });
+                    AlertDialog alert = alertBuilder.create();
+                    alert.show();
+                }
+            }); */
         });
     }
+   /* public AlertDialog showDialog(String title, String msg, String positiveLabel, DialogInterface.OnClickListener positiveOnClick,
+                                  String negativeLabel, DialogInterface.OnClickListener negativeOnClick, boolean isCancelAble){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setCancelable(isCancelAble);
+        builder.setMessage(msg);
+        builder.setPositiveButton(positiveLabel, positiveOnClick);
+        builder.setNegativeButton(negativeLabel, negativeOnClick);
+
+        AlertDialog alert = builder.create();
+        alert.show();
+        return alert;
+    } */
 
     @Override
     public void onDestroyView() {
