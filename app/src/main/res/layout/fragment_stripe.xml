@@ -3,33 +3,217 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/infoLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_corner_shape_view_with_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
+
+            <EditText
+                android:id="@+id/editTextTextAptSte"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:hint="Apt/Suite"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@id/itemNameEditText" />
+
+            <EditText
+                android:id="@+id/itemNameEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:hint="Full Name"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewCity" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:ems="15"
+                android:hint="Street Address"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemNameEditText" />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:ems="8"
+                android:hint="City"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView2" />
+
+            <TextView
+                android:id="@+id/textViewState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:ems="8"
+                android:hint="State"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintStart_toEndOf="@id/textViewCity"
+                app:layout_constraintTop_toBottomOf="@id/autoCompleteTextView2" />
+
+            <TextView
+                android:id="@+id/textViewZip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_corner_shape_for_item_upload"
+                android:ems="4"
+                android:hint="Zipcode"
+                android:paddingStart="@dimen/space_8"
+                android:paddingTop="@dimen/space_8"
+                android:paddingBottom="@dimen/space_8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/text__primary"
+                android:textSize="@dimen/font_body_size"
+                app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewState"
+                app:layout_constraintTop_toBottomOf="@id/editTextTextAptSte" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.stripe.android.view.CardInputWidget
-        android:id="@+id/card_input_widget"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/payment_info_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="@dimen/space_8"
+            android:paddingTop="@dimen/space_8"
+            android:paddingBottom="@dimen/space_8"
+            android:text="Payment Information"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text__primary"
+            android:textSize="@dimen/font_body_size"
+            app:font='@{"normal"}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/infoLayout" />
 
-    <Button
-        android:id="@+id/submitStripeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/md_white_1000"
-        android:text="@string/verify_email__submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_input_widget" />
+        <com.stripe.android.view.CardInputWidget
+            android:id="@+id/card_input_widget"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_corner_shape_for_item_upload"
+            app:layout_constraintBottom_toTopOf="@id/submitStripeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/payment_info_text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/submitStripeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/verify_email__submit"
+            android:textColor="@color/md_white_1000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_input_widget" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
