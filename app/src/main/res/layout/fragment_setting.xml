@@ -43,7 +43,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/changeLanguageImageView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Change Language" />
+                    tools:text="@string/edit_setting__notification_setting" />
 
                 <View
                     android:id="@+id/view14"
