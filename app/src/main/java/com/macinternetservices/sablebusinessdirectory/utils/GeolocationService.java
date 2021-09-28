@@ -270,34 +270,61 @@ public class GeolocationService extends Service implements ConnectionCallbacks,
             JSONArray jsonArray = new JSONArray(itemList);
 
             for (int i = 0; i < jsonArray.length(); i++) {
-                geofences.put(jsonArray.getJSONObject(i).getString("id"),
-                        new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
-                                Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
-                                Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")),
-                                5000,
-                                GEOFENCE_EXPIRATION_IN_MILLISECONDS,
-                                (Geofence.GEOFENCE_TRANSITION_ENTER
-                                        | Geofence.GEOFENCE_TRANSITION_DWELL
-                                        | Geofence.GEOFENCE_TRANSITION_EXIT),
-                                jsonArray.getJSONObject(i).getString("is_featured"),
-                                jsonArray.getJSONObject(i).getString("is_promotion"),
-                                jsonArray.getJSONObject(i).getString("city_id"),
-                                jsonArray.getJSONObject(i).getString("name"),
-                                jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
-                reg_id.add(jsonArray.getJSONObject(i).getString("id"));
-                SimpleGeofenceStore.getInstance().geofences.put(jsonArray.getJSONObject(i).getString("id"),
-                        new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
-                                Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
-                                Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")), 5000,
-                                GEOFENCE_EXPIRATION_IN_MILLISECONDS,
-                                (Geofence.GEOFENCE_TRANSITION_ENTER
-                                        | Geofence.GEOFENCE_TRANSITION_DWELL
-                                        | Geofence.GEOFENCE_TRANSITION_EXIT),
-                                jsonArray.getJSONObject(i).getString("is_featured"),
-                                jsonArray.getJSONObject(i).getString("is_promotion"),
-                                jsonArray.getJSONObject(i).getString("city_id"),
-                                jsonArray.getJSONObject(i).getString("name"),
-                                jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
+                if (jsonArray.getJSONObject(i).getString("paid_status").equals("Progress")) {
+                    geofences.put(jsonArray.getJSONObject(i).getString("id"),
+                            new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")),
+                                    5000,
+                                    GEOFENCE_EXPIRATION_IN_MILLISECONDS,
+                                    (Geofence.GEOFENCE_TRANSITION_DWELL),
+                                    jsonArray.getJSONObject(i).getString("is_featured"),
+                                    jsonArray.getJSONObject(i).getString("is_promotion"),
+                                    jsonArray.getJSONObject(i).getString("city_id"),
+                                    jsonArray.getJSONObject(i).getString("name"),
+                                    jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
+                    reg_id.add(jsonArray.getJSONObject(i).getString("id"));
+                    SimpleGeofenceStore.getInstance().geofences.put(jsonArray.getJSONObject(i).getString("id"),
+                            new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")), 5000,
+                                    GEOFENCE_EXPIRATION_IN_MILLISECONDS,
+                                    (Geofence.GEOFENCE_TRANSITION_DWELL),
+                                    jsonArray.getJSONObject(i).getString("is_featured"),
+                                    jsonArray.getJSONObject(i).getString("is_promotion"),
+                                    jsonArray.getJSONObject(i).getString("city_id"),
+                                    jsonArray.getJSONObject(i).getString("name"),
+                                    jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
+                } else {
+                    geofences.put(jsonArray.getJSONObject(i).getString("id"),
+                            new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")),
+                                    5000,
+                                    GEOFENCE_EXPIRATION_IN_MILLISECONDS,
+                                    (Geofence.GEOFENCE_TRANSITION_ENTER
+                                            //| Geofence.GEOFENCE_TRANSITION_DWELL
+                                            | Geofence.GEOFENCE_TRANSITION_EXIT),
+                                    jsonArray.getJSONObject(i).getString("is_featured"),
+                                    jsonArray.getJSONObject(i).getString("is_promotion"),
+                                    jsonArray.getJSONObject(i).getString("city_id"),
+                                    jsonArray.getJSONObject(i).getString("name"),
+                                    jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
+                    reg_id.add(jsonArray.getJSONObject(i).getString("id"));
+                    SimpleGeofenceStore.getInstance().geofences.put(jsonArray.getJSONObject(i).getString("id"),
+                            new SimpleGeofence(jsonArray.getJSONObject(i).getString("id"),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lat")),
+                                    Double.parseDouble(jsonArray.getJSONObject(i).getString("lng")), 5000,
+                                    GEOFENCE_EXPIRATION_IN_MILLISECONDS,
+                                    (Geofence.GEOFENCE_TRANSITION_ENTER
+                                            //| Geofence.GEOFENCE_TRANSITION_DWELL
+                                            | Geofence.GEOFENCE_TRANSITION_EXIT),
+                                    jsonArray.getJSONObject(i).getString("is_featured"),
+                                    jsonArray.getJSONObject(i).getString("is_promotion"),
+                                    jsonArray.getJSONObject(i).getString("city_id"),
+                                    jsonArray.getJSONObject(i).getString("name"),
+                                    jsonArray.getJSONObject(i).getJSONObject("default_photo").getString("img_path")));
+                }
                 reg_id.add(jsonArray.getJSONObject(i).getString("id"));
             }
             GeofencingRequest.Builder geofencingRequestBuilder = new GeofencingRequest.Builder();
@@ -336,8 +363,8 @@ public class GeolocationService extends Service implements ConnectionCallbacks,
     @SuppressLint("MissingPermission")
     protected void startLocationUpdates() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, (30/60000), // (# of mins/60000)
-                (5*1609), LocationListener); //(# of miles*1609)
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, (Constants.GEO_SERVICE_TIME/60000), // (# of mins/60000)
+                (Constants.GEO_SERVICE_DISTANCE*1609), LocationListener); //(# of miles*1609)
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
     }
