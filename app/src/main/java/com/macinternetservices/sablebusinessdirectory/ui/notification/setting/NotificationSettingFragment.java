@@ -1,13 +1,11 @@
 package com.macinternetservices.sablebusinessdirectory.ui.notification.setting;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
@@ -15,10 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-
-import com.google.gson.Gson;
-import com.macinternetservices.sablebusinessdirectory.MainActivity;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 import com.macinternetservices.sablebusinessdirectory.R;
 import com.macinternetservices.sablebusinessdirectory.binding.FragmentDataBindingComponent;
 import com.macinternetservices.sablebusinessdirectory.databinding.FragmentNotificationSettingBinding;
@@ -30,20 +28,15 @@ import com.macinternetservices.sablebusinessdirectory.utils.PSDialogMsg;
 import com.macinternetservices.sablebusinessdirectory.utils.PermissionRationaleActivity;
 import com.macinternetservices.sablebusinessdirectory.utils.Utils;
 import com.macinternetservices.sablebusinessdirectory.viewmodel.common.NotificationViewModel;
-import com.macinternetservices.sablebusinessdirectory.viewobject.Item;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.util.List;
-
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
-public class NotificationSettingFragment extends PSFragment {
+public class NotificationSettingFragment extends PSFragment implements AdapterView.OnItemSelectedListener{
 
 
     //region Variables
@@ -81,6 +74,8 @@ public class NotificationSettingFragment extends PSFragment {
         return binding.get().getRoot();
     }
 
+    String[] frequency = { "Not Often", "Often", "Very Often"};
+
     @Override
     protected void initUIAndActions() {
 
@@ -112,7 +107,61 @@ public class NotificationSettingFragment extends PSFragment {
                 pref.edit().putString(Constants.GEO_SERVICE_KEY, "false").apply();
             }
         });
+
+
+        /*
+        // create spinner to set alert frequency
+        Spinner spino = null;
+        spino = spino.findViewById(R.id.alert_frequency_spinner);
+         binding.get().alertFrequencySpinner;
+        spino.setOnItemSelectedListener(this);
+
+        // Create the instance of ArrayAdapter
+        // having the list of courses
+        ArrayAdapter ad
+                = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, frequency);
+
+        // set simple layout resource file
+        // for each item of spinner
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Set the ArrayAdapter (ad) data on the
+        // Spinner which binds data to spinner
+        spino.setAdapter(ad); */
+
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(),
+                frequency[position],
+                Toast.LENGTH_LONG)
+                .show();
+
+        switch(position){
+            case 0:
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_DISTANCE), 45).apply();
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_TIME), 120).apply();
+                    break;
+            case 1:
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_DISTANCE), 30).apply();
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_TIME), 60).apply();
+                break;
+            case 2:
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_DISTANCE), 15).apply();
+                pref.edit().putInt(String.valueOf(Constants.GEO_SERVICE_TIME), 30).apply();
+                break;
+            default:
+                Log.e("", "no case");
+                return;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -223,7 +272,7 @@ geolocationService on/off setting
                     notificationViewModel.pushNotificationSetting = pref.getBoolean(Constants.NOTI_SETTING, false);
 
                     if (!isMyServiceRunning(GeolocationService.class)) {
-                        getActivity().startService(new Intent(getContext(), GeolocationService.class));
+                        //getActivity().startService(new Intent(getContext(), GeolocationService.class));
                     }
                    // notificationViewModel.registerNotification(getContext(), Constants.PLATFORM, "",loginUserId);
 
