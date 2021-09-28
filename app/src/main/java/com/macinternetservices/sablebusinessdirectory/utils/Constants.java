@@ -130,7 +130,7 @@ Location Current_Location=new Location("");
     String USER_ID_TO_VERIFY = "USER_ID_TO_VERIFY";
     String CURRENCY_SHORT_FORM = "CURRENCY_SHORT_FORM";
 
-    String USER_STATUS__DELECTED = "deleted";
+    String USER_STATUS__DELETED = "deleted";
     String USER_STATUS__BANNED = "banned";
     String USER_STATUS__UNPUBLISHED = "unpublished";
 
