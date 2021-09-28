@@ -138,12 +138,14 @@ Location Current_Location=new Location("");
 
     //user//
     String CURRENT_USER_NAME="USER_NAME";
-    String PUSH_NOT_KEY="PUSH_NO_KEY";
+    String PUSH_NOT_KEY = "PUSH_NO_KEY";
     String GEO_SERVICE_KEY = "GEO_SERVICE_KEY";
+    Integer GEO_SERVICE_DISTANCE = 15;
+    Integer GEO_SERVICE_TIME = 30;
 
 
     //radius key//
-    String RADIUS_KEY="RADIUS_KEY";
+    String RADIUS_KEY = "RADIUS_KEY";
     String CONST_RADIUS = "10";
 
 
