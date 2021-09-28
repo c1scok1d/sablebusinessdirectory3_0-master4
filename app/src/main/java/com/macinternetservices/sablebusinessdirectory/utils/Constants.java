@@ -381,7 +381,7 @@ Location Current_Location=new Location("");
     String EMAILAUTH = "password"; // don't change
     String FACEBOOKAUTH = "facebook.com"; // don't change
     String GOOGLEAUTH = "google.com"; // don't change
-    String DEFAULTEMAIL = "admin@panaceasoft.com"; // don't change
-    String DEFAULTPASSWORD = "admin@panaceasoft.com"; // don't change
+    String DEFAULTEMAIL = "admin@sablebusinessdirectory.com"; // don't change
+    String DEFAULTPASSWORD = "admin@sablebusinessdirectory.com"; // don't change
 }
 
