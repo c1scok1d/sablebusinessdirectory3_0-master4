@@ -122,7 +122,7 @@ public class AppLoadingFragment extends PSFragment {
 
 
                         switch (result.data.userInfo.userStatus) {
-                            case Constants.USER_STATUS__DELECTED:
+                            case Constants.USER_STATUS__DELETED:
                                 AppLoadingFragment.this.logout();
                                 showErrorDialog(result.data, getString(R.string.error_message__user_deleted));
                                 break;
