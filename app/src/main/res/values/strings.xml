@@ -390,9 +390,9 @@
     <string name="item_detail__help_other">Help other find the best place to enjoy</string>
     <string name="item_detail__install_messenger_app">Please install Messenger App.</string>
     <string name="item_detail__install_whatsapp_app">Please install WhatsApp App.</string>
-    <string name="item_detail__promote_title">Promote Your Business</string>
-    <string name="item_detail__promote_sub_title">Let more people discover your business!</string>
-    <string name="item_detail__promote_description">Display your business at the top of the lists and alert users when they are nearby.</string>
+    <string name="item_detail__promote_title">Attrace New Customers</string>
+    <string name="item_detail__promote_sub_title">Alert users when nearby!</string>
+    <string name="item_detail__promote_description">Display your business at the top of our lists and alert users when they are near the business for only $25/year.</string>
     <string name="item_detail__promote">Promote</string>
     <!--Discount-->
     <string name="discount__rating5">%1$s rating ( %2$s )</string>
