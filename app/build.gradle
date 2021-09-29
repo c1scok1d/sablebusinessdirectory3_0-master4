@@ -145,6 +145,7 @@ dependencies {
 
     //Stripe Payment
     implementation 'com.stripe:stripe-android:16.9.0'
+    //implementation 'com.stripe:stripe-android:10.4.6'
 
     //razor
     implementation 'com.razorpay:checkout:1.6.7'
