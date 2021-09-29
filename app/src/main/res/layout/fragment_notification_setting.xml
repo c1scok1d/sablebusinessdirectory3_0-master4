@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="spinnerAdapter"
-            type="android.widget.ArrayAdapter" />
+        <variable name="FrequencySpinnerViewModel"
+            type="com.sable.businesslistingapi.viewmodel.notification.FrequencySpinnerViewModel"/>
     </data>
 
     <LinearLayout
