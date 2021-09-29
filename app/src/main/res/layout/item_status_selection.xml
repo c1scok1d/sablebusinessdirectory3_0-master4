@@ -6,7 +6,7 @@
 
         <variable
             name="statusexpand"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemStatus" />
+            type="com.sable.businesslistingapi.viewobject.ItemStatus" />
 
         <!--        <variable-->
         <!--            name="image"-->

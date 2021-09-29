@@ -7,7 +7,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.macinternetservices.sablebusinessdirectory.ui.setting.ProfileEditActivity">
+        tools:context="com.sable.businesslistingapi.ui.setting.ProfileEditActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="itemCollectinHeader"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemCollectionHeader"/>
+            type="com.sable.businesslistingapi.viewobject.ItemCollectionHeader"/>
 
     </data>
 

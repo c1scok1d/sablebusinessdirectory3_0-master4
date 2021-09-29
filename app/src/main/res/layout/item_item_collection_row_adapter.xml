@@ -8,7 +8,7 @@
 
         <variable
             name="itemCollectionHeader"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemCollectionHeader" />
+            type="com.sable.businesslistingapi.viewobject.ItemCollectionHeader" />
 
     </data>
 

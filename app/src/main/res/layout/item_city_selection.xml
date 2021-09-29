@@ -6,7 +6,7 @@
 
         <variable
             name="city"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.City" />
+            type="com.sable.businesslistingapi.viewobject.City" />
 
     </data>
 

@@ -5,7 +5,7 @@
 
         <variable
             name="tab"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.holder.TabObject" />
+            type="com.sable.businesslistingapi.viewobject.holder.TabObject" />
 
     </data>
 

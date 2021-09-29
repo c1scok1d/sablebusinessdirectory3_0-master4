@@ -8,7 +8,7 @@
 
         <variable
             name="category"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory" />
+            type="com.sable.businesslistingapi.viewobject.ItemCategory" />
 
     </data>
 

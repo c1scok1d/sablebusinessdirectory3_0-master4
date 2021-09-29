@@ -9,7 +9,7 @@
 
         <variable
             name="user"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.User" />
+            type="com.sable.businesslistingapi.viewobject.User" />
     </data>
 
     <androidx.core.widget.NestedScrollView

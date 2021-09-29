@@ -6,7 +6,7 @@
 
         <variable
             name="itemspecs"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemSpecs" />
+            type="com.sable.businesslistingapi.viewobject.ItemSpecs" />
 
     </data>
 

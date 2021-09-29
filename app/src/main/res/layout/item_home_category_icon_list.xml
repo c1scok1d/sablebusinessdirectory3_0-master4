@@ -6,7 +6,7 @@
 
         <variable
             name="cat"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemCategory" />
+            type="com.sable.businesslistingapi.viewobject.ItemCategory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

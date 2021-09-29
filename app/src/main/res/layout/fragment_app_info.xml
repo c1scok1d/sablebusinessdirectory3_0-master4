@@ -6,7 +6,7 @@
     <data>
         <variable
             name="aboutUs"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.AboutUs" />
+            type="com.sable.businesslistingapi.viewobject.AboutUs" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="itemSpecs" type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemSpecs" />
+            name="itemSpecs" type="com.sable.businesslistingapi.viewobject.ItemSpecs" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

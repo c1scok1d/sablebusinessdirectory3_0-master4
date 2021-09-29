@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.Item" />
+            type="com.sable.businesslistingapi.viewobject.Item" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

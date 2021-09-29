@@ -6,7 +6,7 @@
 
         <variable
             name="notification"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.Noti" />
+            type="com.sable.businesslistingapi.viewobject.Noti" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

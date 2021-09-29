@@ -10,7 +10,7 @@
         <import type="android.view.View" />
         <variable
             name="image"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.Image" />
+            type="com.sable.businesslistingapi.viewobject.Image" />
 
     </data>
 

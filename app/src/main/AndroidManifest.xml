@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.macinternetservices.sablebusinessdirectory">
+    package="com.sable.businesslistingapi">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -27,7 +27,7 @@
         android:required="false" />
 
     <application
-        android:name="com.macinternetservices.sablebusinessdirectory.PSApp"
+        android:name="com.sable.businesslistingapi.PSApp"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
@@ -38,10 +38,10 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Base.PSTheme"
         tools:replace="android:label">
-        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.item.user_item.LoginUserItemListActivity"></activity>
-        <activity android:name="com.macinternetservices.sablebusinessdirectory.ui.privacypolicy.PrivacyPolicyActivity" />
+        <activity android:name="com.sable.businesslistingapi.ui.item.user_item.LoginUserItemListActivity"></activity>
+        <activity android:name="com.sable.businesslistingapi.ui.privacypolicy.PrivacyPolicyActivity" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.apploading.AppLoadingActivity"
+            android:name="com.sable.businesslistingapi.ui.apploading.AppLoadingActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -57,106 +57,106 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.MainActivity"
+            android:name="com.sable.businesslistingapi.MainActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.rating.RatingListActivity"
+            android:name="com.sable.businesslistingapi.ui.item.rating.RatingListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.selectedcity.SelectedCityActivity"
+            android:name="com.sable.businesslistingapi.ui.city.selectedcity.SelectedCityActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.detail.CityActivity"
+            android:name="com.sable.businesslistingapi.ui.city.detail.CityActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.subcategory.SubCategoryActivity"
+            android:name="com.sable.businesslistingapi.ui.subcategory.SubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.map.MapActivity"
+            android:name="com.sable.businesslistingapi.ui.item.map.MapActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.detail.ItemActivity"
+            android:name="com.sable.businesslistingapi.ui.item.detail.ItemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.listbycityid.BlogListByCityIdActivity"
+            android:name="com.sable.businesslistingapi.ui.blog.listbycityid.BlogListByCityIdActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.category.list.CategoryListActivity"
+            android:name="com.sable.businesslistingapi.ui.category.list.CategoryListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.collection.header.CollectionHeaderListActivity"
+            android:name="com.sable.businesslistingapi.ui.item.collection.header.CollectionHeaderListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.ProfileEditActivity"
+            android:name="com.sable.businesslistingapi.ui.user.ProfileEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserRegisterActivity"
+            android:name="com.sable.businesslistingapi.ui.user.UserRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.phonelogin.PhoneLoginActivity"
+            android:name="com.sable.businesslistingapi.ui.user.phonelogin.PhoneLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.verifyphone.VerifyMobileActivity"
+            android:name="com.sable.businesslistingapi.ui.user.verifyphone.VerifyMobileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.verifyemail.VerifyEmailActivity"
+            android:name="com.sable.businesslistingapi.ui.user.verifyemail.VerifyEmailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserLoginActivity"
+            android:name="com.sable.businesslistingapi.ui.user.UserLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.UserForgotPasswordActivity"
+            android:name="com.sable.businesslistingapi.ui.user.UserForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.user.PasswordChangeActivity"
+            android:name="com.sable.businesslistingapi.ui.user.PasswordChangeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.search.specialfilterbyattributes.FilteringActivity"
+            android:name="com.sable.businesslistingapi.ui.item.search.specialfilterbyattributes.FilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.detail.NotificationActivity"
+            android:name="com.sable.businesslistingapi.ui.notification.detail.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-        android:name="com.macinternetservices.sablebusinessdirectory.ui.setting.SettingActivity"
+        android:name="com.sable.businesslistingapi.ui.setting.SettingActivity"
         android:screenOrientation="portrait"
         android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.terms.TermsAndConditionsActivity"
+            android:name="com.sable.businesslistingapi.ui.terms.TermsAndConditionsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.setting.NotificationSettingActivity"
+            android:name="com.sable.businesslistingapi.ui.notification.setting.NotificationSettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.setting.appinfo.AppInfoActivity"
+            android:name="com.sable.businesslistingapi.ui.setting.appinfo.AppInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.favourite.FavouriteListActivity"
+            android:name="com.sable.businesslistingapi.ui.item.favourite.FavouriteListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
@@ -164,104 +164,104 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.comment.detail.CommentDetailActivity"
+            android:name="com.sable.businesslistingapi.ui.comment.detail.CommentDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.notification.list.NotificationListActivity"
+            android:name="com.sable.businesslistingapi.ui.notification.list.NotificationListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.search.searchlist.SearchListActivity"
+            android:name="com.sable.businesslistingapi.ui.item.search.searchlist.SearchListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.comment.list.CommentListActivity"
+            android:name="com.sable.businesslistingapi.ui.comment.list.CommentListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.gallery.GalleryActivity"
+            android:name="com.sable.businesslistingapi.ui.gallery.GalleryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.readmore.ReadMoreActivity"
+            android:name="com.sable.businesslistingapi.ui.item.readmore.ReadMoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.gallery.detail.GalleryDetailActivity"
+            android:name="com.sable.businesslistingapi.ui.gallery.detail.GalleryDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.dashboard.DashboardSearchByCategoryActivity"
+            android:name="com.sable.businesslistingapi.ui.dashboard.DashboardSearchByCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.history.UserHistoryListActivity"
+            android:name="com.sable.businesslistingapi.ui.item.history.UserHistoryListActivity"
             android:label="@string/title__activity_user_history_list"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.collection.itemCollection.ItemCollectionActivity"
+            android:name="com.sable.businesslistingapi.ui.item.collection.itemCollection.ItemCollectionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.list.BlogListActivity"
+            android:name="com.sable.businesslistingapi.ui.blog.list.BlogListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.blog.detail.BlogDetailActivity"
+            android:name="com.sable.businesslistingapi.ui.blog.detail.BlogDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.forceupdate.ForceUpdateActivity"
+            android:name="com.sable.businesslistingapi.ui.forceupdate.ForceUpdateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.city.cityList.CityListActivity"
+            android:name="com.sable.businesslistingapi.ui.city.cityList.CityListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.map.mapFilter.MapFilteringActivity"
+            android:name="com.sable.businesslistingapi.ui.item.map.mapFilter.MapFilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.SelectionActivity"
+            android:name="com.sable.businesslistingapi.ui.item.upload.SelectionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.ItemUploadActivity"
+            android:name="com.sable.businesslistingapi.ui.item.upload.ItemUploadActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.imageupload.ImageUploadActivity"
+            android:name="com.sable.businesslistingapi.ui.imageupload.ImageUploadActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.specification.SpecificationListActivity"
+            android:name="com.sable.businesslistingapi.ui.specification.SpecificationListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.specification.addspecification.AddAndEditSpecificationActivity"
+            android:name="com.sable.businesslistingapi.ui.specification.addspecification.AddAndEditSpecificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.imageupload.itemimagelist.ItemImageListActivity"
+            android:name="com.sable.businesslistingapi.ui.imageupload.itemimagelist.ItemImageListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.upload.map.MapItemEntryActivity"
+            android:name="com.sable.businesslistingapi.ui.item.upload.map.MapItemEntryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.stripe.StripeActivity"
+            android:name="com.sable.businesslistingapi.ui.stripe.StripeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.ui.item.promote.ItemPromoteActivity"
+            android:name="com.sable.businesslistingapi.ui.item.promote.ItemPromoteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.macinternetservices.sablebusinessdirectory.utils.PermissionRationaleActivity"
+            android:name="com.sable.businesslistingapi.utils.PermissionRationaleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
@@ -288,7 +288,7 @@
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="ca-app-pub-6732007157855667~5895978563"/>
         <meta-data
-            android:name="com.macinternetservices.sablebusinessdirectory.utils.CustomCachingGlideModule"
+            android:name="com.sable.businesslistingapi.utils.CustomCachingGlideModule"
             android:value="AppGlideModule" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
@@ -300,26 +300,26 @@
             android:name="com.razorpay.ApiKey"
             android:value="@string/razor_key" />
 
-        <service android:name="com.macinternetservices.sablebusinessdirectory.utils.FirebaseMessagingService">
+        <service android:name="com.sable.businesslistingapi.utils.FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <service
-            android:name=".utils.GeolocationService"
+            android:name="com.sable.businesslistingapi.utils.GeolocationService"
             android:exported="false"
             android:enabled="true">
         </service>
 
         <service
-            android:name=".utils.GeofenceReceiver"
+            android:name="com.sable.businesslistingapi.utils.GeofenceReceiver"
             android:exported="false"
             android:enabled="true">
         </service>
 
         <receiver
-            android:name=".utils.GeofenceReceiver"
+            android:name="com.sable.businesslistingapi.utils.GeofenceReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="ACTION_RECEIVE_GEOFENCE" />

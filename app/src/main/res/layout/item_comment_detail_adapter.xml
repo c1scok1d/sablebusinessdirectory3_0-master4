@@ -6,7 +6,7 @@
 
         <variable
             name="commentDetail"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.CommentDetail" />
+            type="com.sable.businesslistingapi.viewobject.CommentDetail" />
 
     </data>
 

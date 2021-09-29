@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.macinternetservices.sablebusinessdirectory.ui.notification.setting.NotificationSettingFragment"
+        tools:context="com.sable.businesslistingapi.ui.notification.setting.NotificationSettingFragment"
         android:id="@+id/layout">
 
 

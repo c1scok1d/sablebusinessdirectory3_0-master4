@@ -6,7 +6,7 @@
 
         <variable
             name="rating"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.Rating" />
+            type="com.sable.businesslistingapi.viewobject.Rating" />
 
     </data>
 

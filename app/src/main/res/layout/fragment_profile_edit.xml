@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.User" />
+            type="com.sable.businesslistingapi.viewobject.User" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:background="@color/md_grey_100"
             android:paddingBottom="@dimen/space_16"
-            tools:context="com.macinternetservices.sablebusinessdirectory.ui.user.ProfileFragment">
+            tools:context="com.sable.businesslistingapi.ui.user.ProfileFragment">
 
             <ImageView
                 android:id="@+id/userCoverImageView"

@@ -81,7 +81,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../../bruva/png/53-holding-an-i-pad.png" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../../../bruva/png/107-shape-7.png" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -116,8 +116,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="legacyIconShape" value="NONE" />
-                                      <entry key="outputName" value="online_reviews" />
+                                      <entry key="outputName" value="promote" />
                                     </map>
                                   </option>
                                 </PersistentState>

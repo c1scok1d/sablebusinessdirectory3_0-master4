@@ -8,7 +8,7 @@
 
         <variable
             name="blog"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.Blog" />
+            type="com.sable.businesslistingapi.viewobject.Blog" />
 
     </data>
 

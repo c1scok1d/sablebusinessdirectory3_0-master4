@@ -5,9 +5,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.macinternetservices.sablebusinessdirectory.ui.gallery.detail.GalleryDetailFragment">
+        tools:context="com.sable.businesslistingapi.ui.gallery.detail.GalleryDetailFragment">
 
-        <com.macinternetservices.sablebusinessdirectory.utils.ExtendedViewPager
+        <com.sable.businesslistingapi.utils.ExtendedViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

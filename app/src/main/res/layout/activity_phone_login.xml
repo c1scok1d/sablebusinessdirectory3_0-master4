@@ -7,7 +7,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.macinternetservices.psbuyandsell.ui.user.UserRegisterActivity">
+        tools:context="com.sable.psbuyandsell.ui.user.UserRegisterActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

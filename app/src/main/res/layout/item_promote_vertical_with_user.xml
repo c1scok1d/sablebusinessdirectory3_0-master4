@@ -9,7 +9,7 @@
 
         <variable
             name="itemPaidHistory"
-            type="com.macinternetservices.sablebusinessdirectory.viewobject.ItemPaidHistory" />
+            type="com.sable.businesslistingapi.viewobject.ItemPaidHistory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:945661989282:android:c851fe0b4e367cf5fa22fb",
         "android_client_info": {
-          "package_name": "com.macinternetservices.sablebusinessdirectory"
+          "package_name": "com.sable.businesslistingapi"
         }
       },
       "oauth_client": [
