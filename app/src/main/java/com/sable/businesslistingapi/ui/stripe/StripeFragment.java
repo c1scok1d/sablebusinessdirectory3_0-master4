@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+//import androidx.browser.trusted.Token;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -30,8 +31,8 @@ import com.sable.businesslistingapi.ui.common.PSFragment;
 import com.sable.businesslistingapi.utils.AutoClearedValue;
 import com.sable.businesslistingapi.utils.Constants;
 import com.sable.businesslistingapi.utils.Utils;
+import com.stripe.android.ApiResultCallback;
 import com.stripe.android.Stripe;
-import com.stripe.android.TokenCallback;
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 
@@ -180,9 +181,9 @@ public class StripeFragment extends PSFragment {
         progressDialog.show();
         if(getContext() != null) {
 
-            stripe.get().createToken(
+            stripe.get().createCardToken(
                     card,
-                    new TokenCallback() {
+                    new ApiResultCallback<Token>() {
                         public void onSuccess(Token token) {
                             // Send token to your server
                             Utils.psLog("PAYMENT_STRIPE Token Id" + token.getId());
