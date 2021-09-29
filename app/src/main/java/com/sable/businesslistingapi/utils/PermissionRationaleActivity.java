@@ -195,7 +195,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                 alertBuilder.setCancelable(true);
                 alertBuilder.setTitle("Special Permissions Required");
-                alertBuilder.setMessage("To alert you when you are near a registered business, this app requires special permission to access your location while working in the background.\n\nWe respect user privacy. You location will never be recorded or shared for any reason.\n\nTap 'Deny' to proceed without receiving notification alerts.\n\nTap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
+                alertBuilder.setMessage("To alert you when you are near a registered business, this app requires special permission to access your location while working in the background.\n\nWe respect user privacy. Your location will never be recorded or shared for any reason.\n\nTap 'Deny' to proceed without receiving notification alerts.\n\nTap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
                 alertBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, int id) {
                         if (!shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
@@ -286,7 +286,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 }
                 case REQUEST_BACKGROUND_LOCATION: {
                     if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        //pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
+                        pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
                     }
                 }
                 default:
@@ -305,27 +305,6 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 finish();            //h.postDelayed(r, 1500);
             }
         } else {
-            /*switch (requestCode) {
-                case REQUEST_ACCESS_COARSE_LOCATION: {
-                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        //checkPermissionsAndCall();
-                    }
-                }
-                case REQUEST_ACCESS_FINE_LOCATION: {
-                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        //checkPermissionsAndCall();
-                    }
-                }
-               /* case REQUEST_BACKGROUND_LOCATION: {
-                    if ( grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        pref.edit().putString(Constants.GEO_SERVICE_KEY, "true").apply();
-                    }
-                }
-                default:
-                    startActivity(new Intent(this, MainActivity.class));
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    finish();
-            } */
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 progressBar.setVisibility(View.VISIBLE);
