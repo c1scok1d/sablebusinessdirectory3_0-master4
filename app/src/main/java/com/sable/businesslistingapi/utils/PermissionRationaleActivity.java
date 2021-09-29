@@ -195,7 +195,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
                 alertBuilder.setCancelable(true);
                 alertBuilder.setTitle("Special Permissions Required");
-                alertBuilder.setMessage("This app requires special permission to monitor your location while working in the background to alert you when near a registered business.\n\nWe respect user privacy. No location data is collected.\n\nTap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
+                alertBuilder.setMessage("This app requires special permission to monitor your location while working in the background to alert you when near a registered business.\n\nWe respect user privacy. No location data is collected.\n\nTap 'Deny' to proceed without receiving notification alerts.\n\nTap 'Continue' and select 'Allow all the time' from the next screen to receive alerts.");
                 alertBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, int id) {
                         if (!shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
@@ -215,7 +215,7 @@ public class PermissionRationaleActivity extends AppCompatActivity implements
                     }
                 });
                 alertBuilder.setNegativeButton("Deny", (dialog, id) -> {
-                    showDialog("", "You will not be alerted when you are near a registered black owned business.\n\nWe respect user privacy. No location data is collected.\n\nTo enable alerts when near a registered black owned business select 'allow all the time' at [Go to Settings] > [Permissions]",
+                    showDialog("", "You will not be alerted when you are near a registered black owned business.\n\nWe respect user privacy. No location data is collected.\n\nTap 'Continue' to proceed without receiving alerts.\n\nTo enable alerts when near a registered black owned business select 'allow all the time' at [Go to Settings] > [Permissions]",
                             "Go to Settings",
                             (dialogInterface, i) -> {
                                 dialogInterface.dismiss();
