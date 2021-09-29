@@ -131,6 +131,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
 
         binding.get().itemImageRecyclerView.setNestedScrollingEnabled(false);
 
+
         psDialogMsg = new PSDialogMsg(getActivity(), false);
 
         // for alert box
@@ -148,16 +149,9 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 if (checkCondition()) {
                     saveItem();
                     progressDialog.get().show();
-                   /* if (!itemViewModel.edit_mode) {
-                        //itemViewModel.itemSelectId = itemViewModel.data.id;
-                        navigationController.navigateToImageUploadActivity(getActivity(), "", "", "", Constants.IMAGE_UPLOAD_ITEM, itemViewModel.itemSelectId, itemViewModel.savedIsPromotion);
-                    }  else if (promoChanged || binding.get().isPromotion.isChecked()) {
-                        navigationController.navigateToItemPromoteActivity(getActivity(),itemViewModel.itemSelectId);
-                        // Log.e("foo", "foo");
-                    } */
                 }
             } else {
-//                    Toast.makeText(getContext(),R.string.item_upload__already_saved,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),R.string.item_upload__already_saved,Toast.LENGTH_LONG).show();
                 psDialogMsg.showErrorDialog(getString(R.string.item_upload__already_saved), getString(R.string.app__ok));
                 psDialogMsg.show();
             }
@@ -509,13 +503,12 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 binding.get().isFeature.setChecked(false);
                                 itemViewModel.savedIsFeatured = false;
                             }
-
-                            if (result.data.isPromotion.equals("1")) {
-                                binding.get().isPromotion.setChecked(true);
-                                itemViewModel.savedIsPromotion = true;
+                            if (/*result.data.isPromotion.equals("1") && */result.data.paidStatus.equals("Progress")) {
+                                //binding.get().isPromotion.setChecked(true);
+                                //itemViewModel.savedIsPromotion = true;
                                 binding.get().searchTextView22.setVisibility(View.GONE);
                                 binding.get().isPromotion.setVisibility(View.GONE);
-                            } else if (result.data.isPromotion.equals("0")) {
+                            } else { //if (result.data.isPromotion.equals("0") || !result.data.paidStatus.equals("In Progress")) {
                                 binding.get().isPromotion.setVisibility(View.VISIBLE);
                                 binding.get().searchTextView22.setVisibility(View.VISIBLE);
                                 binding.get().isPromotion.setChecked(false);
@@ -604,6 +597,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             binding.get().termsAndConditionTextView.setText(result.data.terms);
                             binding.get().cancelationTextView.setText(result.data.cancelation_policy);
                             binding.get().additionalTextView.setText(result.data.additional_info);
+                            String foo = (result.data.paidStatus);
 
                             if (result.data.itemStatusId.equals("1")) {
                                 binding.get().statusTextView.setText(Constants.CHECKED_PUBLISH);
@@ -612,17 +606,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 binding.get().statusTextView.setText(Constants.CHECKED_UNPUBLISH);
 
                             }
-//                            else if(result.data.itemStatusId.equals("2")){
-//                                binding.get().statusTextView.setText(Constants.CHECKED_PENDING);
-//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
-//
-//                            }else if(result.data.itemStatusId.equals("3")){
-//                                binding.get().statusTextView.setText(Constants.CHECKED_REJECT);
-//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
-//
-//                            }
-
-//                            binding.get().statusTextView.setText(result.data.itemStatusId);
 
                             itemViewModel.cityId = result.data.cityId;
                             itemViewModel.catSelectId = result.data.catId;
@@ -630,15 +613,12 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.img_desc = result.data.defaultPhoto.imgDesc;
                             itemViewModel.img_id = result.data.defaultPhoto.imgId;
                             itemViewModel.img_path = result.data.defaultPhoto.imgPath;
-
                             itemViewModel.savedItemName = result.data.name;
                             itemViewModel.savedCategoryName = result.data.category.name;
                             itemViewModel.savedSubCategoryName = result.data.subCategory.name;
                             itemViewModel.savedDescription = result.data.description;
                             itemViewModel.savedSearchTag = result.data.searchTag;
                             itemViewModel.savedHighLightInformation = result.data.highlightInformation;
-//                            itemViewModel.lat = result.data.lat;
-//                            itemViewModel.lng = result.data.lng;
                             itemViewModel.savedOpeningHour = result.data.openingHour;
                             itemViewModel.savedClosingHour = result.data.closingHour;
                             itemViewModel.savedPhoneOne = result.data.phone1;
@@ -669,13 +649,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 itemViewModel.savedIsFeatured = false;
                             }
 
-                            if (result.data.isPromotion.equals("1")) {
-                                binding.get().isPromotion.setChecked(true);
-                                itemViewModel.savedIsPromotion = true;
+                            if (result.data.paidStatus.equals("Progress")) {
                                 binding.get().isPromotion.setVisibility(View.GONE);
                                 binding.get().searchTextView22.setVisibility(View.GONE);
 
-                            } else if (result.data.isPromotion.equals("0")) {
+                            } else {
                                 binding.get().isPromotion.setVisibility(View.VISIBLE);
                                 binding.get().searchTextView22.setVisibility(View.VISIBLE);
                                 binding.get().isPromotion.setChecked(false);
@@ -706,7 +684,6 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 case "2":
                                 case "3":
                                     pendingOrRejectItem(result.data.itemStatusId);
-//                                itemViewModel.savedStatusSelectedId = result.data.itemStatusId;
                                     break;
                             }
                             itemViewModel.setLoadingState(false);
