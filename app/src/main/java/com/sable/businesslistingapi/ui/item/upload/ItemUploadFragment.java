@@ -503,9 +503,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 binding.get().isFeature.setChecked(false);
                                 itemViewModel.savedIsFeatured = false;
                             }
-                            if (/*result.data.isPromotion.equals("1") && */result.data.paidStatus.equals("Progress")) {
-                                //binding.get().isPromotion.setChecked(true);
-                                //itemViewModel.savedIsPromotion = true;
+                            if (result.data.paidStatus.equals("Progress")) {
                                 binding.get().searchTextView22.setVisibility(View.GONE);
                                 binding.get().isPromotion.setVisibility(View.GONE);
                             } else { //if (result.data.isPromotion.equals("0") || !result.data.paidStatus.equals("In Progress")) {
