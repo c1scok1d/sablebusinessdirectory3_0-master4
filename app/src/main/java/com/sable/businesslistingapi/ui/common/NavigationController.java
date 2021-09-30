@@ -970,7 +970,7 @@ public class NavigationController {
         intent.putExtra(Constants.FLAG, flag);
 
         if (flag == Constants.SELECT_CATEGORY) {
-            intent.putExtra(Constants.CATEGORY_ID, selectId);
+            intent.putExtra(Constants.CATEGORY_ID, Id);
         }
         if (flag == Constants.SELECT_SUBCATEGORY) {
             intent.putExtra(Constants.SUBCATEGORY_ID, selectId);
