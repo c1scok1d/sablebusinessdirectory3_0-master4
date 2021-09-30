@@ -11,11 +11,14 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.sable.businesslistingapi.Config;
 import com.sable.businesslistingapi.R;
 import com.sable.businesslistingapi.databinding.ActivitySelectionBinding;
 import com.sable.businesslistingapi.ui.category.categoryselection.CategorySelectionFragment;
+import com.sable.businesslistingapi.ui.city.cityList.CityListActivity;
+import com.sable.businesslistingapi.ui.city.cityList.CityListFragment;
 import com.sable.businesslistingapi.ui.city.cityList.ItemUploadCityListFragment;
 import com.sable.businesslistingapi.ui.common.PSAppCompactActivity;
 import com.sable.businesslistingapi.ui.status.StatusSelectionFragment;
@@ -114,11 +117,11 @@ public class SelectionActivity extends PSAppCompactActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        /*  if (flagType == Constants.SELECT_CITY){*/
-        navigationController.navigateToItemUploadActivity(this,(Item)getIntent().getExtras().getParcelable("ITEM"),"",""
-                ,(City)getIntent().getExtras().getParcelable("CITY"),(ItemCategory)getIntent().getExtras().getParcelable("CAT"),
-                (ItemSubCategory)getIntent().getExtras().getParcelable("SUB_CAT"),(Image) getIntent().getExtras().getParcelable("IMG"));
-        //    }
+          if (flagType == Constants.SELECT_CITY){
+        navigationController.navigateToItemUploadActivity(this, getIntent().getExtras().getParcelable("ITEM"),"",""
+                , getIntent().getExtras().getParcelable("CITY"), getIntent().getExtras().getParcelable("CAT"),
+                getIntent().getExtras().getParcelable("SUB_CAT"), getIntent().getExtras().getParcelable("IMG"));
+           }
     }
 }
 
