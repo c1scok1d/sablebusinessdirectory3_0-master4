@@ -16,7 +16,7 @@ android {
         //applicationId "com.sable.businesslistingapi"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 106
+        versionCode 107
         versionName "3.0"
         multiDexEnabled true
     }
@@ -25,7 +25,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            //minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
