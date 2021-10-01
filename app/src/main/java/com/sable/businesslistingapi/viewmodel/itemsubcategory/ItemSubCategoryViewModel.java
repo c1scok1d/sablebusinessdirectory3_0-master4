@@ -83,7 +83,10 @@ public class ItemSubCategoryViewModel extends PSViewModel {
     }
 
     //list by cat id
-    public void setSubCategoryListByCatIdObj(String cityId, String catId, String limit, String offset){
+    public void setSubCategoryListByCatIdObj(String cityId,
+                                             String catId,
+                                             String limit,
+                                             String offset){
 
         ListByCatIdTmpDataHolder tmpDataHolder = new ListByCatIdTmpDataHolder(limit, offset, cityId, catId);
 
