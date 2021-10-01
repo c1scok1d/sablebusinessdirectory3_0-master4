@@ -973,8 +973,8 @@ public class NavigationController {
             intent.putExtra(Constants.CATEGORY_ID, Id);
         }
         if (flag == Constants.SELECT_SUBCATEGORY) {
-            intent.putExtra(Constants.SUBCATEGORY_ID, selectId);
-            intent.putExtra(Constants.CATEGORY_ID, Id);
+            intent.putExtra(Constants.CITY_ID, Id);
+            intent.putExtra(Constants.CATEGORY_ID, selectId);
         }
         if (flag == Constants.SELECT_STATUS) {
             intent.putExtra(Constants.STATUS_ID, selectId);
