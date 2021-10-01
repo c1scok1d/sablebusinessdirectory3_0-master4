@@ -1,6 +1,7 @@
 package com.sable.businesslistingapi.ui.category.categoryselection;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,6 +117,8 @@ public class CategorySelectionFragment extends PSFragment implements DataBoundLi
             if(getActivity() != null) {
                 if(getActivity().getIntent().getExtras() != null) {
                     itemViewModel.catSelectId = getActivity().getIntent().getExtras().getString(Constants.CATEGORY_ID);
+                    Log.e("Foo:", getActivity().getIntent().getExtras().getString(Constants.CATEGORY_ID));
+
                 }
             }
         } catch (Exception e) {
@@ -126,7 +129,8 @@ public class CategorySelectionFragment extends PSFragment implements DataBoundLi
     @Override
     protected void initData() {
 
-        itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),selectedCityId);
+        //itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),selectedCityId);
+        itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),itemViewModel.catSelectId);
         itemCategoryViewModel.getCategoryListData().observe(this, resource -> {
 
             if (resource != null) {
@@ -218,7 +222,8 @@ public class CategorySelectionFragment extends PSFragment implements DataBoundLi
             if(dataList != null && dataList.size() == 0) {
                 Utils.psLog("First Record Reload.");
                 itemCategoryViewModel.offset=0;
-                itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),selectedCityId);
+                //itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),selectedCityId);
+                itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT),String.valueOf(itemCategoryViewModel.offset),itemViewModel.catSelectId);
             }else {
                 Utils.psLog("Not First Record Reload.");
             }
