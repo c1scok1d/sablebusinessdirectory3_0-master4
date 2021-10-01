@@ -123,6 +123,8 @@ public class SubCategorySelectionFragment extends PSFragment implements DataBoun
                 if (getActivity().getIntent().getExtras() != null) {
                     itemListViewModel.subCatSelectId = getActivity().getIntent().getExtras().getString(Constants.SUBCATEGORY_ID);
                     itemListViewModel.catSelectId = getActivity().getIntent().getStringExtra(Constants.CATEGORY_ID);
+                    itemListViewModel.cityId = getActivity().getIntent().getStringExtra(Constants.CITY_ID);
+                    Utils.psErrorLog("", Constants.CATEGORY_ID + " " + Constants.SUBCATEGORY_ID);
 
                 }
             }
@@ -140,7 +142,8 @@ public class SubCategorySelectionFragment extends PSFragment implements DataBoun
     private void loadData() {
 
         // Load Sub Category
-        subCategoryViewModel.setSubCategoryListByCatIdObj(selectedCityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
+        //subCategoryViewModel.setSubCategoryListByCatIdObj(selectedCityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
+        subCategoryViewModel.setSubCategoryListByCatIdObj(itemListViewModel.cityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
 
         LiveData<Resource<List<ItemSubCategory>>> news = subCategoryViewModel.getSubCategoryListByCatIdData();
 
@@ -237,7 +240,8 @@ public class SubCategorySelectionFragment extends PSFragment implements DataBoun
             if(dataList != null && dataList.size() == 0) {
                 Utils.psLog("First Record Reload.");
                 subCategoryViewModel.offset=0;
-                subCategoryViewModel.setSubCategoryListByCatIdObj(selectedCityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
+                subCategoryViewModel.setSubCategoryListByCatIdObj(itemListViewModel.cityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
+                //subCategoryViewModel.setSubCategoryListByCatIdObj(selectedCityId,itemListViewModel.catSelectId, String.valueOf(Config.LIST_SUB_CATEGORY_COUNT), String.valueOf(subCategoryViewModel.offset));
 
             }else {
                 Utils.psLog("Not First Record Reload.");
