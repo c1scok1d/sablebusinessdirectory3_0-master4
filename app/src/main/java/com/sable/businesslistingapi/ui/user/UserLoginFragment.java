@@ -316,6 +316,7 @@ public class UserLoginFragment extends PSFragment {
 
                                 }
                                 userViewModel.setGoogleLoginUser(uid, displayName, email, photoUrl, token);
+                                Toast.makeText(UserLoginFragment.this.getContext(), "Successfully signed in", Toast.LENGTH_SHORT).show();
 
                             } else {
                                 // Error Message
@@ -351,7 +352,7 @@ public class UserLoginFragment extends PSFragment {
             user = mAuth.getCurrentUser();
             if (user != null) {
                 int a;
-//                Toast.makeText(UserLoginFragment.this.getContext(), "Successfully singned in with" + currentUser.getUid(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(UserLoginFragment.this.getContext(), "Successfully signed in with" + user.getUid(), Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -373,7 +374,7 @@ public class UserLoginFragment extends PSFragment {
 
         // Init Dialog
         prgDialog = new AutoClearedValue<>(this, new ProgressDialog(getActivity()));
-        //prgDialog.get().setMessage(getString(R.string.message__please_wait));
+        prgDialog.get().setMessage(getString(R.string.message__please_wait));
 
         prgDialog.get().setMessage((Utils.getSpannableString(getContext(), getString(R.string.message__please_wait), Utils.Fonts.MM_FONT)));
         prgDialog.get().setCancelable(false);
@@ -680,7 +681,7 @@ public class UserLoginFragment extends PSFragment {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
+                                Toast.makeText(UserLoginFragment.this.getContext(), "Successfully signed in", Toast.LENGTH_SHORT).show();
                             }
                         });
                 Bundle parameters = new Bundle();
