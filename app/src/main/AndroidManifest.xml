@@ -230,6 +230,7 @@
             android:theme="@style/Base.PSTheme" />
         <activity
             android:name="com.sable.businesslistingapi.ui.item.upload.ItemUploadActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
