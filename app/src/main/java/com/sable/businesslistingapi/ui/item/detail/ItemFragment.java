@@ -170,8 +170,7 @@ public class ItemFragment extends PSFragment {
         });
 
         binding.get().viewOnMapTextView.setOnClickListener(v -> navigationController.navigateToMapActivity(getActivity(), itemViewModel.LNG, itemViewModel.LAT, binding.get().nameTextView.getText().toString(), image, ratingViewModel.numStar,
-                ratingViewModel.totalRatings, binding.get().descriptionTextView.getText().toString() ));
-
+                ratingViewModel.totalRatings, binding.get().descriptionTextView.getText().toString(), binding.get().addressStreetTextView.getText().toString() ));
         binding.get().favoriteImageView.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
