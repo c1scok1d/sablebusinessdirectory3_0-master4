@@ -3,6 +3,8 @@ package com.sable.businesslistingapi.ui.item.map;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,14 +32,16 @@ import com.sable.businesslistingapi.ui.common.PSFragment;
 import com.sable.businesslistingapi.utils.AutoClearedValue;
 import com.sable.businesslistingapi.utils.Constants;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MapFragment extends PSFragment {
 
-    private String latValue = "41.6100344";
-    private String lngValue = "-87.6467132";
-    private String itemName, itemImage, description;
+    private String latitude;
+    private String longitude;
+    private String itemName, itemImage, description, address;
     private Float rating, totalRatings;
 
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
@@ -85,19 +89,30 @@ public class MapFragment extends PSFragment {
                     .into(new SimpleTarget<Bitmap>(500,500) {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            //marker
-                            markerOpt.position(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)))
-                                    .title(itemName)
-                                    .snippet(description);
                             //.icon(BitmapDescriptorFactory.fromBitmap(resource));
                             //Set Custom InfoWindow Adapter
                             map.setInfoWindowAdapter(adapter);
                             //zoom
-                            if (!latValue.isEmpty() && !lngValue.isEmpty()) {
+                            if (latitude.equals("0.000000") || longitude.equals("0.000000")) {
+                                // use address to get lat/lng
+                                LatLng latLng = getLatLngFromAddress(address);
+                                //set marker extras
+                                markerOpt.position(new LatLng(latLng.latitude, latLng.longitude))
+                                        .title(itemName)
+                                        .snippet(description);
                                 int zoomlevel = 15;
                                 // Animating to the touched position
-                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latLng.latitude, latLng.longitude), zoomlevel));
+                            } else {
+                                //set marker extras
+                                markerOpt.position(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)))
+                                        .title(itemName)
+                                        .snippet(description);
+                                int zoomlevel = 15;
+                                // Animating to the touched position
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)), zoomlevel));
                             }
+                            //marker
                             map.addMarker(markerOpt).showInfoWindow();
                         }
 
@@ -106,17 +121,17 @@ public class MapFragment extends PSFragment {
                             super.onLoadFailed(errorDrawable);
                             //marker
                             //MarkerOptions markerOpt = new MarkerOptions();
-                            markerOpt.position(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)))
+                            markerOpt.position(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)))
                                     .title(itemName)
                                     .snippet(description);
                             //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.logo_blk));
                             //Set Custom InfoWindow Adapter
                             map.setInfoWindowAdapter(adapter);
                             //zoom
-                            if (!latValue.isEmpty() && !lngValue.isEmpty()) {
+                            if (!latitude.isEmpty() && !longitude.isEmpty()) {
                                 int zoomlevel = 15;
                                 // Animating to the touched position
-                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latValue), Double.parseDouble(lngValue)), zoomlevel));
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)), zoomlevel));
                             }
                             map.addMarker(markerOpt).showInfoWindow();
                         }
@@ -155,19 +170,26 @@ public class MapFragment extends PSFragment {
             }); */
         });
     }
-   /* public AlertDialog showDialog(String title, String msg, String positiveLabel, DialogInterface.OnClickListener positiveOnClick,
-                                  String negativeLabel, DialogInterface.OnClickListener negativeOnClick, boolean isCancelAble){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(title);
-        builder.setCancelable(isCancelAble);
-        builder.setMessage(msg);
-        builder.setPositiveButton(positiveLabel, positiveOnClick);
-        builder.setNegativeButton(negativeLabel, negativeOnClick);
+    private LatLng getLatLngFromAddress(String address) {
 
-        AlertDialog alert = builder.create();
-        alert.show();
-        return alert;
-    } */
+        Geocoder geocoder = new Geocoder(getContext());
+        List<Address> addressList;
+
+        try {
+            addressList = geocoder.getFromLocationName(address, 1);
+            if (addressList != null) {
+                Address singleaddress = addressList.get(0);
+                LatLng latLng = new LatLng(singleaddress.getLatitude(), singleaddress.getLongitude());
+                return latLng;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
     @Override
     public void onDestroyView() {
@@ -233,9 +255,10 @@ public class MapFragment extends PSFragment {
     protected void initData() {
 
         if (getActivity() != null) {
-            latValue = getActivity().getIntent().getStringExtra(Constants.LAT);
-            lngValue = getActivity().getIntent().getStringExtra(Constants.LNG);
+            latitude = getActivity().getIntent().getStringExtra(Constants.LAT);
+            longitude = getActivity().getIntent().getStringExtra(Constants.LNG);
             itemName = getActivity().getIntent().getStringExtra(Constants.ITEM_NAME);
+            address = getActivity().getIntent().getStringExtra(Constants.ITEM_ADDRESS);
             itemImage = "https://api.sablebusinessdirectory.com/uploads/" +getActivity().getIntent().getStringExtra(Constants.ITEM_IMAGE_URL);
             description = getActivity().getIntent().getStringExtra(Constants.ITEM_DESCRIPTION);
             rating = getActivity().getIntent().getFloatExtra(Constants.RATING_STARS,0);
