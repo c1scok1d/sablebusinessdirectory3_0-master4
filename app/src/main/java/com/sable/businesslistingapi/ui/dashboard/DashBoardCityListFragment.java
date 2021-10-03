@@ -531,8 +531,8 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         discountItemViewModel.discountItemParameterHolder.lng = Utils.getCurrentLng();
         discountItemViewModel.discountItemParameterHolder.miles = "20";
 
-        //discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
-        discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
+        discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
+        //discountItemViewModel.setDiscountItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
         discountItemViewModel.getDiscountItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
@@ -562,9 +562,9 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
         featuredItemViewModel.featuredItemParameterHolder.lng = Utils.getCurrentLng();
         featuredItemViewModel.featuredItemParameterHolder.miles = "20";
 
-        featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
+        //featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, discountItemViewModel.discountItemParameterHolder);
 
-        //featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
+        featuredItemViewModel.setFeaturedItemListByKeyObj(loginUserId, String.valueOf(Config.LIMIT_FROM_DB_COUNT), Constants.ZERO, featuredItemViewModel.featuredItemParameterHolder);
         featuredItemViewModel.getFeaturedItemListByKeyData().observe(this, result -> {
 
             if (result != null) {
@@ -573,6 +573,9 @@ public class DashBoardCityListFragment extends PSFragment implements DataBoundLi
                 switch (result.status) {
                     case LOADING:
                         if (result.data != null) {
+                            if (geoprefs.getString(Constants.GEO_SERVICE_KEY, "false").equals("true")){
+                                startGeofences(result.data);
+                            }
                             replaceFeaturedItem(result.data);
                         }
                         break;
