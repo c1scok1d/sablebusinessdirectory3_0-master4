@@ -1,14 +1,20 @@
 package com.sable.businesslistingapi.ui.item.map;
 
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -148,7 +154,7 @@ public class MapFragment extends PSFragment {
             });
 
            // AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
-            /*map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                 @Override
                 public void onInfoWindowClick(Marker marker) {
                     // do stuff on click
@@ -159,6 +165,26 @@ public class MapFragment extends PSFragment {
                     alertBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(final DialogInterface dialog, int id) {
                             //do stuff
+                            //Uri gmmIntentUri = Uri.parse("geo:0,0?q=-33.8666,151.1957(Google+Sydney)");
+                            Uri gmmIntentUri = Uri.parse("geo:0,0?q="+latitude+","+longitude+"("+itemName+")");
+                            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                            mapIntent.setPackage("com.google.android.apps.maps");
+                            try
+                            {
+                                startActivity(mapIntent);
+                            }
+                            catch(ActivityNotFoundException ex)
+                            {
+                                try
+                                {
+                                    Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(gmmIntentUri)));
+                                    startActivity(unrestrictedIntent);
+                                }
+                                catch(ActivityNotFoundException innerEx)
+                                {
+                                    Toast.makeText(getContext(), "Please install a maps application", Toast.LENGTH_LONG).show();
+                                }
+                            }
                         }
                     });
                     alertBuilder.setNegativeButton("No", (dialog, id) -> {
@@ -167,7 +193,7 @@ public class MapFragment extends PSFragment {
                     AlertDialog alert = alertBuilder.create();
                     alert.show();
                 }
-            }); */
+            });
         });
     }
     private LatLng getLatLngFromAddress(String address) {
