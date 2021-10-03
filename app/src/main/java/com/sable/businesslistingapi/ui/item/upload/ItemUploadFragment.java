@@ -266,13 +266,13 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                         changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
                         latitude = latLng.latitude;
                         longitude = latLng.longitude;
-                        Address address = getAddressFromLatLng(latLng);
+                        String address = getAddressFromLatLng(latLng);
                         if(!binding.get().isPromotion.isChecked()) {
                             binding.get().searchTextView22.setVisibility(View.VISIBLE);
                             binding.get().isPromotion.setVisibility(View.VISIBLE);
                         }
                         if (address != null) {
-                            Log.d("Adddress", address.toString());
+                            Log.d("Adddress", address);
                         } else {
                             Log.d("Adddress", "Address Not Found");
                         }
@@ -285,15 +285,40 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                 }
             }
         });
+
+
+        binding.get().btnMyLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                latitude = locationGPS.getLatitude();
+                longitude = locationGPS.getLongitude();
+                //String address = getAddressFromLatLng();
+                changeCamera(String.valueOf(locationGPS.getLatitude()), String.valueOf(locationGPS.getLongitude()));
+                binding.get().txtAutocomplete.setText(getAddressFromLatLng(new LatLng(locationGPS.getLatitude(), locationGPS.getLongitude())));
+                if(!binding.get().isPromotion.isChecked()) {
+                    binding.get().searchTextView22.setVisibility(View.VISIBLE);
+                    binding.get().isPromotion.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
-    private Address getAddressFromLatLng(LatLng latLng) {
+
+
+    private String getAddressFromLatLng(LatLng latLng) {
         Geocoder geocoder = new Geocoder(getContext());
         List<Address> addresses;
         try {
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 5);
             if (addresses != null) {
-                Address address = addresses.get(0);
+                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()/*String city = addresses.get(0).getLocality();
+                /*bldgNo = addresses.get(0).getSubThoroughfare();
+                street = addresses.get(0).getThoroughfare();
+                city = addresses.get(0).getLocality();
+                state = addresses.get(0).getAdminArea();
+                zipcode = addresses.get(0).getPostalCode();
+                tvCurrentAddress.setText(address); */
+                //Address address = addresses.get(0).getAddressLine();
                 return address;
             } else {
                 return null;
@@ -549,9 +574,9 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                     latitude = latLng.latitude;
                                     longitude = latLng.longitude;
                                     changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
-                                    Address address = getAddressFromLatLng(latLng);
+                                    String address = getAddressFromLatLng(latLng);
                                     if (address != null) {
-                                        Log.d("Adddress", address.toString());
+                                        Log.d("Adddress", address);
 
                                     } else {
                                         Log.d("Adddress", "Address Not Found");
@@ -696,9 +721,9 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                                 latitude = latLng.latitude;
                                 longitude = latLng.longitude;
                                 changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
-                                Address address = getAddressFromLatLng(latLng);
+                                String address = getAddressFromLatLng(latLng);
                                 if (address != null) {
-                                    Log.d("Adddress", address.toString());
+                                    Log.d("Adddress", address);
 
                                 } else {
                                     Log.d("Adddress", "Address Not Found");
@@ -1227,6 +1252,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
         alertDialog.show();
     }
 
+    Location locationGPS;
+
     private void getLocation() {
         int REQUEST_ACCESS_FINE_LOCATION = 111, REQUEST_ACCESS_COARSE_LOCATION = 114;
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -1239,9 +1266,11 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                     REQUEST_ACCESS_COARSE_LOCATION);
             return;
         }
-        Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         if (locationGPS != null) {
+            latitude = locationGPS.getLatitude();
+            longitude = locationGPS.getLongitude();
             changeCamera(String.valueOf(locationGPS.getLatitude()), String.valueOf(locationGPS.getLongitude()));
         } else {
             Toast.makeText(getContext(), "Unable to find location.", Toast.LENGTH_SHORT).show();
