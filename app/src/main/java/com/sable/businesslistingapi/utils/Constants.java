@@ -172,6 +172,7 @@ Location Current_Location=new Location("");
     String ITEM_IMAGE_URL = "item_image";
     String ITEM_STATUS = "ITEM_STATUS";
     String ITEM_LIST_TITLE = "item_list_title";
+    String ITEM_ADDRESS = "item_address";
 
     //region Social
     String MESSENGER = "MESSENGER";
