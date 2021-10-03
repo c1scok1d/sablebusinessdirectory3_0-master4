@@ -264,6 +264,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                     LatLng latLng = getLatLngFromAddress(binding.get().txtAutocomplete.getText().toString());
                     if (latLng != null) {
                         changeCamera(String.valueOf(latLng.latitude),String.valueOf(latLng.longitude));
+                        latitude = latLng.latitude;
+                        longitude = latLng.longitude;
                         Address address = getAddressFromLatLng(latLng);
                         if(!binding.get().isPromotion.isChecked()) {
                             binding.get().searchTextView22.setVisibility(View.VISIBLE);
@@ -466,8 +468,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedDescription = result.data.description;
                             itemViewModel.savedSearchTag = result.data.searchTag;
                             itemViewModel.savedHighLightInformation = result.data.highlightInformation;
-                            //itemViewModel.lat = item.lat;
-                            //itemViewModel.lng = item.lng;
+                            itemViewModel.savedLatitude = result.data.lat;
+                            itemViewModel.savedLongitude = result.data.lng;
                             itemViewModel.savedOpeningHour = result.data.openingHour;
                             itemViewModel.savedClosingHour = result.data.closingHour;
                             itemViewModel.savedPhoneOne = result.data.phone1;
@@ -595,7 +597,7 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             binding.get().termsAndConditionTextView.setText(result.data.terms);
                             binding.get().cancelationTextView.setText(result.data.cancelation_policy);
                             binding.get().additionalTextView.setText(result.data.additional_info);
-                            String foo = (result.data.paidStatus);
+                            //String foo = (result.data.paidStatus);
 
                             if (result.data.itemStatusId.equals("1")) {
                                 binding.get().statusTextView.setText(Constants.CHECKED_PUBLISH);
@@ -617,6 +619,8 @@ public class ItemUploadFragment extends PSFragment implements DataBoundListAdapt
                             itemViewModel.savedDescription = result.data.description;
                             itemViewModel.savedSearchTag = result.data.searchTag;
                             itemViewModel.savedHighLightInformation = result.data.highlightInformation;
+                            itemViewModel.savedLatitude = result.data.lat;
+                            itemViewModel.savedLongitude = result.data.lng;
                             itemViewModel.savedOpeningHour = result.data.openingHour;
                             itemViewModel.savedClosingHour = result.data.closingHour;
                             itemViewModel.savedPhoneOne = result.data.phone1;
