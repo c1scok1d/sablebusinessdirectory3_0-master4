@@ -1,38 +1,39 @@
 {
   "project_info": {
-    "project_number": "945661989282",
-    "project_id": "sable-mobile-app-1617380169435",
-    "storage_bucket": "sable-mobile-app-1617380169435.appspot.com"
+    "project_number": "142135780540",
+    "project_id": "sable-business-directory",
+    "storage_bucket": "sable-business-directory.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945661989282:android:c851fe0b4e367cf5fa22fb",
+        "mobilesdk_app_id": "1:142135780540:android:d4248d5b743d79eba31cb9",
         "android_client_info": {
           "package_name": "com.sable.businesslistingapi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "945661989282-368qt6s76e5pck7srobefm1qt9dgfdnr.apps.googleusercontent.com",
+          "client_id": "142135780540-qr1vu4rnpu02dplog34672d4gftabtk6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3cdFkVivjeGN3cosfKwIkehzpIkY59oo"
+          "current_key": "AIzaSyB1x7KK-tXJl_2DpwOkUqssYNsQx6qimiU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "945661989282-368qt6s76e5pck7srobefm1qt9dgfdnr.apps.googleusercontent.com",
+              "client_id": "142135780540-qr1vu4rnpu02dplog34672d4gftabtk6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-2494959558505145~8609252296"
     }
   ],
   "configuration_version": "1"
