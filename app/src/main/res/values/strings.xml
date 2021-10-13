@@ -17,8 +17,8 @@
     <!-- test -->
     <!--string name="admob_banner_ads_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string -->
 
-
-    <string name="google_map_api_key" translatable="false">AIzaSyCMBDE0LLae_aFf2trtik89eYhtPM3rt30</string>
+    <string name="google_map_api_key" translatable="false">AIzaSyB1x7KK-tXJl_2DpwOkUqssYNsQx6qimiU</string>
+    <!-- string name="google_map_api_key" translatable="false">AIzaSyCMBDE0LLae_aFf2trtik89eYhtPM3rt30</string -->
 
     <string name="adview_publisher_key" translatable="false">pub-2494959558505145</string>
 
@@ -187,7 +187,7 @@
     <string name="edit_setting__title">Setting</string>
 
     <!-- Message -->
-    <string name="message__register_success">Successfully Register.</string>
+    <string name="message__register_success">Registration Successful.</string>
     <string name="message__loading">Loading…</string>
     <string name="message__please_wait">Please wait…</string>
     <string name="message__welcome">Welcome form The Sable Business Directory</string>
@@ -571,7 +571,7 @@
     <string name="item_upload__pin_location">Pin Location</string>
     <string name="item_upload__latitude">Latitude</string>
     <string name="item_upload__longitude">Longitude</string>
-    <string name="item_upload__item_saved">Business successfully saved</string>
+    <string name="item_upload__item_saved">Business Saved</string>
     <string name="item_upload__item_name_required">Business Name is required.</string>
     <string name="item_upload__item_category_required">Business Category is required.</string>
     <string name="item_upload__item_city_required">Business City is required.</string>
