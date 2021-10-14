@@ -254,6 +254,7 @@ public class UserLoginFragment extends PSFragment {
                             user = mAuth.getCurrentUser();
                             Utils.psLog("doSubmit");
                             doSubmit(userEmail, binding.get().passwordEditText.getText().toString());
+                            Toast.makeText(UserLoginFragment.this.getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                         }catch(Exception e) {
                             Utils.psErrorLog("", e);
                         }
@@ -316,7 +317,13 @@ public class UserLoginFragment extends PSFragment {
 
                                 }
                                 userViewModel.setGoogleLoginUser(uid, displayName, email, photoUrl, token);
-                                Toast.makeText(UserLoginFragment.this.getContext(), "Successfully signed in", Toast.LENGTH_SHORT).show();
+                                if(!displayName.isEmpty()){
+                                    String [] splitStr = displayName.split("\\s+");
+                                    Toast.makeText(UserLoginFragment.this.getContext(), "Welcome, " +splitStr[0], Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    Toast.makeText(UserLoginFragment.this.getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                }
 
                             } else {
                                 // Error Message
@@ -681,7 +688,12 @@ public class UserLoginFragment extends PSFragment {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                Toast.makeText(UserLoginFragment.this.getContext(), "Successfully signed in", Toast.LENGTH_SHORT).show();
+                                if(!name.isEmpty()){
+                                    String [] splitStr = name.split("\\s+");
+                                    Toast.makeText(UserLoginFragment.this.getContext(), "Welcome, " +splitStr[0], Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(UserLoginFragment.this.getContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
                 Bundle parameters = new Bundle();
