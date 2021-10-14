@@ -8,12 +8,13 @@
 
     <string name="fb_login_protocol_scheme" translatable="false">fb2106220289466501</string>
     <!-- live -->
-    <!-- string name="stripe_publish_key" translatable="false">pk_live_51Jd0QfIryIEv8wuGQDo2aQlf1gEDxA1miSBQ7FHgRerVq0bcbJ7xe2hRE1TaIKveVP3P9WQH6RpoKillj206D4kl00dmgGDp8k</string -->
-    <string name="stripe_publish_key" translatable="false">pk_test_51Jd0QfIryIEv8wuGnnjFJkoa2Ur39g3Dy95VYMUWbFj6uydfRMHzdJ9vvQxM1t4J4CMXV6oZqGIyfDBtRR1xrG0e00mHclq3e5</string>
+    <string name="stripe_publish_key" translatable="false">pk_live_51Jd0QfIryIEv8wuGQDo2aQlf1gEDxA1miSBQ7FHgRerVq0bcbJ7xe2hRE1TaIKveVP3P9WQH6RpoKillj206D4kl00dmgGDp8k</string>
+    <!-- test -->
+    <!-- string name="stripe_publish_key" translatable="false">pk_test_51Jd0QfIryIEv8wuGnnjFJkoa2Ur39g3Dy95VYMUWbFj6uydfRMHzdJ9vvQxM1t4J4CMXV6oZqGIyfDBtRR1xrG0e00mHclq3e5</string -->
 
     <string name="razor_key" translatable="false">rzp_0000_00000000000000</string>
 
-    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-2494959558505145~8609252296</string>
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-2494959558505145/9280046579</string>
     <!-- test -->
     <!--string name="admob_banner_ads_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string -->
 
