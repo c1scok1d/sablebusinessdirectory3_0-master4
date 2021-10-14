@@ -16,7 +16,7 @@ android {
         //applicationId "com.sable.businesslistingapi"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 111
+        versionCode 112
         versionName "3.0"
         multiDexEnabled true
     }
